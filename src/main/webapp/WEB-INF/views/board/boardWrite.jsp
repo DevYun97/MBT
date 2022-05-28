@@ -28,7 +28,7 @@
         <!-- 서브바 -->
         <div class="w-100 d-flex justify-content-start align-items-center mx-0 mt-3 border p-2">          
           <div class="d-flex flex-column mx-1">
-            <div class="pl-2 my-2" onclick="history.back('-1');" style="cursor: pointer;">
+            <div class="pl-2 my-2 pointer" onclick="history.back('-1');" style="cursor: pointer;">
 	          <i class="bi bi-chevron-left mr-1" ></i>이전화면
 	        </div> 
           </div>

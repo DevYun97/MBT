@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* 폰트 사이즈 설정 */
+.fontSize14 {
+  font-size: 14px;
+}
+.fontSize12 {
+  font-size: 12px;
+}
+.fontSize10 {
+  font-size: 10px;
+}
+
+/* 데코레이션 제어 */
+.noDeco {
+  text-decoration: none;
+}
+
+.pointer {
+	cursor: pointer;
+}

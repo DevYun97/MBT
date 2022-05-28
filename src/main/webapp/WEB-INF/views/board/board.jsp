@@ -28,7 +28,7 @@
         <h6 class="m-0 font-weight-bold">게시판 리스트</h6>
         <div>
         <c:if test="${ not empty user_id }">
-        	<a href="/board/boardWrite" class="btn btn-primary" style="height: 30px; font-size: 14px;">글작성</a>
+        	<a href="/board/boardWrite" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">글작성</a>
         </c:if>                   
         </div>
       </div>

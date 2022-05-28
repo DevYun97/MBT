@@ -32,12 +32,12 @@
           <!-- id 중복체크 div -->
           <div class="d-flex justify-content-between align-items-center flex-wrap col-12 my-2 px-0">
             <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디">
-            <input type="button" class="btn btn-primary px-1" value="중복체크" style="font-size: 12px; height: 30px; width: 55px;" onclick="idCheck();">
+            <input type="button" class="btn btn-primary px-1 fontSize12" value="중복체크" style="font-size: 12px; height: 30px; width: 55px;" onclick="idCheck();">
             <input type="hidden" name="isIDChecked" id="isIDChecked" value='no'>
             <div id="al1" style="color: red; display: none;" >*중복되는 아이디 입니다.*</div>
 	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
           </div>          
-          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw"  placeholder="비밀번호">          
+          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호">          
           <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_nick_name" id="user_nick_name" placeholder="닉네임">
         </div>
 
@@ -49,7 +49,7 @@
           
           <!-- 주소 추가 -->	  
 		  <input type="text" class="d-inline col-9 form-control bg-white" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호" readonly>
-          <input type="button" class="btn btn-primary px-1" style="font-size: 12px; height: 30px; width: 55px;" value="주소찾기" onclick="sample6_execDaumPostcode()">
+          <input type="button" class="btn btn-primary px-1 fontSize12" style="font-size: 12px; height: 30px; width: 55px;" value="주소찾기" onclick="sample6_execDaumPostcode()">
           <input type="text" class="col-12 form-control my-1 bg-white nullcheck" name="sample6_address" id="sample6_address" placeholder="주소를 입력해주세요" readonly>
           <input type="text" class="col-12 form-control nullcheck" name="sample6_detailAddress" id="sample6_detailAddress"  placeholder="상세주소를 입력해주세요">
           <!-- 주소찾기 기본 hidden버튼(삭제x) -->

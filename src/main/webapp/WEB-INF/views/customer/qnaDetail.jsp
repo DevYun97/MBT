@@ -25,12 +25,12 @@
       <!-- 메인 -->
 
       <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
-        <div class="pl-2 my-2" onclick="history.back('-1');" style="cursor: pointer;">
+        <div class="pl-2 my-2 pointer" onclick="history.back('-1');" style="cursor: pointer;">
           <i class="bi bi-chevron-left mr-1" ></i>이전화면
         </div>    
         <div>
         <c:if test="${ user_idx eq qna.user_idx }">
-          <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary" style="height: 30px; font-size: 14px;">삭제</a>
+          <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">삭제</a>
         </c:if>
         </div>
       </div> 
@@ -40,7 +40,7 @@
         <!-- 문의사항 제목 -->
         <div class="w-100 border-bottom pt-2 pb-3">
           <h5>${qna.qna_title}</h5>
-          <div class="d-flex justify-content-between" style="font-size: 14px;">
+          <div class="d-flex justify-content-between fontSize14" style="font-size: 14px;">
             <div>${ qna.user_idx }</div>
             <div>
               <small>${qna.qna_date}</small>             
@@ -67,7 +67,7 @@
             <h6 class="font-weight-bold mb-">관리자</h6>
             <small class="text-right text-muted pr-1"> ${ qna.qna_reply_date } </small>
           </div>
-          <div class="w-100 border rounded" style="font-size: 14px; height: 50px;"> ${ qna.qna_reply }</div>
+          <div class="w-100 border rounded fontSize14" style="font-size: 14px; height: 50px;"> ${ qna.qna_reply }</div>
         </div>
            
       </div>

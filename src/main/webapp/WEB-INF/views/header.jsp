@@ -7,7 +7,7 @@
         <div class="dropdown">
           <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">유저정보</div>
+            <div class="text-black-50 pl-3 mt-3 mb-2 fontSize12" style="font-size: 12px;">유저정보</div>
             <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->
             <c:if test="${ empty user_id }">    
             <a href="../user/login" class="dropdown-item">로그인</a>
@@ -19,13 +19,13 @@
             </c:if>            
             <!-- 컨텐츠 이동 -->
             <div class="dropdown-divider"></div>
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>
+            <div class="text-black-50 pl-3 mt-3 mb-2 fontSize12" style="font-size: 12px;">페이지</div>
             <a href="../main" class="dropdown-item">메인</a>
             <a href="../aboutSite" class="dropdown-item">사이트소개</a>
             <a href="../board/board" class="dropdown-item">게시판</a>
             <div class="dropdown-divider"></div>
             <!-- 고객센터 -->
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">고객센터</div>
+            <div class="text-black-50 pl-3 mt-3 mb-2 fontSize12" style="font-size: 12px;">고객센터</div>
             <a href="../customer/notice" class="dropdown-item">공지사항</a>
             <a href="../customer/faq" class="dropdown-item">FAQ</a>
             <a href="../customer/qna" class="dropdown-item">QnA</a>

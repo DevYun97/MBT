@@ -21,7 +21,7 @@
       
       <!-- 헤더 -->
       <div class="w-100 d-flex justify-content-between align-items-center font-weight-bold pl-3 my-2 w-100 pb-2 pt-3 text-black-50 pb-3 border-bottom" >
-        <div style="cursor: pointer;" onclick="location.href='../user/mypage';">
+        <div class="pointer" style="cursor: pointer;" onclick="location.href='../user/mypage';">
           <i class="bi bi-chevron-left pr-2"></i>회원정보
         </div>
         <div>
