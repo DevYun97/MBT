@@ -1,16 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 헤더 -->
       <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
         <div class="dropdown">
           <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->     
+            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">유저정보</div>
+            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->
+            <c:if test="${ empty user_id }">    
             <a href="../user/login" class="dropdown-item">로그인</a>
             <a href="../user/join" class="dropdown-item">회원가입</a>
+            </c:if>
+            <c:if test="${ not empty user_id }">
+            <p class="dropdown-item">[ ${ user_id } ] 님 </p>
             <a href="../user/mypage" class="dropdown-item">마이페이지</a>
+            </c:if>            
             <!-- 컨텐츠 이동 -->
             <div class="dropdown-divider"></div>
             <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>

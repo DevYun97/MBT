@@ -20,29 +20,7 @@
     <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
 
       <!-- 헤더 -->
-      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
-        <div class="dropdown">
-          <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->     
-            <a href="../user/login" class="dropdown-item">로그인</a>
-            <a href="../user/join" class="dropdown-item">회원가입</a>
-            <a href="../user/mypage" class="dropdown-item">마이페이지</a>
-            <!-- 컨텐츠 이동 -->
-            <div class="dropdown-divider"></div>
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>
-            <a href="../main" class="dropdown-item">메인</a>
-            <a href="../aboutSite" class="dropdown-item">사이트소개</a>
-            <a href="../board/board" class="dropdown-item">게시판</a>
-            <div class="dropdown-divider"></div>
-            <!-- 고객센터 -->
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">고객센터</div>
-            <a href="../customer/notice" class="dropdown-item">공지사항</a>
-            <a href="../customer/faq" class="dropdown-item">FAQ</a>
-            <a href="../customer/qna" class="dropdown-item">QnA</a>
-          </div>
-        </div>
-      </div>
+	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
       <!-- 서브바 -->
@@ -53,68 +31,31 @@
       </div>
 
       <!-- 검색기능 넣기 -->
-      <div class="w-100 d-flex justify-content-between align-items-center mt-4 mb-2">
-        <div class="">
-          <select name="" id="" style="height: 30px;">
-            <option value="0">검색옵션 1</option>
-            <option value="0">검색옵션 2</option>
-            <option value="0">검색옵션 3</option>
-          </select>
-          <input type="text" id="" value="" placeholder="검색바" />
-        </div>
+      <div class="w-100 d-flex justify-content-end align-items-center mt-4 mb-2">
         <div>
-          <a href="../customer/qnaWrite" class="btn btn-primary btn-sm">글작성</a>
-        </div>
-        
+        <c:if test="${ not empty user_id }">
+        	<a href="../customer/qnaWrite" class="btn btn-primary btn-sm">글작성</a>
+        </c:if>         
+        </div>   
       </div>
       
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-        <a href="../customer/qnaDetail" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>질문하기제목</div>
+        <c:forEach var="dto" items="${ getQnaList }">
+        <a href="../customer/qnaDetail?qna_idx=${ dto.qna_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
+          <div>${ dto.qna_title }</div>
           <div class="text-right text-muted" style="font-size:12px;">
-            <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
+            <span class="pr-1">${ dto.user_idx }</span> ${ dto.qna_date }<i class="bi bi-chevron-right"></i>
           </div>
         </a>
+        </c:forEach>
         <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>질문하기제목</div>
           <div class="text-right text-muted" style="font-size:12px;">
             <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
           </div>
         </a>
-        <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>질문하기제목</div>
-          <div class="text-right text-muted" style="font-size:12px;">
-            <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
-          </div>
-        </a>
-        <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>질문하기제목</div>
-          <div class="text-right text-muted" style="font-size:12px;">
-            <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
-          </div>
-        </a>
-        <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>질문하기제목</div>
-          <div class="text-right text-muted" style="font-size:12px;">
-            <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
-          </div>
-        </a>
-
-      </div>
-
-      <!-- 쪽수메기기 -->
-      <div class="mt-4 mb-3">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </div>    
+      </div>      
     <!-- Content div 종료 -->
     </div>
  

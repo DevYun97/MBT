@@ -20,63 +20,46 @@
     <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
 
       <!-- 헤더 -->
-      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
-        <div class="dropdown">
-          <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->     
-            <a href="../user/login" class="dropdown-item">로그인</a>
-            <a href="../user/join" class="dropdown-item">회원가입</a>
-            <a href="../user/mypage" class="dropdown-item">마이페이지</a>
-            <!-- 컨텐츠 이동 -->
-            <div class="dropdown-divider"></div>
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>
-            <a href="../main" class="dropdown-item">메인</a>
-            <a href="../aboutSite" class="dropdown-item">사이트소개</a>
-            <a href="../board/board" class="dropdown-item">게시판</a>
-            <div class="dropdown-divider"></div>
-            <!-- 고객센터 -->
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">고객센터</div>
-            <a href="../customer/notice" class="dropdown-item">공지사항</a>
-            <a href="../customer/faq" class="dropdown-item">FAQ</a>
-            <a href="../customer/qna" class="dropdown-item">QnA</a>
-          </div>
-        </div>
-      </div>
+	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
      
       <!-- 관리자용 -->
       <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
         <div>
-          <input type="checkbox" name="" id="noticeCheck"><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
+        <!-- notice_show 가 on일 때 checked로 설정하기 -->
+        <c:if test="${ dto.notice_show eq 'on' }">
+        	<input type="checkbox" name="notice_show" id="noticeCheck" checked disabled><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
+        </c:if>
+        <c:if test="${ dto.notice_show eq 'null' }">
+        	<input type="checkbox" name="notice_show" id="noticeCheck" disabled><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
+        </c:if>
+          
         </div>     
         <div>
-          <input type="button" class="btn btn-primary" value="수정" style="height: 30px; font-size: 14px;">
-          <input type="button" class="btn btn-primary" value="삭제" style="height: 30px; font-size: 14px;">
+          <a href="noticeModify?notice_idx=${ dto.notice_idx }" class="btn btn-primary" style="height: 30px; font-size: 14px;">수정</a>
+          <a href="noticeDeleteAction?notice_idx=${ dto.notice_idx }" class="btn btn-primary" style="height: 30px; font-size: 14px;">삭제</a>
         </div>
       </div>
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-        
         <!-- 공지사항 제목 -->
-        <div href="#" class="w-100 border-bottom pt-2 pb-3">
-          <h5>공지사항제목</h5>
+        <div class="w-100 border-bottom pt-2 pb-3">
+        
+          <h5>${ dto.notice_title }</h5>
           <div class="d-flex justify-content-between" style="font-size: 14px;">
-            <div>작성자닉네임</div>
+            <div>관리자</div>
             <div>
-              <small>조횟수 2</small> <small class="px-1"> | </small> <small>2022.03.00</small>             
+              <small>${ dto.notice_date }</small>             
             </div>
           </div>
         </div>
-
         <!-- 공지사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
-        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom">
-          <textarea name="" id="" rows="10" class="w-100 px-2 py-2">공지사항 내용</textarea>
-       </div>
-
+        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom" style="height:200px;">
+          ${ dto.notice_contents }
+        </div>
         <!-- 버튼 div -->
-        <a href="../customer/notice.html" class="btn btn-primary col-5 mt-3">확인</a>
+        <a href="../customer/notice" class="btn btn-primary col-5 mt-3">확인</a>
       </div>
       
     <!-- Content div 종료 -->

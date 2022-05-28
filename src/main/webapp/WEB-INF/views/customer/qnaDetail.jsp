@@ -20,55 +20,58 @@
     <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
 
       <!-- 헤더 -->
-      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
-        <div class="dropdown">
-          <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->     
-            <a href="../user/login" class="dropdown-item">로그인</a>
-            <a href="../user/join" class="dropdown-item">회원가입</a>
-            <a href="../user/mypage" class="dropdown-item">마이페이지</a>
-            <!-- 컨텐츠 이동 -->
-            <div class="dropdown-divider"></div>
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>
-            <a href="../main" class="dropdown-item">메인</a>
-            <a href="../aboutSite" class="dropdown-item">사이트소개</a>
-            <a href="../board/board" class="dropdown-item">게시판</a>
-            <div class="dropdown-divider"></div>
-            <!-- 고객센터 -->
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">고객센터</div>
-            <a href="../customer/notice" class="dropdown-item">공지사항</a>
-            <a href="../customer/faq" class="dropdown-item">FAQ</a>
-            <a href="../customer/qna" class="dropdown-item">QnA</a>
-          </div>
-        </div>
-      </div>
+	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
-     
+
+      <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+        <div class="pl-2 my-2" onclick="history.back('-1');" style="cursor: pointer;">
+          <i class="bi bi-chevron-left mr-1" ></i>이전화면
+        </div>    
+        <div>
+        <c:if test="${ user_idx eq qna.user_idx }">
+          <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary" style="height: 30px; font-size: 14px;">삭제</a>
+        </c:if>
+        </div>
+      </div> 
+
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-        <form action="noticeAction" method="get" class="w-100">
-          <!-- 공지사항 제목 -->
-          <div href="#" class="w-100 border-bottom pt-2 pb-3">
-            <div class="d-flex justify-content-between align-items-center mb-2" style="font-size: 14px;">                       
-              <div>
-                <input type="checkbox" name="" id="noticeCheck"><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
-              </div>
-              <small>2022.03.00</small>             
+        
+        <!-- 문의사항 제목 -->
+        <div class="w-100 border-bottom pt-2 pb-3">
+          <h5>${qna.qna_title}</h5>
+          <div class="d-flex justify-content-between" style="font-size: 14px;">
+            <div>${ qna.user_idx }</div>
+            <div>
+              <small>${qna.qna_date}</small>             
             </div>
-            <input type="text" value="" class="col-12 form" placeholder="공지사항 제목">
           </div>
-          <!-- 공지사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
-          <div class="w-100 mt-3 px-0 pb-3 text-left border-bottom">
-            <textarea name="" id="" rows="10" class="w-100 px-2 py-2">공지사항 내용</textarea>
-          </div>
-          <!-- 버튼 div -->
-          <div class="w-100 d-flex justify-content-center">
-            <input type="submit" class="btn btn-primary col-5 mt-3 mr-1" value="확인">
-            <a href="../customer/qna" class="btn btn-primary col-5 mt-3">취소</a>
-          </div>          
+        </div>
+
+        <!-- 문의사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
+        <div class="w-100 mt-3 px-2 pb-5 text-left border-bottom">
+          ${qna.qna_contents}
+       </div>
+
+        <!-- 버튼 div -->
+        <c:if test="${ user_id eq 'admin' }"> 
+        <form action="qnaReplyAction?qna_idx=${ qna.qna_idx }" method="post" class="w-100 d-flex justify-content-between px-2">
+          <input type="text" class="col-10 mt-3" id="qna_reply" name="qna_reply" placeholder="댓글을 달아주세요">
+          <input type="submit" class="btn btn-primary btn-sm col-2 mt-3" value="작성">
         </form>
+        </c:if>
+        <%-- <c:if test="${ qna_reply_check eq 1 }"></c:if> --%>
+        <!-- 댓글창 -->
+        <div class="w-100 d-flex flex-column justify-content-between align-items-start mt-4 pb-3 border-bottom text-body">
+          <div class="w-100 d-flex justify-content-between">
+            <h6 class="font-weight-bold mb-">관리자</h6>
+            <small class="text-right text-muted pr-1"> ${ qna.qna_reply_date } </small>
+          </div>
+          <div class="w-100 border rounded" style="font-size: 14px; height: 50px;"> ${ qna.qna_reply }</div>
+        </div>
+           
       </div>
+      
       <!-- Content div 종료 -->
     </div>
 

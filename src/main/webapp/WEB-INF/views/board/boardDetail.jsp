@@ -20,29 +20,7 @@
     <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
 
       <!-- 헤더 -->
-      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
-        <div class="dropdown">
-          <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <!-- 회원정보 마이페이지 이동 _ 유저 정보 나오기 -->     
-            <a href="../user/login" class="dropdown-item">로그인</a>
-            <a href="../user/join" class="dropdown-item">회원가입</a>
-            <a href="../user/mypage" class="dropdown-item">마이페이지</a>
-            <!-- 컨텐츠 이동 -->
-            <div class="dropdown-divider"></div>
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">페이지</div>
-            <a href="../main" class="dropdown-item">메인</a>
-            <a href="../aboutSite" class="dropdown-item">사이트소개</a>
-            <a href="../board/board" class="dropdown-item">게시판</a>
-            <div class="dropdown-divider"></div>
-            <!-- 고객센터 -->
-            <div class="text-black-50 pl-3 mt-3 mb-2" style="font-size: 12px;">고객센터</div>
-            <a href="../customer/notice" class="dropdown-item">공지사항</a>
-            <a href="../customer/faq" class="dropdown-item">FAQ</a>
-            <a href="../customer/qna" class="dropdown-item">QnA</a>
-          </div>
-        </div>
-      </div>
+	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
      
@@ -52,8 +30,10 @@
           <i class="bi bi-chevron-left mr-1" ></i>이전화면
         </div>    
         <div>
+        <c:if test="${ user_idx eq board.user_idx }">
           <input type="button" class="btn btn-primary" value="수정" style="height: 30px; font-size: 14px;">
-          <input type="button" class="btn btn-primary" value="삭제" style="height: 30px; font-size: 14px;">
+          <a href="boardDeleteAction?board_idx=${ board.board_idx }" class="btn btn-primary" style="height: 30px; font-size: 14px;">삭제</a>
+        </c:if>
         </div>
       </div>  
 
@@ -61,41 +41,44 @@
         
         <!-- 공지사항 제목 -->
         <div class="w-100 border-bottom pt-2 pb-3">
-          <h5>게시글제목</h5>
+          <h5>${ board.board_title }</h5>
           <div class="d-flex justify-content-between" style="font-size: 14px;">
-            <div>작성자닉네임</div>
+            <div>${ board.user_idx }</div>
             <div>
-              <small>조횟수 2</small> <small class="px-1"> | </small> <small>2022.03.00</small>             
+              <small>조횟수 : ${ board.board_hit }</small> <small class="px-1"> | </small> <small>${ board.board_data }</small>             
             </div>
           </div>
         </div>
 
         <!-- 공지사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
-        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom">
-          <textarea name="" id="" rows="10" class="w-100 px-2 py-2">게시글 내용</textarea>
+        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom" style="height:200px;">
+          ${ board.board_content }
        </div>
 
         <!-- 버튼 div -->
-        <form action="" method="post" class="w-100 d-flex justify-content-between px-2">
-          <input type="text" class="col-10 mt-3" id="" name="reply" placeholder="댓글을 달아주세요">
+        <form action="replyWriteAction?board_idx=${ board.board_idx }&&user_idx=${user_idx}" method="post" class="w-100 d-flex justify-content-between px-2">
+          <input type="text" class="col-10 mt-3" id="reply_content" name="reply_content" placeholder="댓글을 달아주세요">
           <input type="submit" class="btn btn-primary btn-sm col-2 mt-3" value="작성">
         </form>
+        
       </div>
       
       <!-- 댓글창 -->
-      <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 mt-1 border p-2">
+      <div class="w-100 d-flex flex-column justify-content-between align-items-center border mx-0 mt-1 mb-5 p-2">
 
         <div class="w-100 mt-2 pb-3 border-bottom">
           <h5>댓글창</h5>
-          <small>댓글갯수 : 1</small>
+          <small>댓글갯수 : 0</small>
         </div>
 
-        <div class="w-100 d-flex flex-column justify-content-between align-items-start mt-4 pb-3 border-bottom text-body">
-          <div class="w-100 d-flex justify-content-between">
-            <h6 class="font-weight-bold mb-">댓글작성자닉네임</h6>
-            <small class="text-right text-muted pr-1">2022.03.00</small>
+        <div class="w-100 d-flex flex-column justify-content-between align-items-start mt-2 pb-3 text-body">
+          <c:forEach var="dto" items="${ getReplyList }">
+          <div class="w-100 d-flex justify-content-between mt-2">
+            <h6 class="font-weight-bold mb-">${ dto.user_idx }</h6>
+            <small class="text-right text-muted pr-1">${ dto.reply_data }</small>
           </div>
-          <div class="w-100 border rounded" style="font-size: 14px; height: 50px;"> 댓글내용 불러오기</div>
+          <div class="w-100 border-bottom rounded" style="font-size: 14px; height: 50px;"> ${ dto.reply_content }</div>
+          </c:forEach>
         </div>
 
       </div>

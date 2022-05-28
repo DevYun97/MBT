@@ -31,21 +31,31 @@
         <div class="mt-3 pb-3" style="width:250px;">
           <!-- id 중복체크 div -->
           <div class="d-flex justify-content-between align-items-center flex-wrap col-12 my-2 px-0">
-            <input type="text" class="col-9 form nullcheck" name="user_id" id="user_id" placeholder="아이디">
+            <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디">
             <input type="button" class="btn btn-primary px-1" value="중복체크" style="font-size: 12px; height: 30px; width: 55px;" onclick="idCheck();">
-            <input type="hidden" value="false">
-            <div id="al1" class="d-none text-danger">*중복되는 아이디 입니다.*</div>
-	          <div id="al2" class="d-none text-success">*가입 가능한 아이디입니다*</div>
+            <input type="hidden" name="isIDChecked" id="isIDChecked" value='no'>
+            <div id="al1" style="color: red; display: none;" >*중복되는 아이디 입니다.*</div>
+	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
           </div>          
-          <input type="password" class="d-block col-12 my-2 form nullcheck" name="user_pw" id="user_pw"  placeholder="비밀번호">          
-          <input type="text" class="d-block col-12 my-2 form nullcheck" name="user_nick_name" id="user_nick_name" placeholder="닉네임">
+          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw"  placeholder="비밀번호">          
+          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_nick_name" id="user_nick_name" placeholder="닉네임">
         </div>
 
         <!-- 고객정보 모음 -->
         <div class="mt-3 pb-3" style="width:250px;">
-          <input type="text" class="d-block col-12 my-2 form nullcheck" name="user_name" id="user_name" placeholder="이름">
-          <input type="text" class="d-block col-12 my-2 form nullcheck" name="user_phone" id="user_phone" placeholder="전화번호">
-          <input type="email" class="d-block col-12 my-2 form nullcheck" name="user_email" id="user_email" placeholder="이메일">
+          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_name" id="user_name" placeholder="이름">
+          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_phone" id="user_phone" placeholder="전화번호">
+          <input type="email" class="d-block col-12 my-2 form-control nullcheck" name="user_email" id="user_email" placeholder="이메일">
+          
+          <!-- 주소 추가 -->	  
+		  <input type="text" class="d-inline col-9 form-control bg-white" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호" readonly>
+          <input type="button" class="btn btn-primary px-1" style="font-size: 12px; height: 30px; width: 55px;" value="주소찾기" onclick="sample6_execDaumPostcode()">
+          <input type="text" class="col-12 form-control my-1 bg-white nullcheck" name="sample6_address" id="sample6_address" placeholder="주소를 입력해주세요" readonly>
+          <input type="text" class="col-12 form-control nullcheck" name="sample6_detailAddress" id="sample6_detailAddress"  placeholder="상세주소를 입력해주세요">
+          <!-- 주소찾기 기본 hidden버튼(삭제x) -->
+          <input type="hidden" class="inputStyle1" id="sample6_extraAddress" placeholder="참고항목">                   
+          <!-- 입력한 sample6_address 와 sample6_detailAddress를 js를 이용해 value값을 합쳐 user_address로 서버에 전송 -->
+          <input type="hidden" id="user_address" name="user_address" value="" />
         </div>
 
         <!-- 회원가입 동의 체크박스 -->
@@ -55,7 +65,7 @@
             <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk1" disabled><span onclick="popupHideAndShow(target ='joinCkPop1');">[필수] 회원가입약관</span> <br>
             <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk2" disabled><span onclick="popupHideAndShow(target ='joinCkPop2');">[필수] 개인정보 처리방침안내</span>
         </div>
-        <input type="submit" class="btn btn-primary col-12 mb-5" value="회원가입">       
+        <input type="button" class="btn btn-primary col-12 mb-5" value="회원가입" onclick="joinCheckAll();">       
       </form>
       
     <!-- Content div 종료 -->
@@ -94,7 +104,8 @@
         <input type="button" class="btn btn-primary col-4 mt-3" value="동의" onclick="joinCheck(joinCheckBox = 'joinCk2');">
       </div>
     </div>
-
+<!-- 카카오 주소 API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- bootstrap js -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
