@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.yun.project.dao.IuserDAO">
+
+	<!-- 유저ID 정보 조회 -->
+	<select id="getUserID" resultType="String">
+		SELECT * FROM MBD_USER WHERE user_id = #{ user_id }
+	</select>
+	
+	<!-- 유저Pw 정보 조회 -->
+	<select id="getUserPW" resultType="String">
+		SELECT user_pw FROM MBD_USER WHERE user_id = #{ user_id }
+	</select>
+	
+	<!-- id를 받아 인덱스 조회 -->
+	<select id="getUserIDX" resultType="int">
+		SELECT user_idx FROM MBD_USER WHERE user_id = #{ user_id }
+	</select>
+	
+	<select id="idxUserID" resultType="int">
+		SELECT user_id FROM MBD_USER WHERE user_idx = #{user_idx}
+	</select>
+	
+	<!-- IDFIND _user_name + user_email -->
+	<select id="getUserIdFind" resultType="String">
+		SELECT user_id FROM MBD_USER WHERE user_name = #{ param1 } AND user_email = #{ param2 } 
+	</select>
+	
+	<!-- PWFIND _user_name + user_id -->
+	<select id="getUserPwFind" resultType="String">
+		SELECT user_pw FROM MBD_USER WHERE user_name = #{ param1 } AND user_id = #{ param2 } 
+	</select>
+
+	<!-- 유저 회원가입 -->
+	<insert id="insertUser" parameterType="com.example.demo.dto.User">
+		INSERT INTO MBD_USER (user_idx, user_id, user_pw, user_name, user_nick_name, user_email, user_phone, user_address, user_join)
+		VALUES (mbd_user_seq.nextval, #{user_id}, #{user_pw}, #{user_name}, #{user_nick_name}, #{user_email}, #{user_phone}, #{user_address}, sysdate )
+	</insert>
+	
+	<!-- 유저 인덱스가 일치시 유저 정보 삭제 -->
+	<delete id="deleteUser">
+		DELETE FROM MBD_USER WHERE user_idx= ${ user_idx }
+	</delete>
+	
+	<!-- 인덱스로 유저 정보 가져오기 -->
+	<select id="getMemberInfo" resultType="com.yun.project.dto.User">
+	 SELECT * FROM MBD_USER WHERE user_idx = #{user_idx}
+	</select>
+	
+	<!-- 유저 정보 업데이트 -->
+	<update id="updateUserInfo">
+		UPDATE MBD_USER SET user_name = #{user_name}, user_nick_name = #{user_nick_name}, user_email = #{user_email}, user_phone = #{user_phone}, user_address = #{user_address} WHERE user_idx = #{user_idx}
+	</update>
+	
+	<!-- 유저 비밀번호 업데이트 -->
+	<update id="updatePwInfo">
+		UPDATE MBD_USER SET user_pw = #{param2} WHERE user_idx = #{param1}
+	</update>
+	
+</mapper>   
