@@ -28,7 +28,7 @@
           </div>
           <!-- 회원정보 보기 링크 -->
           <div class="border-top w-100 container-fluid" style="height:40px;">
-            <a href="../user/userInfo?user_idx=${ user_idx }" class="text-dark noDeco" style="text-decoration: none;">
+            <a href="../user/userInfo?user_idx=${ user_idx }" class="text-dark noDeco" >
               <div class="col-11 text-left pl-2 mx-0 d-flex align-items-center pt-2" style="float: left;">회원정보보기</div>
               <div class="mt-1"> > </div>
             </a>
@@ -39,7 +39,7 @@
   
       <!-- 고객센터 -->
       <div class="w-100 ml-0 mr-0 border p-2">
-        <div class="text-black-50 my-2 fontSize12" style="font-size: 12px;">고객센터</div>
+        <div class="text-black-50 my-2 fontSize12" >고객센터</div>
         <a href="../customer/notice" class="d-block text-dark pl-2 my-1"> 공지사항 </a>      
         <a href="../customer/faq" class="d-block text-dark pl-2 my-1">FAQ</a>
         <a href="../customer/qna" class="d-block text-dark pl-2 my-1">QnA</a>

@@ -37,8 +37,8 @@
           
         </div>     
         <div>
-          <a href="noticeModify?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">수정</a>
-          <a href="noticeDeleteAction?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">삭제</a>
+          <a href="noticeModify?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px;">수정</a>
+          <a href="noticeDeleteAction?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px; ">삭제</a>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
         <div class="w-100 border-bottom pt-2 pb-3">
         
           <h5>${ dto.notice_title }</h5>
-          <div class="d-flex justify-content-between fontSize14" style="font-size: 14px;">
+          <div class="d-flex justify-content-between fontSize14" >
             <div>관리자</div>
             <div>
               <small>${ dto.notice_date }</small>             

@@ -29,7 +29,7 @@
         <!-- 관리자용 -->
         <div>
         <c:if test="${ user_id eq 'admin' }">         
-          <a href="/notice/noticeWrite" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">글작성</a>
+          <a href="/notice/noticeWrite" class="btn btn-primary fontSize14" style="height: 30px;">글작성</a>
         </c:if> 
         </div>
       </div>
@@ -38,7 +38,7 @@
         <c:forEach var="dto" items="${ getNoticeList }">
         <a href="../notice/noticeDetail?notice_idx=${ dto.notice_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>${dto.notice_title}</div>
-          <div class="text-right text-muted fontSize12" style="font-size:12px;">${dto.notice_date}<i class="bi bi-chevron-right"></i></div>
+          <div class="text-right text-muted fontSize12" >${dto.notice_date}<i class="bi bi-chevron-right"></i></div>
         </a>
         </c:forEach>        
       </div>

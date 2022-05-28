@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/* Bootstrap css override */
 
 /* 폰트 사이즈 설정 */
 .fontSize14 {
@@ -19,3 +19,4 @@
 .pointer {
 	cursor: pointer;
 }
+

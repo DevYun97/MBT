@@ -44,14 +44,14 @@
         <c:forEach var="dto" items="${ getQnaList }">
         <a href="../customer/qnaDetail?qna_idx=${ dto.qna_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>${ dto.qna_title }</div>
-          <div class="text-right text-muted fontSize12" style="font-size:12px;">
+          <div class="text-right text-muted fontSize12" >
             <span class="pr-1">${ dto.user_idx }</span> ${ dto.qna_date }<i class="bi bi-chevron-right"></i>
           </div>
         </a>
         </c:forEach>
         <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>질문하기제목</div>
-          <div class="text-right text-muted fontSize12" style="font-size:12px;">
+          <div class="text-right text-muted fontSize12" >
             <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
           </div>
         </a>

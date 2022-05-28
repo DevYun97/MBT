@@ -28,7 +28,7 @@
         <form action="noticeWriteAction" method="post" class="w-100" onsubmit="return nullChecker();">
           <!-- 공지사항 제목 -->
           <div class="w-100 border-bottom pt-2 pb-3">
-            <div class="d-flex justify-content-between align-items-center mb-2 fontSize14" style="font-size: 14px;">                       
+            <div class="d-flex justify-content-between align-items-center mb-2 fontSize14" >                       
               <div>
                 <input type="checkbox" name="notice_show" id="notice_show"><label for="notice_show" class="m-0 pl-2">중요공지</label>
               </div>            

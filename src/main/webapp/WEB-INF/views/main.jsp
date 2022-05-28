@@ -28,14 +28,14 @@
           <div class="w-100 d-flex flex-column justify-content-center align-items-center text-center font-weight-bold py-2" style="min-height: 115px;">          
               <c:if test="${ not empty user_id }">
               <p class="my-0">${user_id} 님 방문을 환영합니다</p>
-              <div class="mt-3 mb-0 fontSize12" style="font-size:12px;"> 이동 >
+              <div class="mt-3 mb-0 fontSize12" > 이동 >
               	<a href="user/mypage"class="text-decoration-none text-body">마이페이지</a>              	
               </div>              
               </c:if>
               <c:if test="${ empty user_id }">
               <p class="my-1"> [ 게스트 ] 고객님 환영합니다. </p>
               <small> 비로그인 상태일 경우 사이트 이용에 제한이 있습니다.</small>
-              <div class="my-2 fontSize12" style="font-size:12px;"> 이동 >
+              <div class="my-2 fontSize12" > 이동 >
               	<a href="user/login"class="text-decoration-none text-body px-1">로그인</a>
               	<small> | </small>
               	<a href="user/join" class="text-decoration-none text-body px-1">회원가입</a>

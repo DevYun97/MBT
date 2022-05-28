@@ -35,7 +35,7 @@
 	</select>
 
 	<!-- 유저 회원가입 -->
-	<insert id="insertUser" parameterType="com.example.demo.dto.User">
+	<insert id="insertUser" parameterType="com.yun.project.dto.User">
 		INSERT INTO MBD_USER (user_idx, user_id, user_pw, user_name, user_nick_name, user_email, user_phone, user_address, user_join)
 		VALUES (mbd_user_seq.nextval, #{user_id}, #{user_pw}, #{user_name}, #{user_nick_name}, #{user_email}, #{user_phone}, #{user_address}, sysdate )
 	</insert>

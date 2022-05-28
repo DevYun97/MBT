@@ -25,7 +25,7 @@
       	</div>
 
 	    <h3 class="text-center font-italic mt-4">LOGIN</h3>
-        <p class="mb-4 fontSize12" style="font-size:12px;">로그인 시 다양한 기능을 이용하실 수 있습니다.</p>
+        <p class="mb-4 fontSize12" >로그인 시 다양한 기능을 이용하실 수 있습니다.</p>
         <div class="d-flex justify-content-center">
           <form action="loginAction" method="post" style="width: 250px;">
             <input type="text" class="d-block col-12 form my-2" id="user_id" name="user_id" placeholder="아이디">

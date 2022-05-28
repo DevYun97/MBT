@@ -26,13 +26,13 @@
      
       <!--  -->
       <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
-        <div class="pl-2 my-2 pointer" onclick="history.back('-1');" style="cursor: pointer;">
+        <div class="pl-2 my-2 pointer" onclick="history.back('-1');" >
           <i class="bi bi-chevron-left mr-1" ></i>이전화면
         </div>    
         <div>
         <c:if test="${ user_idx eq board.user_idx }">
-          <input type="button" class="btn btn-primary fontSize14" value="수정" style="height: 30px; font-size: 14px;">
-          <a href="boardDeleteAction?board_idx=${ board.board_idx }" class="btn btn-primary fontSize14" style="height: 30px; font-size: 14px;">삭제</a>
+          <input type="button" class="btn btn-primary fontSize14" value="수정" style="height: 30px; ">
+          <a href="boardDeleteAction?board_idx=${ board.board_idx }" class="btn btn-primary fontSize14" style="height: 30px;">삭제</a>
         </c:if>
         </div>
       </div>  
@@ -42,7 +42,7 @@
         <!-- 공지사항 제목 -->
         <div class="w-100 border-bottom pt-2 pb-3">
           <h5>${ board.board_title }</h5>
-          <div class="d-flex justify-content-between fontSize14" style="font-size: 14px;">
+          <div class="d-flex justify-content-between fontSize14" >
             <div>${ board.user_idx }</div>
             <div>
               <small>조횟수 : ${ board.board_hit }</small> <small class="px-1"> | </small> <small>${ board.board_data }</small>             
@@ -77,7 +77,7 @@
             <h6 class="font-weight-bold mb-">${ dto.user_idx }</h6>
             <small class="text-right text-muted pr-1">${ dto.reply_data }</small>
           </div>
-          <div class="w-100 border-bottom rounded fontSize14" style="font-size: 14px; height: 50px;"> ${ dto.reply_content }</div>
+          <div class="w-100 border-bottom rounded fontSize14" style=" height: 50px;"> ${ dto.reply_content }</div>
           </c:forEach>
         </div>
 

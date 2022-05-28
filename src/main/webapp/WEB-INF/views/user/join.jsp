@@ -32,7 +32,7 @@
           <!-- id 중복체크 div -->
           <div class="d-flex justify-content-between align-items-center flex-wrap col-12 my-2 px-0">
             <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디">
-            <input type="button" class="btn btn-primary px-1 fontSize12" value="중복체크" style="font-size: 12px; height: 30px; width: 55px;" onclick="idCheck();">
+            <input type="button" class="btn btn-primary px-1 fontSize12" value="중복체크" style="height: 30px; width: 55px;" onclick="idCheck();">
             <input type="hidden" name="isIDChecked" id="isIDChecked" value='no'>
             <div id="al1" style="color: red; display: none;" >*중복되는 아이디 입니다.*</div>
 	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
@@ -49,7 +49,7 @@
           
           <!-- 주소 추가 -->	  
 		  <input type="text" class="d-inline col-9 form-control bg-white" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호" readonly>
-          <input type="button" class="btn btn-primary px-1 fontSize12" style="font-size: 12px; height: 30px; width: 55px;" value="주소찾기" onclick="sample6_execDaumPostcode()">
+          <input type="button" class="btn btn-primary px-1 fontSize12" style="height: 30px; width: 55px;" value="주소찾기" onclick="sample6_execDaumPostcode()">
           <input type="text" class="col-12 form-control my-1 bg-white nullcheck" name="sample6_address" id="sample6_address" placeholder="주소를 입력해주세요" readonly>
           <input type="text" class="col-12 form-control nullcheck" name="sample6_detailAddress" id="sample6_detailAddress"  placeholder="상세주소를 입력해주세요">
           <!-- 주소찾기 기본 hidden버튼(삭제x) -->
@@ -62,8 +62,8 @@
         <div class="text-center pt-3 mb-3">- 회원가입 약관동의 -</div>
         <div class="mt-2 mb-5">
             <!-- disabled : 사용자의 input 타입의 수정 막기  -->
-            <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk1" disabled><span onclick="popupHideAndShow(target ='joinCkPop1');">[필수] 회원가입약관</span> <br>
-            <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk2" disabled><span onclick="popupHideAndShow(target ='joinCkPop2');">[필수] 개인정보 처리방침안내</span>
+            <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk1" disabled><span class="pointer" onclick="popupHideAndShow(target ='joinCkPop1');">[필수] 회원가입약관</span> <br>
+            <input type="checkbox" class="my-2 mr-1 nullcheck" id="joinCk2" disabled><span class="pointer" onclick="popupHideAndShow(target ='joinCkPop2');">[필수] 개인정보 처리방침안내</span>
         </div>
         <input type="button" class="btn btn-primary col-12 mb-5" value="회원가입" onclick="joinCheckAll();">       
       </form>
