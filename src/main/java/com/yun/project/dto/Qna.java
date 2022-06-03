@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class Qna {
 	
 	private int qna_idx;
-	private int user_idx;
+	private String user_id;
+	private String qna_user;
 	private int qna_cat;
 	private String qna_title;
 	private String qna_contents;
@@ -24,11 +25,11 @@ public class Qna {
 	private Date qna_reply_date;
 	
 	@Builder
-	public Qna(int qna_idx, int user_idx, int qna_cat, String qna_title, String qna_contents, Date qna_date,
+	public Qna(int qna_idx, String qna_user, int qna_cat, String qna_title, String qna_contents, Date qna_date,
 			int qna_reply_check, String qna_reply, Date qna_reply_date) {
 		super();
 		this.qna_idx = qna_idx;
-		this.user_idx = user_idx;
+		this.qna_user = qna_user;
 		this.qna_cat = qna_cat;
 		this.qna_title = qna_title;
 		this.qna_contents = qna_contents;

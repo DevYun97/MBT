@@ -7,23 +7,23 @@
 
 	<!-- 자주하는질문 조회 -->
 	<select id="getFaqList" resultType="com.yun.project.dto.Faq">
-		SELECT * FROM mbd_faq ORDER BY faq_idx DESC
+		SELECT * FROM mbt_faq ORDER BY faq_idx DESC
 	</select>
 	
 	<!-- 자주하는질문 작성 -->
 	<insert id="insertFaq">
-		INSERT INTO mbd_faq (faq_idx, faq_title, faq_contents)
-		VALUES (mbd_faq_seq.nextval, #{faq_title}, #{faq_contents})
+		INSERT INTO mbt_faq (faq_idx, faq_title, faq_contents)
+		VALUES (mbt_faq_seq.nextval, #{faq_title}, #{faq_contents})
 	</insert>
 	
 	<!-- 자주하는질문 수정 -->
 	<update id="updateFaq">
-		UPDATE mbd_faq SET faq_title = #{faq_title}, faq_contents = #{faq_contents} WHERE faq_idx = #{faq_idx}
+		UPDATE mbt_faq SET faq_title = #{faq_title}, faq_contents = #{faq_contents} WHERE faq_idx = #{faq_idx}
 	</update>
 	
 	<!-- 자주하는질문 삭제 -->
 	<delete id="deleteFaq">
-		DELETE FROM mbd_faq WHERE faq_idx= ${ faq_idx }
+		DELETE FROM mbt_faq WHERE faq_idx= ${ faq_idx }
 	</delete>
 	
 </mapper>

@@ -82,7 +82,7 @@ public class CustomerController {
 		Notice getNoticeDetail = noticeDao.getNoticeInfo(notice_idx);
 		model.addAttribute("dto", getNoticeDetail);
 		System.out.println(getNoticeDetail);
-		return "/notice/noticeDetail";
+		return "notice/noticeDetail";
 		
 	}
 	
@@ -154,16 +154,16 @@ public class CustomerController {
 	//내 문의하기
 	@RequestMapping("oneToOne")
 	public String oneToOne( HttpSession session, Model model ) {
-		int user_idx;
+		String user_id;
 		
 		try {
-			user_idx = (int) session.getAttribute("user_idx");
+			user_id = (String) session.getAttribute("user_id");
 		} catch (Exception e) {
 			log.error("{}",e);
 			return "user/login";
 		}
 		
-		ArrayList<Qna> getOneToList = qnaDao.getOneToList(user_idx);
+		ArrayList<Qna> getOneToList = qnaDao.getOneToList(user_id);
 		model.addAttribute("getOneToList", getOneToList);
 		return "customer/oneToOne";
 	}
@@ -175,15 +175,17 @@ public class CustomerController {
 	
 	@PostMapping("qnaWriteAction")
 	@ResponseBody
-	public String qnaWriteAction(@ModelAttribute Qna qna, HttpSession session ) {
-		
+	public String qnaWriteAction(
+			@ModelAttribute Qna qna, 
+			HttpSession session ) {
+				
 		try {
 			String result = customerService.qnaWrite(qna);
 			System.out.println(result);
 			return result;
 		} catch (Exception e) {
 			log.error("로그인하지 않은 사용자.");
-			return "customer/qnaWrite";
+			return "<script>location.href='qnaWrite'</script>";
 		}	
 	}
 	

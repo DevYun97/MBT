@@ -5,15 +5,24 @@
     
 <mapper namespace="com.yun.project.dao.IreplyDAO">
 
+	<!-- 댓글 개수 조회 -->
+	<select id="getReplyIdx" resultType="int">
+		SELECT COUNT(reply_idx) 
+		FROM mbt_reply 
+		WHERE board_idx = #{board_idx} 
+	</select>
+	
 	<!-- 댓글불러오기 -->
 	<select id="getReplyList" resultType="com.yun.project.dto.Reply">
-		SELECT * FROM mbd_reply WHERE board_idx = #{board_idx} ORDER BY reply_data ASC
+		SELECT * FROM mbt_reply 
+		WHERE board_idx = #{board_idx} 
+		ORDER BY reply_data ASC
 	</select>
 	
 	<!-- 댓글 작성 -->
 	<insert id="insertReply">
-		INSERT INTO mbd_reply (reply_idx, board_idx, user_idx, reply_content, reply_data)
-		VALUES (mbd_reply_seq.nextval, #{board_idx}, #{user_idx}, #{reply_content}, sysdate)
+		INSERT INTO mbt_reply (reply_idx, board_idx, reply_user, reply_content, reply_data)
+		VALUES (mbt_reply_seq.nextval, #{board_idx}, #{user_id}, #{reply_content}, sysdate)
 	</insert>
 	<!-- 댓글 삭제 (? 넣을지 보류?) -->
 	

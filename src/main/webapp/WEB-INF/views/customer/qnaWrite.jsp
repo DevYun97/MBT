@@ -47,7 +47,7 @@
             </div>
             <!-- 버튼 div -->
             <div class="w-100 d-flex justify-content-center">
-              <input type="hidden" name="user_idx" value="${ user_idx }"/>
+              <input type="hidden" name="user_id" value="${ user_id }"/>
               <input type="submit" class="btn btn-primary col-5 mt-3 mr-1" value="확인">
               <div class="btn btn-primary col-5 mt-3" onclick="history.back('-1');">취소</div>
             </div>

@@ -1,5 +1,7 @@
 package com.yun.project.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,8 @@ public class BoardService {
 	@Autowired
 	IreplyDAO replyDao;
 	
-	public String boardWrite(Board board) {
-		int result = boardDao.insertBoard(board);
+	public String boardWrite(Map<String, Object> map) {
+		int result = boardDao.insertBoard(map);
 		if(result==1) {
 			return "<script>alert('작성 성공');location.href='/board/board';</script>";
 		}else {
@@ -25,8 +27,8 @@ public class BoardService {
 		}	
 	}
 	
-	public String replyWrite(Reply reply) {
-		int result = replyDao.insertReply(reply);
+	public String replyWrite(Map<String, Object> map) {
+		int result = replyDao.insertReply(map);
 		if(result==1) {
 			return "<script>alert('작성 성공');location.href='/board/board';</script>";
 		}else {

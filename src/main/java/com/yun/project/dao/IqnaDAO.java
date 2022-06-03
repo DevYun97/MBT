@@ -16,7 +16,7 @@ public interface IqnaDAO {
 		public ArrayList<Qna> getQnaListCat(int qna_cat);
 		
 		//oneToOne List
-		public ArrayList<Qna> getOneToList(int user_idx);
+		public ArrayList<Qna> getOneToList(String user_id);
 		
 		public int insertQna(Qna qna);
 		

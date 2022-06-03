@@ -7,48 +7,48 @@
 
 	<!-- 모든 문의하기 조회 (관리자용) -->
 	<select id="getQnaList" resultType="com.yun.project.dto.Qna">
-		SELECT * FROM mbd_qna ORDER BY qna_date DESC
+		SELECT * FROM mbt_qna ORDER BY qna_date DESC
 	</select>
 	
 	<!-- 해당 카테고리의 모든 데이터를 가져옴 -->
 	<select id="getQnaListCat" resultType="com.yun.project.dto.Qna">
-		SELECT * FROM mbd_qna WHERE qna_cat=0
+		SELECT * FROM mbt_qna WHERE qna_cat=0
 	</select>
 	
 	<!-- 모든 문의하기 조회 -->
 	<select id="getOneToList" resultType="com.yun.project.dto.Qna">
-		SELECT * FROM mbd_qna WHERE user_idx = #{user_idx}
+		SELECT * FROM mbt_qna WHERE qna_user = #{user_id}
 	</select>
 	
 	<!-- 해당 문의하기 불러오기 -->
 	<select id="getQnaDetail" resultType="com.yun.project.dto.Qna">
-		SELECT * FROM mbd_qna WHERE qna_idx = #{qna_idx}
+		SELECT * FROM mbt_qna WHERE qna_idx = #{qna_idx}
 	</select>
 
 	<!-- 문의하기 작성 -->
 	<insert id="insertQna" parameterType="com.yun.project.dto.Qna">
-		INSERT INTO mbd_qna (qna_idx, user_idx, qna_cat, qna_title, qna_contents, qna_date)
-		VALUES (mbd_qna_seq.nextval, #{user_idx}, #{qna_cat}, #{qna_title}, #{qna_contents}, sysdate)
+		INSERT INTO mbt_qna (qna_idx, qna_user, qna_cat, qna_title, qna_contents, qna_date)
+		VALUES (mbt_qna_seq.nextval, #{user_id}, #{qna_cat}, #{qna_title}, #{qna_contents}, sysdate)
 	</insert>	
 	
 	<update id="qnaReplyWrite">
-		UPDATE mbd_qna SET qna_reply = #{qna_reply} WHERE qna_idx = #{qna_idx} 
+		UPDATE mbt_qna SET qna_reply = #{qna_reply} WHERE qna_idx = #{qna_idx} 
 	</update>
 		
 	<!-- 문의하기 수정 _ 나중에 문의하기 미 답변일 경우에만 수정가능하게 시도해보기!-->
 	<update id="updateQna">
-		UPDATE mbd_qna SET qna_title = #{qna_title}, qna_contents = #{qna_contents} WHERE qna_idx = #{qna_idx} AND user_idx = #{user_idx} 
+		UPDATE mbt_qna SET qna_title = #{qna_title}, qna_contents = #{qna_contents} WHERE qna_idx = #{qna_idx} AND qna_user = #{user_id} 
 	</update>	
 	
 	<!-- 문의하기 답변 작성 답변 체크기능 변경안되는 오류발견-->
 	<update id="updateQnaAnswer">
-		UPDATE mbd_qna SET qna_reply_check =1, qna_reply = #{ qna_reply },
+		UPDATE mbt_qna SET qna_reply_check =1, qna_reply = #{ qna_reply },
 		qna_reply_date = sysdate WHERE qna_idx = ${qna_idx}
 	</update>
 	
 	<!-- 문의하기 삭제 -->
 	<delete id="deleteQna">
-		DELETE FROM mbd_qna WHERE qna_idx= #{ qna_idx }
+		DELETE FROM mbt_qna WHERE qna_idx= #{ qna_idx }
 	</delete>
 	
 </mapper>

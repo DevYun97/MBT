@@ -7,27 +7,27 @@
 
 	<!-- 공지사항 조회 -->
 	<select id="getNoticeList" resultType="com.yun.project.dto.Notice">
-		SELECT * FROM mbd_notice ORDER BY notice_date DESC
+		SELECT * FROM mbt_notice ORDER BY notice_date DESC
 	</select>
 	
 	<select id="getNoticeInfo" resultType="com.yun.project.dto.Notice">
-		SELECT * FROM mbd_notice WHERE notice_idx = ${notice_idx}
+		SELECT * FROM mbt_notice WHERE notice_idx = ${notice_idx}
 	</select>
 	
 	<!-- 공지사항 작성 -->
 	<insert id="insertNotice">
-		INSERT INTO mbd_notice (notice_idx, notice_title, notice_contents, notice_show, notice_date)
+		INSERT INTO mbt_notice (notice_idx, notice_title, notice_contents, notice_show, notice_date)
 		VALUES (mbd_notice_seq.nextval, #{notice_title}, #{notice_contents}, #{notice_show}, sysdate)
 	</insert>
 	
 	<!-- 공지사항 수정 -->
 	<update id="updateNotice">
-		UPDATE mbd_notice SET notice_title = #{notice_title}, notice_contents = #{notice_contents}, notice_show = #{notice_show} WHERE notice_idx = #{notice_idx}
+		UPDATE mbt_notice SET notice_title = #{notice_title}, notice_contents = #{notice_contents}, notice_show = #{notice_show} WHERE notice_idx = #{notice_idx}
 	</update>
 	
 	<!-- 공지사항 삭제 -->
 	<delete id="deleteNotice">
-		DELETE FROM mbd_notice WHERE notice_idx= ${ notice_idx }
+		DELETE FROM mbt_notice WHERE notice_idx= ${ notice_idx }
 	</delete>
 	
 </mapper>

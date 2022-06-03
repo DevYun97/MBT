@@ -29,7 +29,7 @@
           <i class="bi bi-chevron-left mr-1" ></i>이전화면
         </div>    
         <div>
-        <c:if test="${ user_idx eq qna.user_idx }">
+        <c:if test="${ user_id eq qna.qna_user }">
           <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary fontSize14" style="height: 30px; ">삭제</a>
         </c:if>
         </div>
@@ -41,7 +41,7 @@
         <div class="w-100 border-bottom pt-2 pb-3">
           <h5>${qna.qna_title}</h5>
           <div class="d-flex justify-content-between fontSize14" >
-            <div>${ qna.user_idx }</div>
+            <div>${ qna.qna_user }</div>
             <div>
               <small>${qna.qna_date}</small>             
             </div>
@@ -54,7 +54,7 @@
        </div>
 
         <!-- 버튼 div -->
-        <c:if test="${ user_id eq 'admin' }"> 
+        <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }"> 
         <form action="qnaReplyAction?qna_idx=${ qna.qna_idx }" method="post" class="w-100 d-flex justify-content-between px-2">
           <input type="text" class="col-10 mt-3" id="qna_reply" name="qna_reply" placeholder="댓글을 달아주세요">
           <input type="submit" class="btn btn-primary btn-sm col-2 mt-3" value="작성">

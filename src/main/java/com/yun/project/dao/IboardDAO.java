@@ -1,6 +1,7 @@
 package com.yun.project.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,10 +15,12 @@ public interface IboardDAO {
 	
 	public ArrayList<Board> getBoardUserID();
 	
-	public int insertBoard(Board board);
+	public int insertBoard(Map<String, Object> map);
 	
 	public int deleteBoard(int board_idx);
 	
 	public int updateBoardHit(int board_idx);
+
+	public int updateBoard(int board_idx);
 
 }

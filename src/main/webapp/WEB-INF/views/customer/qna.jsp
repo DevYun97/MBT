@@ -45,7 +45,7 @@
         <a href="../customer/qnaDetail?qna_idx=${ dto.qna_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>${ dto.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
-            <span class="pr-1">${ dto.user_idx }</span> ${ dto.qna_date }<i class="bi bi-chevron-right"></i>
+            <span class="pr-1">${ dto.qna_user }</span> ${ dto.qna_date }<i class="bi bi-chevron-right"></i>
           </div>
         </a>
         </c:forEach>

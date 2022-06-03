@@ -35,12 +35,12 @@
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         <!-- 게시판 불러오기 -->
-        <c:forEach var="dto" items="${ getBoardList }">
-        <a href="../board/boardDetail?board_idx=${ dto.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>${dto.board_title}</div>
+        <c:forEach var="board" items="${ board }">
+        <a href="../board/boardDetail?board_idx=${ board.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
+          <div>${board.board_title}</div>
           <div class="text-right">
-            <small class="pr-2">${ dto.user_idx }</small>
-            <small>${dto.board_data}</small>
+            <small class="pr-2">${ board.board_user }</small>
+            <small>${board.board_data}</small>
           </div>
         </a>
         </c:forEach>
