@@ -74,7 +74,10 @@
 	
 	<!-- 조횟수 표시 -->
 	<update id="updateBoardHit">
-		update mbt_board set board_hit = board_hit+1 WHERE board_idx = #{param1}
+		UPDATE
+			mbd_board
+		SET board_hit = board_hit+1 
+		WHERE board_idx = #{param1}
 	</update>
 	
 	<!-- 게시판 삭제 -->

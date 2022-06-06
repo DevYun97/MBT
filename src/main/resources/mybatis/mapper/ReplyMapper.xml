@@ -21,8 +21,22 @@
 	
 	<!-- 댓글 작성 -->
 	<insert id="insertReply">
-		INSERT INTO mbt_reply (reply_idx, board_idx, reply_user, reply_content, reply_data)
-		VALUES (mbt_reply_seq.nextval, #{board_idx}, #{user_id}, #{reply_content}, sysdate)
+		INSERT INTO mbd_reply
+		 ( 
+		 	reply_idx,
+		 	board_idx, 
+		 	user_idx, 
+		 	reply_content, 
+		 	reply_data
+		 )
+		VALUES 
+		 (
+		 	mbd_reply_seq.nextval,
+		 	#{board_idx},
+		 	#{user_idx},
+		 	#{reply_content},
+		 	sysdate
+		 )
 	</insert>
 	<!-- 댓글 삭제 (? 넣을지 보류?) -->
 	
