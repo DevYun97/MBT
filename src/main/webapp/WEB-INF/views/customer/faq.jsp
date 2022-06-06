@@ -33,7 +33,7 @@
 
       <!-- 관리자용 faq 글작성 버튼-->
       <div class="w-100 d-flex justify-content-end mt-3">
-      <c:if test="${ user_id eq 'admin' }">
+      <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }">
       	<input type="button" class="btn btn-primary btn-sm" value="faq 작성" onclick="popupHideAndShow(target ='faqWrite');">
       </c:if>       
       </div>
@@ -58,7 +58,7 @@
               <div class="card-body p-3">
                 ${dto.faq_contents}
               </div>
-              <c:if test="${ user_id eq 'admin' }">
+              <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }">
               <div class="w-100 d-flex justify-content-end p-2">              
                 <a href="faqDeleteAction?faq_idx=${ dto.faq_idx }" class="btn btn-primary btn-sm">삭제</a>
               </div>

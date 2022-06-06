@@ -21,7 +21,9 @@ public class UserService {
 		}
 		String userPw = userDao.getUserPW(user_id);
 		if(user_pw.equals(userPw)) {
-			int user_idx = userDao.getUserIDX(user_id);		
+			int user_idx = userDao.getUserIDX(user_id);	
+			String user_rank = userDao.getUserRank(user_id);
+			session.setAttribute("user_rank", user_rank);
 			session.setAttribute("user_id", user_id);
 			session.setAttribute("user_idx", user_idx);					
 			result = "<script>alert('로그인 성공!'); location.href='../main';</script>";

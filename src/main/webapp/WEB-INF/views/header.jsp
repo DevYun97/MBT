@@ -26,7 +26,7 @@
             <div class="dropdown-divider"></div>
             <!-- 고객센터 -->
             <div class="text-black-50 pl-3 mt-3 mb-2 fontSize12" >고객센터</div>
-            <a href="../notuce/notice" class="dropdown-item">공지사항</a>
+            <a href="../customer/notice" class="dropdown-item">공지사항</a>
             <a href="../customer/faq" class="dropdown-item">FAQ</a>
             <a href="../customer/qna" class="dropdown-item">QnA</a>
           </div>

@@ -24,14 +24,24 @@
 		SELECT user_id FROM MBT_USER WHERE user_idx = #{user_idx}
 	</select>
 	
+	<!-- 유저 랭크 불러오기 -->
+	<select id="getUserRank" resultType="String">
+		SELECT user_rank 
+		FROM MBT_USER 
+		WHERE user_id = #{user_id}
+	</select>
+	
 	<!-- IDFIND _user_name + user_email -->
 	<select id="getUserIdFind" resultType="String">
-		SELECT user_id FROM MBT_USER WHERE user_name = #{ param1 } AND user_email = #{ param2 } 
+		SELECT user_id FROM MBT_USER 
+		WHERE user_name = #{ param1 } AND user_email = #{ param2 } 
 	</select>
 	
 	<!-- PWFIND _user_name + user_id -->
 	<select id="getUserPwFind" resultType="String">
-		SELECT user_pw FROM MBT_USER WHERE user_name = #{ param1 } AND user_id = #{ param2 } 
+		SELECT user_pw 
+		FROM MBT_USER 
+		WHERE user_name = #{ param1 } AND user_id = #{ param2 } 
 	</select>
 
 	<!-- 유저 회원가입 -->
@@ -47,18 +57,21 @@
 	
 	<!-- 인덱스로 유저 정보 가져오기 -->
 	<select id="getMemberInfo" resultType="com.yun.project.dto.User">
-	 SELECT * FROM MBT_USER WHERE user_idx = #{user_idx}
+		SELECT * FROM MBT_USER 
+		WHERE user_idx = #{user_idx}
 	</select>
 	
 	<!-- 유저 정보 업데이트 -->
 	<update id="updateUserInfo">
-		UPDATE MBT_USER SET user_name = #{user_name}, user_email = #{user_email}, user_phone = #{user_phone}, user_address = #{user_address} 
+		UPDATE MBT_USER 
+		SET user_name = #{user_name}, user_email = #{user_email}, user_phone = #{user_phone}, user_address = #{user_address} 
 		WHERE user_idx = #{user_idx}
 	</update>
 	
 	<!-- 유저 비밀번호 업데이트 -->
 	<update id="updatePwInfo">
-		UPDATE MBT_USER SET user_pw = #{param2} WHERE user_idx = #{param1}
+		UPDATE MBT_USER SET user_pw = #{param2} 
+		WHERE user_idx = #{param1}
 	</update>
 	
 </mapper>   

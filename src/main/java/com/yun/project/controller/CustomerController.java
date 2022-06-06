@@ -74,7 +74,7 @@ public class CustomerController {
 		ArrayList<Notice> getNoticeList = noticeDao.getNoticeList();
 		model.addAttribute("getNoticeList", getNoticeList);
 		
-		return "notice/notice";
+		return "customer/notice";
 	}
 	
 	@RequestMapping("noticeDetail")
@@ -82,13 +82,13 @@ public class CustomerController {
 		Notice getNoticeDetail = noticeDao.getNoticeInfo(notice_idx);
 		model.addAttribute("dto", getNoticeDetail);
 		System.out.println(getNoticeDetail);
-		return "notice/noticeDetail";
+		return "customer/noticeDetail";
 		
 	}
 	
 	@RequestMapping("noticeWrite")
 	public String noticeWrite() {
-		return "notice/noticeWrite";
+		return "customer/noticeWrite";
 	}
 	
 	@PostMapping("noticeWriteAction")
@@ -104,7 +104,7 @@ public class CustomerController {
 		Notice getNoticeDetail = noticeDao.getNoticeInfo(notice_idx);
 		model.addAttribute("notice", getNoticeDetail);
 		System.out.println(getNoticeDetail);
-		return "notice/noticeModify";
+		return "customer/noticeModify";
 	}
 	
 	@PostMapping("noticeModifyAction")

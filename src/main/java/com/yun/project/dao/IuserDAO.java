@@ -12,9 +12,10 @@ public interface IuserDAO {
 	public String getUserPW (String user_id);
 	
 	public int getUserIDX (String user_id);
-	
+	public String getUserRank(String user_id);
 	//인덱스정보로 유저 아이디 찾기
 	public String idxUserID(int user_idx);
+	
 	//아이디찾기
 	public String getUserIdFind(String user_name, String user_email);
 	//비밀번호찾기
@@ -29,4 +30,5 @@ public interface IuserDAO {
 	public int updateUserInfo(User user);
 	//비밀번호 수정
 	public int updatePwInfo(String user_idx, String user_pw);
+
 }
