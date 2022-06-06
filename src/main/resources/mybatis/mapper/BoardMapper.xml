@@ -4,8 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.yun.project.dao.IboardDAO">
-
+	
 	<resultMap id="boardMap" type="map">
+		<result column="board_idx" property="board_idx" />
+		<result column="board_title" property="board_title" />
+		<result column="board_data" property="board_data" />
+		<result column="board_user" property="board_user" />
 	</resultMap>
 
 	<select id="boardCount" parameterType="map" resultType="int">
@@ -45,6 +49,15 @@
 		SELECT 
 			board_idx, board_title, board_data, board_user
 		FROM mbt_board
+		WHERE 1=1
+		<choose>
+			<when test="schType == 'name'">
+				AND board_user like '%'||#{schText}||'%'
+			</when>
+			<when test="schType == 'title'">
+				AND board_title like '%'||#{schText}||'%'
+			</when>
+		</choose>	
 		ORDER BY board_idx DESC
 	</select>
 	

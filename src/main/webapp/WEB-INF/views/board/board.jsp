@@ -32,6 +32,16 @@
         </c:if>                   
         </div>
       </div>
+	
+	 <form action="board" method="post" class="my-2">
+		 <select id="schType" name="schType" style="height: 30px; ">
+		 	<option value="seq">선택</option>
+		 	<option value="name">작성자</option>
+		 	<option value="title">제목</option>
+		 </select>
+		 <input type="text" id="schText" name="schText" >
+		 <input type="submit" value="검색" class="btn btn-primary fontSize14 mb-1" style="width: 60px; height: 30px;" >
+	 </form>	
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         <!-- 게시판 불러오기 -->

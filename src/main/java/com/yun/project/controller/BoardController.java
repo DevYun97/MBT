@@ -51,7 +51,7 @@ public class BoardController {
 //		
 //		pageDto = pageDto.pageDto(count, curPage);
 		
-		ArrayList<Board> boardList = boardDao.getBoardList();
+		ArrayList<Board> boardList = boardDao.getBoardUserID(map);
 		model.addAttribute("board", boardList);
 		return "board/board";
 	}
