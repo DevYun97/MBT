@@ -13,7 +13,7 @@ public interface IboardDAO {
 	
 	public Board getBoardDetail(int board_idx);
 	
-	public ArrayList<Board> getBoardUserID(Map<String, Object> map);
+	public ArrayList<Map<String, Object>> getBoardUserID(Map<String, Object> map);
 	
 	public int insertBoard(Map<String, Object> map);
 	

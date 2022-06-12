@@ -51,16 +51,17 @@ public class BoardController {
 //		
 //		pageDto = pageDto.pageDto(count, curPage);
 		
-		ArrayList<Board> boardList = boardDao.getBoardUserID(map);
+		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
 		model.addAttribute("board", boardList);
 		return "board/board";
 	}
 	
 	@RequestMapping("boardDetail")
-	public String boardDetail(@RequestParam ("board_idx") int board_idx, Model model) {
+	public String boardDetail(
+			@RequestParam Map<String, Object> map,
+			@RequestParam ("board_idx") int board_idx, 
+			Model model) {
 	
-		//boardDao.updateBoardHit(board_idx);
-		
 		//게시글 상세보기
 		boardDao.updateBoardHit(board_idx);
 		Board getBoardDetail = boardDao.getBoardDetail(board_idx);		

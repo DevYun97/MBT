@@ -116,6 +116,13 @@ public class UserController {
 		return result;		
 	}
 	
+	@RequestMapping("pwChkAjax")
+	@ResponseBody
+	public int pwChkAjax(@RequestParam("user_pw") String user_pw) {
+		int result = userService.pwChkAjax(user_pw, null);			
+		return result;		
+	}
+	
 	//회원가입
 	@PostMapping("joinAction")
 	@ResponseBody
@@ -137,9 +144,8 @@ public class UserController {
 	//마이페이지 비밀번호 변경
 	@RequestMapping("pwChangeAction")
 	@ResponseBody
-	public String pwChangeAction(@RequestParam ("user_idx") String user_idx, @RequestParam ("user_pw") String user_pw) {
-		
-		String result = userService.userPwUpdate(user_idx, user_pw);		
+	public String pwChangeAction(@RequestParam ("user_idx") String user_idx, @RequestParam ("user_pw") String user_pw) {		
+		String result = userService.userPwUpdate(user_idx, user_pw, null);		
 		return result;
 		
 	}

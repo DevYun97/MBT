@@ -33,7 +33,7 @@
 
       <!-- 관리자용 faq 글작성 버튼-->
       <div class="w-100 d-flex justify-content-end mt-3">
-      <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }">
+      <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">
       	<input type="button" class="btn btn-primary btn-sm" value="faq 작성" onclick="popupHideAndShow(target ='faqWrite');">
       </c:if>       
       </div>
@@ -48,17 +48,17 @@
                 <h2 class="mb-0">
                 <!-- data-target 의 값과 숨겨진 아코디언의 아이디가 일치해야 함. -->
                   <button class="btn btn-link btn-block text-left text-body collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo_${dto.faq_idx}" aria-expanded="false" aria-controls="collapseTwo">
-                    ${dto.faq_title}
+                    ${ dto.faq_title }
                   </button>
                 </h2>
                </div>
             </div>
             <!-- 숨겨진 아코디언 -->
-            <div id="collapseTwo_${dto.faq_idx}" class="collapse border" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div id="collapseTwo_${ dto.faq_idx }" class="collapse border" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body p-3">
-                ${dto.faq_contents}
+                ${ dto.faq_contents }
               </div>
-              <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }">
+              <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">
               <div class="w-100 d-flex justify-content-end p-2">              
                 <a href="faqDeleteAction?faq_idx=${ dto.faq_idx }" class="btn btn-primary btn-sm">삭제</a>
               </div>

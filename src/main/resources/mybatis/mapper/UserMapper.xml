@@ -20,6 +20,19 @@
 		SELECT user_idx FROM MBT_USER WHERE user_id = #{ user_id }
 	</select>
 	
+	<select id="getUserRank" resultType="int">
+		SELECT 
+			DECODE
+			(
+				user_rank,
+				'AA', '관리자'
+				'BB', '매니저'
+				'CC', '유저'
+			)
+			user_rank
+		FROM MBT_USER WHERE user_id = #{ user_id }
+	</select>
+	
 	<select id="idxUserID" resultType="int">
 		SELECT user_id FROM MBT_USER WHERE user_idx = #{user_idx}
 	</select>
@@ -70,8 +83,8 @@
 	
 	<!-- 유저 비밀번호 업데이트 -->
 	<update id="updatePwInfo">
-		UPDATE MBT_USER SET user_pw = #{param2} 
-		WHERE user_idx = #{param1}
+		UPDATE MBT_USER SET user_pw = #{user_pw} 
+		WHERE user_idx = #{user_idx}
 	</update>
 	
 </mapper>   

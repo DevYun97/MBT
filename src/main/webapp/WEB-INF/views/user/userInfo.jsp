@@ -137,14 +137,63 @@
     			$('#userUpdate').val("no");
     		}
     	}
-    </script>
-    <script>
+ 
     function addressAdd(){
     	const address1 = $('#sample6_address').val();
 		const address2 = $('#sample6_detailAddress').val();
 		$('#user_address').val( address1 + " " + address2 );
 		return true;
     }
+    
+    
+    //비밀번호 수정 스크립트
+    $("#pwChangeFrm").keyup(function(){ 
+
+        const pw1 = $('#pw1').val();
+        const pw2 = $('#pw2').val();
+      
+        if( !pw1 || !pw2){      //null 체크
+          $('#pwCkOk').css('display','none');   
+          $('#pwCkNo').css('display','none');
+        }
+        else if( pw1 != pw2 ) { //비밀번호 수정이 일치하지 않을 경우
+          $('#pwCkNo').css('display','block');
+          $('#pwCkOk').css('display','none');   		
+          }
+        else if(pw1 == pw2){  ////비밀번호 수정이 일치
+          $('#pwCkNo').css('display','none');
+          $('#pwCkOk').css('display','block');
+        }
+      });
+
+      // 비밀번호 일치 ajax
+      $(function(){
+
+        $('#checkPw').focusout(function(){
+        //비밀번호 확인
+        
+        const userPw = $('#checkPw').val();
+        if(!userPw){
+        alert("비밀번호를 입력해주세요.");
+        return false;
+        }
+        $.ajax({
+            url: 'http://localhost:8085/user/pwChkAjax?checkPw='+ userPw,	///action
+            type: 'POST', //method     
+            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어
+      			  if( data !== 'true'){
+      				  alert('기존비밀번호를 재확인 해 주세요')
+      			  }else{
+      				  alert("기존비밀번호가 일치합니다.")
+                $('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+      			  }
+      		  },
+            error: function(){
+              console.log('통신 실패');
+            }	
+        });
+      })
+    })
     </script>
      
   </body>

@@ -1,5 +1,6 @@
 package com.yun.project.service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class UserService {
 	IuserDAO userDao;
 
 	public String login( String user_id, String user_pw, HttpSession session ) {
-		String result = "<script>alert('로그인 실패!');  history.back(-1);</script>";		
+		String result = "<script>alert('로그인 실패!'); history.back(-1);</script>";		
 		String userID = userDao.getUserID(user_id);
 		if(userID == null) {
 			return result;
@@ -61,6 +62,21 @@ public class UserService {
 		}
 	}
 	
+	public int pwChkAjax(String user_pw, HttpSession session) {
+		
+		int	user_idx = Integer.parseInt(String.valueOf(session.getAttribute("user_idx")));		
+		String user_id = userDao.idxUserID(user_idx);
+		String userPw = userDao.getUserPW(user_id);
+		
+		if(user_pw.equals(userPw)) {				
+			return 0;
+		} else {
+			return 1;
+		}
+
+		
+	}
+	
 	public String join(User user) {
 		
 		int result = userDao.insertUser(user);
@@ -82,9 +98,11 @@ public class UserService {
 		}	
 	}
 	
-	public String userPwUpdate(String user_idx, String user_pw) {
+	//비밀번호 수정
+	public String userPwUpdate(String user_idx, String user_pw, HttpServletRequest request) {
 		int result = userDao.updatePwInfo(user_idx, user_pw);
 		if(result == 1) {
+			request.getSession().invalidate();
 			return "<script>alert('회원정보가 변경되었습니다.');location.href='mypage';</script>";
 		} else {
 			return "<script>alert('error: 확인후 다시 시도해주세요.');history.back(-1);</script>";

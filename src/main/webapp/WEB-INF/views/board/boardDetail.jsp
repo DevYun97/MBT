@@ -56,7 +56,7 @@
        </div>
 
         <!-- 버튼 div -->
-        <form action="replyWriteAction?board_idx=${ board.board_idx }&&user_idx=${user_idx}" method="post" class="w-100 d-flex justify-content-between px-2">
+        <form action="replyWriteAction?board_idx=${ board.board_idx }&&user_idx=${ user_idx }" method="post" class="w-100 d-flex justify-content-between px-2">
           <input type="text" class="col-10 mt-3" id="reply_content" name="reply_content" placeholder="댓글을 달아주세요">
           <input type="submit" class="btn btn-primary btn-sm col-2 mt-3" value="작성">
         </form>
