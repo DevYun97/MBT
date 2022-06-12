@@ -25,7 +25,7 @@
 		 ( 
 		 	reply_idx,
 		 	board_idx, 
-		 	user_idx, 
+		 	reply_user, 
 		 	reply_content, 
 		 	reply_data
 		 )

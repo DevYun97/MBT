@@ -29,7 +29,7 @@
         <!-- 관리자용 -->
         <div>
         <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">         
-          <a href="/notice/noticeWrite" class="btn btn-primary fontSize14" style="height: 30px;">글작성</a>
+          <a href="/customer/noticeWrite" class="btn btn-primary fontSize14" style="height: 30px;">글작성</a>
         </c:if> 
         </div>
       </div>

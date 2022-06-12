@@ -37,8 +37,10 @@
           
         </div>     
         <div>
+         <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">         
           <a href="noticeModify?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px;">수정</a>
           <a href="noticeDeleteAction?notice_idx=${ dto.notice_idx }" class="btn btn-primary fontSize14" style="height: 30px; ">삭제</a>
+          </c:if>
         </div>
       </div>
 
