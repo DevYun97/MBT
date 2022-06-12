@@ -103,8 +103,7 @@ public class CustomerController {
 	public String noticeModify(@RequestParam ("notice_idx") int notice_idx, Model model) {
 		Notice getNoticeDetail = noticeDao.getNoticeInfo(notice_idx);
 		model.addAttribute("notice", getNoticeDetail);
-		System.out.println(getNoticeDetail);
-		return "customer/noticeModify";
+		return "customer/noticeWrite";
 	}
 	
 	@PostMapping("noticeModifyAction")

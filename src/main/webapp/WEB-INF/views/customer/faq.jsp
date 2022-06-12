@@ -44,7 +44,7 @@
         <!-- 백엔드 적용 -->
 			<c:forEach var="dto" items="${ getFaqList }">
 			<div class="card">
-              <div class="card-header px-0 bg-white" id="headingTwo">
+              <div class="card-header px-0 bg-white" id="headingTwo" >
                 <h2 class="mb-0">
                 <!-- data-target 의 값과 숨겨진 아코디언의 아이디가 일치해야 함. -->
                   <button class="btn btn-link btn-block text-left text-body collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo_${dto.faq_idx}" aria-expanded="false" aria-controls="collapseTwo">
