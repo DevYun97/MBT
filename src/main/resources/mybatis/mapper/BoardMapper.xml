@@ -12,7 +12,7 @@
 		<result column="board_user" property="board_user" />
 	</resultMap>
 
-	<select id="boardCount" parameterType="map" resultType="int">
+	<!-- <select id="boardCount" parameterType="map" resultType="int">
 		SELECT count(*) FROM mbt_board WHERE 1=1
 		<choose>
 			<when test="schType == 'name'">
@@ -30,7 +30,7 @@
 			</when>
 		</choose>
 		
-	</select>
+	</select> -->
 
 	<!-- 게시판 조회 -->
 	<select id="getBoardList" resultType="com.yun.project.dto.Board">

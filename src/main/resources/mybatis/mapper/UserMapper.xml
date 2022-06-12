@@ -71,7 +71,8 @@
 	
 	<!-- 유저 비밀번호 업데이트 -->
 	<update id="updatePwInfo">
-		UPDATE MBT_USER SET user_pw = #{param2} WHERE user_idx = #{param1}
+		UPDATE MBT_USER SET user_pw = #{user_pw} 
+		WHERE user_idx = #{user_idx}
 	</update>
 	
 </mapper>   
