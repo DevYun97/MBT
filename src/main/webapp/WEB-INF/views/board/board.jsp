@@ -66,7 +66,7 @@
       </div>
       <!-- Content div 종료 -->
       <!-- 쪽수메기기 -->
-      <div class="mt-4 mb-3">
+      <%-- <div class="mt-4 mb-3">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="goPage('1)">start</a></li>
@@ -87,7 +87,29 @@
             <li class="page-item"><a class="page-link" href="goPage('${ page.totPage }')">end</a></li>
           </ul>
         </nav>
-      </div>    
+      </div>   --%>
+      
+      
+      <div class="container row my-3 mx-auto">
+		<nav class="mx-auto">
+		        <ul class="pagination justify-content-center ">
+					<!-- 현재 페이지가 페이지표시기의 페이지 표시 수 보다 작으면 뒤로가기버튼 disable -->
+		          <li class="page-item <c:if test="${ pages.curPage <= 5 }">disabled</c:if>">
+		            <a class="page-link" href="board?curPage=${ pages.beginPageBlock - 1}">&lang;</a>
+		          </li>
+				  <c:forEach var="page" begin="${ pages.beginPageBlock }" end="${ pages.endPageBlock }" step="1">
+		          <li class="page-item <c:if test="${ pages.curPage == page }">active</c:if>">
+		            <a class="page-link" href="board?curPage=${ page }">${ page }</a>
+		          </li>
+		          </c:forEach>
+		          <!-- 마지막페이지까지 표시되면 앞으로 가기 표시 안됨 -->
+		          <li class="page-item <c:if test="${ pages.countOfPage eq pages.beginPageBlock }">disabled</c:if>">
+		            <a class="page-link" href="board?curPage=${ pages.endPageBlock+1}">&rang;</a>
+		          </li>
+		        </ul>
+		</nav>
+	</div>
+        
     </div>
 
     <!-- bootstrap js -->

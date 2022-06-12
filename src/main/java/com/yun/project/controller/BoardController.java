@@ -20,6 +20,7 @@ import com.yun.project.dao.IuserDAO;
 import com.yun.project.dto.Board;
 import com.yun.project.dto.Reply;
 import com.yun.project.service.BoardService;
+import com.yun.project.service.pageNation;
 
 @Controller
 @RequestMapping("board")
@@ -38,21 +39,20 @@ public class BoardController {
 			@RequestParam Map<String, Object> map,
 			String curPage,
 			Model model ) {
-//		ArrayList<Board> getBoardList = boardDao.getBoardList();
+		ArrayList<Board> getBoardList = boardDao.getBoardList();
 //		model.addAttribute("getBoardList", getBoardList);
-//		System.out.println(getBoardList);
+//		System.out.println(getBoardList);		
 		
-//		if(map.isEmpty()) {
-//			map.put("pageNo", 1);
-//			map.put("listSize", 5);
-//		}
-//		int count = boardDao.boardCount(map);
-//		String curPage = map.get("pageNo").toString();
-//		
-//		pageDto = pageDto.pageDto(count, curPage);
+		  /*if(map.isEmpty()) { map.put("pageNo", 1); map.put("listSize", 5); } int count
+		  = boardDao.boardCount(map); String curPage = map.get("pageNo").toString();
+		  
+		  
+		  model.addAttribute("board", boardList);*/
 		
-		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
-		model.addAttribute("board", boardList);
+		
+		//ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
+		//model = boardService.board(map, curPage, model);
+		model.addAttribute("board",getBoardList);
 		return "board/board";
 	}
 	

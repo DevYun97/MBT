@@ -23,4 +23,6 @@ public interface IboardDAO {
 
 	public int updateBoard(int board_idx);
 
+	public int boardCount(Map<String, Object> map);
+
 }
