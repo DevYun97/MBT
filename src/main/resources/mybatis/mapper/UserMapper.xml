@@ -20,17 +20,18 @@
 		SELECT user_idx FROM MBT_USER WHERE user_id = #{ user_id }
 	</select>
 	
-	<select id="getUserRank" resultType="int">
+	<select id="getUserRank" resultType="String">
 		SELECT 
 			DECODE
 			(
 				user_rank,
-				'AA', '관리자'
-				'BB', '매니저'
+				'AA', '관리자',
+				'BB', '매니저',
 				'CC', '유저'
 			)
 			user_rank
-		FROM MBT_USER WHERE user_id = #{ user_id }
+		FROM MBT_USER 
+		WHERE user_id = #{ user_id }
 	</select>
 	
 	<select id="idxUserID" resultType="int">
@@ -38,11 +39,11 @@
 	</select>
 	
 	<!-- 유저 랭크 불러오기 -->
-	<select id="getUserRank" resultType="String">
+	<!-- <select id="getUserRank" resultType="String">
 		SELECT user_rank 
 		FROM MBT_USER 
 		WHERE user_id = #{user_id}
-	</select>
+	</select> -->
 	
 	<!-- IDFIND _user_name + user_email -->
 	<select id="getUserIdFind" resultType="String">
@@ -83,8 +84,8 @@
 	
 	<!-- 유저 비밀번호 업데이트 -->
 	<update id="updatePwInfo">
-		UPDATE MBT_USER SET user_pw = #{user_pw} 
-		WHERE user_idx = #{user_idx}
+		UPDATE MBT_USER SET user_pw = #{ param2 } 
+		WHERE user_idx = #{param1}
 	</update>
 	
 </mapper>   

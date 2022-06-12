@@ -29,6 +29,6 @@ public interface IuserDAO {
 	//회원정보 수정
 	public int updateUserInfo(User user);
 	//비밀번호 수정
-	public int updatePwInfo(String user_idx, String user_pw);
+	public int updatePwInfo(int user_idx, String user_pw);
 
 }

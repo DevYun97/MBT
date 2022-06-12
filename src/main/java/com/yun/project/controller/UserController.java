@@ -118,8 +118,10 @@ public class UserController {
 	
 	@RequestMapping("pwChkAjax")
 	@ResponseBody
-	public int pwChkAjax(@RequestParam("user_pw") String user_pw) {
-		int result = userService.pwChkAjax(user_pw, null);			
+	public int pwChkAjax(
+			@RequestParam("user_id") String user_id,
+			@RequestParam("user_pw") String user_pw ) {
+		int result = userService.pwChkAjax(user_id, user_pw, null);			
 		return result;		
 	}
 	
@@ -144,10 +146,18 @@ public class UserController {
 	//마이페이지 비밀번호 변경
 	@RequestMapping("pwChangeAction")
 	@ResponseBody
-	public String pwChangeAction(@RequestParam ("user_idx") String user_idx, @RequestParam ("user_pw") String user_pw) {		
-		String result = userService.userPwUpdate(user_idx, user_pw, null);		
-		return result;
-		
+	public String pwChangeAction(
+			@RequestParam ("user_idx") int user_idx,
+			@RequestParam ("user_pw") String user_pw,
+			HttpServletRequest request) {		
+		//String result = userService.userPwUpdate(user_idx, user_pw, null);	
+		int result = userDao.updatePwInfo(user_idx, user_pw);
+		if(result == 1) {
+			request.getSession().invalidate();
+			return "<script>alert('회원정보가 변경되었습니다.');location.href='login';</script>";
+		} else {
+			return "<script>alert('error: 확인후 다시 시도해주세요.');history.back(-1);</script>";
+		}		
 	}
 	
 	//로그아웃 기능

@@ -62,10 +62,8 @@ public class UserService {
 		}
 	}
 	
-	public int pwChkAjax(String user_pw, HttpSession session) {
+	public int pwChkAjax(String user_id, String user_pw, HttpSession session) {
 		
-		int	user_idx = Integer.parseInt(String.valueOf(session.getAttribute("user_idx")));		
-		String user_id = userDao.idxUserID(user_idx);
 		String userPw = userDao.getUserPW(user_id);
 		
 		if(user_pw.equals(userPw)) {				
@@ -99,7 +97,7 @@ public class UserService {
 	}
 	
 	//비밀번호 수정
-	public String userPwUpdate(String user_idx, String user_pw, HttpServletRequest request) {
+	public String userPwUpdate(int user_idx, String user_pw, HttpServletRequest request) {
 		int result = userDao.updatePwInfo(user_idx, user_pw);
 		if(result == 1) {
 			request.getSession().invalidate();

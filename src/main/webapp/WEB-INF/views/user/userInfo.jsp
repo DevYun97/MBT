@@ -34,11 +34,7 @@
       <!-- 유저 섬네일 / 아이디 -->
       <form action="userInfoAction?user_idx=${ user.user_idx }" method="post" style="width:320px;" onsubmit="return addressAdd();">
         <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 mt-5 p-2 border rounded">
-          <!-- 수정불가능한 영역 -->
-          <div class="my-3 col-12 font-weight-bold form-group text-dark">닉네임
-            <input type="text" class="form-control col-12 rounded font-weight-nomal nullcheck bg-white disabledChk" name="user_nick_name" value="${ user.user_nick_name }" disabled>
-          </div>
-          
+               
           <div class="mt-3 col-12 font-weight-bold form-group text-dark">아이디           
             <input type="text" class="form-control col-12 rounded font-weight-nomal nullcheck bg-white mt-1 " value="${ user.user_id }" disabled>
           </div>
@@ -93,11 +89,13 @@
       <!-- MainDiv -->
       <div class="w-100 d-flex flex-column justify-content-center align-items-center">
         <h6 class="">비밀번호 변경하기</h6>
-        <form action="pwChangeAction?user_idx=${user.user_idx}" method="post" class="d-flex flex-column align-items-center col-12 mt-2">
-          <input type="text" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요">
-          <input type="text" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요">
-          <input type="text" class="my-1 w-75 form-control" name="user_pw" id="pw2" placeholder="새 비밀번호 재확인">
-          <input type="submit" class="btn btn-primary col-6 mt-3 mb-5" value="확인">
+        <form action="pwChangeAction?user_idx=${user.user_idx}" method="post" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2">
+          <input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요">
+          <input type="password" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요">
+          <input type="password" class="my-1 w-75 form-control" name="user_pw" id="pw2" placeholder="새 비밀번호 재확인">
+          <div id="pwCkNo" style="color: red; display: none;" >*비밀번호가 일치하지 않습니다*</div>
+	      <div id="pwCkOk" style="color: green; display: none;" >*비밀번호가 일치합니다*</div>
+          <input type="submit" id="pwSubmitBtn" class="btn btn-primary col-6 mt-3 mb-5" value="확인" disabled />
         </form>
       </div>
       
@@ -160,7 +158,7 @@
           $('#pwCkNo').css('display','block');
           $('#pwCkOk').css('display','none');   		
           }
-        else if(pw1 == pw2){  ////비밀번호 수정이 일치
+        else if(pw1 == pw2){  //비밀번호 수정이 일치
           $('#pwCkNo').css('display','none');
           $('#pwCkOk').css('display','block');
         }
@@ -168,24 +166,22 @@
 
       // 비밀번호 일치 ajax
       $(function(){
-
         $('#checkPw').focusout(function(){
         //비밀번호 확인
-        
-        const userPw = $('#checkPw').val();
-        if(!userPw){
+        const user_pw = $('#checkPw').val();
+        if(!user_pw){
         alert("비밀번호를 입력해주세요.");
         return false;
         }
         $.ajax({
-            url: 'http://localhost:8085/user/pwChkAjax?checkPw='+ userPw,	///action
+            url: 'http://localhost:8085/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	///action
             type: 'POST', //method     
-            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어
-      			  if( data !== 'true'){
-      				  alert('기존비밀번호를 재확인 해 주세요')
+            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+            	let data_num = Number( data );
+            	if( data_num >= 1){
+      				alert('기존비밀번호를 재확인 해 주세요')
       			  }else{
-      				  alert("기존비밀번호가 일치합니다.")
-                $('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+                	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
       			  }
       		  },
             error: function(){
