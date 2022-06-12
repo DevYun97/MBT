@@ -35,7 +35,7 @@
 	</select>
 
 	<!-- 게시판 조회 -->
-	<select id="getBoardList" resultType="com.yun.project.dto.Board">
+	<select id="getBoardList" parameterType="map" resultMap="boardMap">
 		SELECT 
 			board_idx, board_title, board_data, board_user
 		FROM 
@@ -109,13 +109,13 @@
 	
 	<!-- 게시판 수정 -->
 	<update id="updateBoard">
-		UPDATE mbt_board SET board_title = #{board_title}, board_content = #{board_content} WHERE board_idx = #{board_idx} AND board_user =#{user_id}
+		UPDATE mbt_board SET board_title = #{board_title}, board_content = #{board_content} WHERE board_idx = #{board_idx} 
 	</update>
 	
 	<!-- 조횟수 표시 -->
 	<update id="updateBoardHit">
 		UPDATE
-			mbd_board
+			mbt_board
 		SET board_hit = board_hit+1 
 		WHERE board_idx = #{param1}
 	</update>

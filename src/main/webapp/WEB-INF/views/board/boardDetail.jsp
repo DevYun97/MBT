@@ -31,7 +31,8 @@
         </div>    
         <div>
         <c:if test="${ user_id eq board.board_user }">
-          <input type="button" class="btn btn-primary fontSize14" value="수정" style="height: 30px;" onclick="location.href=''">
+          <!-- <input type="button" class="btn btn-primary fontSize14" value="수정" style="height: 30px;" onclick="location.href='boardUpdate'"> -->
+          <a href="boardUpdate?board_idx=${ board.board_idx }" class="btn btn-primary fontSize14" style="height: 30px;">수정</a>
           <a href="boardDeleteAction?board_idx=${ board.board_idx }" class="btn btn-primary fontSize14" style="height: 30px;">삭제</a>
         </c:if>
         </div>

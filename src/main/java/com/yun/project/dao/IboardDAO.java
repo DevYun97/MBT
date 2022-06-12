@@ -9,7 +9,7 @@ import com.yun.project.dto.Board;
 
 @Mapper
 public interface IboardDAO {
-	public ArrayList<Board> getBoardList();
+	public ArrayList<Board> getBoardList(Map<String, Object> map);
 	
 	public Board getBoardDetail(int board_idx);
 	
@@ -21,7 +21,7 @@ public interface IboardDAO {
 	
 	public int updateBoardHit(int board_idx);
 
-	public int updateBoard(int board_idx);
+	public int updateBoard(Board board);
 
 	public int boardCount(Map<String, Object> map);
 

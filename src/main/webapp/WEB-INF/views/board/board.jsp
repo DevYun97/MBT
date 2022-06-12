@@ -33,7 +33,7 @@
         </div>
       </div>
 	
-	 <form action="board" method="post" class="w-100 d-flex justify-content-end align-items-center mx-0 mt-2 p-2">
+	 <form action="board" method="get" class="w-100 d-flex justify-content-end align-items-center mx-0 mt-2 p-2">
 		 <select id="schType" name="schType" style="height: 30px; ">
 		 	<option value="sel">선택</option>
 		 	<option value="name">작성자</option>

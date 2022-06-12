@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,18 +38,15 @@ public class BoardController {
 	@RequestMapping("board")
 	public String board( 
 			@RequestParam Map<String, Object> map,
-			String curPage,
+			//String curPage,
 			Model model ) {
-		ArrayList<Board> getBoardList = boardDao.getBoardList();
-//		model.addAttribute("getBoardList", getBoardList);
-//		System.out.println(getBoardList);		
+		ArrayList<Board> getBoardList = boardDao.getBoardList(map);
+//		model.addAttribute("getBoardList", getBoardList);	
 		
 		  /*if(map.isEmpty()) { map.put("pageNo", 1); map.put("listSize", 5); } int count
 		  = boardDao.boardCount(map); String curPage = map.get("pageNo").toString();
-		  
-		  
-		  model.addAttribute("board", boardList);*/
 		
+		  model.addAttribute("board", boardList);*/	
 		
 		//ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
 		//model = boardService.board(map, curPage, model);
@@ -58,7 +56,7 @@ public class BoardController {
 	
 	@RequestMapping("boardDetail")
 	public String boardDetail(
-			@RequestParam Map<String, Object> map,
+			
 			@RequestParam ("board_idx") int board_idx, 
 			Model model) {
 	
@@ -101,15 +99,22 @@ public class BoardController {
 		return result;
 	}
 	
+	@RequestMapping("boardUpdate")
+	public String boardUpdate(@RequestParam ("board_idx") int board_idx, Model model) {
+		Board getBoardDetail = boardDao.getBoardDetail(board_idx);
+		model.addAttribute("board", getBoardDetail);
+		return "board/boardWrite";
+	}
+	
 	@RequestMapping("boardUpdateAction")
 	@ResponseBody
-	public String boardUpdateAction(@RequestParam ("board_idx") int board_idx) {
-		int result = boardDao.updateBoard(board_idx);
+	public String boardUpdateAction(@ModelAttribute Board board) {
+		int result = boardDao.updateBoard(board);
 		if(result == 1) {
-			return "<script>alert('삭제 성공'); location.href='/board/board';</script>";
+			return "<script>alert('수정 성공'); location.href='/board/board';</script>";
 		}
 		else {
-			return "<script>alert('삭제 실패'); location.href='/board/boardWrite';</script>";
+			return "<script>alert('수정 실패'); location.href='/board/boardWrite';</script>";
 		}			
 	}
 	
