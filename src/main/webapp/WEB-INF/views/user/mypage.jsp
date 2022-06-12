@@ -29,7 +29,7 @@
           <!-- 회원정보 보기 링크 -->
           <div class="border-top w-100 container-fluid" style="height:40px;">
             <a href="../user/userInfo?user_idx=${ user_idx }" class="text-dark noDeco" >
-              <div class="col-11 text-left pl-2 mx-0 d-flex align-items-center pt-2" style="float: left;">회원정보보기</div>
+              <div class="col-11 text-left pl-2 mx-0 d-flex align-items-center pt-2" style="float: left;" >회원정보보기</div>
               <div class="mt-1"> > </div>
             </a>
           </div>

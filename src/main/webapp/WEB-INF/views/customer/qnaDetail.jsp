@@ -39,11 +39,11 @@
         
         <!-- 문의사항 제목 -->
         <div class="w-100 border-bottom pt-2 pb-3">
-          <h5>${qna.qna_title}</h5>
+          <h5>${ qna.qna_title }</h5>
           <div class="d-flex justify-content-between fontSize14" >
             <div>${ qna.qna_user }</div>
             <div>
-              <small>${qna.qna_date}</small>             
+              <small>${ qna.qna_date }</small>             
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
        </div>
 
         <!-- 버튼 div -->
-        <c:if test="${ user_rank eq 'AA' || user_rank eq 'BB' }"> 
+        <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }"> 
         <form action="qnaReplyAction?qna_idx=${ qna.qna_idx }" method="post" class="w-100 d-flex justify-content-between px-2">
           <input type="text" class="col-10 mt-3" id="qna_reply" name="qna_reply" placeholder="댓글을 달아주세요">
           <input type="submit" class="btn btn-primary btn-sm col-2 mt-3" value="작성">

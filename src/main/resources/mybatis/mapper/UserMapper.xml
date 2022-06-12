@@ -25,8 +25,8 @@
 			DECODE
 			(
 				user_rank,
-				'AA', '총관리자'
-				'BB', '일반관리자'
+				'AA', '관리자'
+				'BB', '매니저'
 				'CC', '유저'
 			)
 			user_rank

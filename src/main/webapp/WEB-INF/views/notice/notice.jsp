@@ -28,7 +28,7 @@
         <h6 class="m-0 font-weight-bold">공지사항</h6>
         <!-- 관리자용 -->
         <div>
-        <c:if test="${ user_id eq 'admin' }">         
+        <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">         
           <a href="/notice/noticeWrite" class="btn btn-primary fontSize14" style="height: 30px;">글작성</a>
         </c:if> 
         </div>

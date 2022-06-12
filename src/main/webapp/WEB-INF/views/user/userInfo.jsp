@@ -137,8 +137,7 @@
     			$('#userUpdate').val("no");
     		}
     	}
-    </script>
-    <script>
+ 
     function addressAdd(){
     	const address1 = $('#sample6_address').val();
 		const address2 = $('#sample6_detailAddress').val();
