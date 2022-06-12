@@ -40,25 +40,40 @@
 		ORDER BY board_idx DESC
 	</select>
 	
-	<!-- 게시판 불러오기 -->
+	<!-- 게시판 상세 불러오기 -->
 	<select id="getBoardDetail" resultType="com.yun.project.dto.Board">
 		SELECT * FROM mbt_board WHERE board_idx = #{board_idx}
 	</select>
 	
+	<!-- board 개수 구하기 -->
+	<select id="boardCount" resultType="int">
+		SELECT COUNT(board_idx) FROM mbt_board
+	</select>
+	
+	<!-- 게시판 리스트 불러오기 / 검색기능 + 페이징 기능 -->
 	<select id="getBoardUserID" parameterType="map" resultMap="boardMap">
 		SELECT 
 			board_idx, board_title, board_data, board_user
-		FROM mbt_board
-		WHERE 1=1
-		<choose>
-			<when test="schType == 'name'">
-				AND board_user like '%'||#{schText}||'%'
-			</when>
-			<when test="schType == 'title'">
-				AND board_title like '%'||#{schText}||'%'
-			</when>
-		</choose>	
-		ORDER BY board_idx DESC
+		FROM 
+			(
+			select
+				row_number() over(order by board_idx desc) rnum, 
+				board_title,
+				board_data, 
+				board_user 
+			from mbt_board
+			where 1=1
+			<choose>
+				<when test="schType == 'name'">
+					AND board_user like '%'||#{schText}||'%'
+				</when>
+				<when test="schType == 'title'">
+					AND board_title like '%'||#{schText}||'%'
+				</when>
+			</choose>
+			)
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} <!-- 회사 DTO -->
+		<!-- WHERE rnum BETWEEN #{param1} AND #{param2} : 팀플-->
 	</select>
 	
 	<!-- 게시판 작성 -->

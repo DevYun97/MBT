@@ -20,6 +20,19 @@
 		SELECT user_idx FROM MBT_USER WHERE user_id = #{ user_id }
 	</select>
 	
+	<select id="getUserRank" resultType="int">
+		SELECT 
+			DECODE
+			(
+				user_rank,
+				'AA', '총관리자'
+				'BB', '일반관리자'
+				'CC', '유저'
+			)
+			user_rank
+		FROM MBT_USER WHERE user_id = #{ user_id }
+	</select>
+	
 	<select id="idxUserID" resultType="int">
 		SELECT user_id FROM MBT_USER WHERE user_idx = #{user_idx}
 	</select>
