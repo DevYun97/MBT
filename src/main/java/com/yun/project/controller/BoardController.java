@@ -20,6 +20,7 @@ import com.yun.project.dao.IreplyDAO;
 import com.yun.project.dao.IuserDAO;
 import com.yun.project.dto.Board;
 import com.yun.project.dto.Reply;
+import com.yun.project.dto.pageDTO;
 import com.yun.project.service.BoardService;
 import com.yun.project.service.pageNation;
 
@@ -33,8 +34,7 @@ public class BoardController {
 	@Autowired
 	IreplyDAO replyDao;
 	@Autowired
-	IuserDAO userDao;
-	
+	IuserDAO userDao;	
 	@Autowired
 	pageNation pagenation;
 	
@@ -43,30 +43,30 @@ public class BoardController {
 			@RequestParam Map<String, Object> map,
 			Model model ) {
 		
-		if( map.isEmpty() ) {	// 값 초기화 세팅 
-			map.put("startNumOfRow", 1);
-			map.put("endNumOfRow", 15);
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 5);
 		}
 		
-		int total = boardDao.boardCount(map);
-		int curPage = Integer.parseInt(map.get("total").toString()); 
-		pagenation.pagenation(curPage, total);
-		//ArrayList<Board> getBoardList = boardDao.getBoardList(map);
-		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
+		int count = boardDao.boardCount(map);
+		int curPage = Integer.parseInt(map.get("pageNo").toString()); 
+
+		pageDTO page = new pageDTO(count, curPage);
+
 		
-//		model.addAttribute("getBoardList", getBoardList);	
+		/*	작성하던 버전
+		  if( map.isEmpty() ) { // 값 초기화 세팅 map.put("startNumOfRow", 1);
+		  map.put("endNumOfRow", 5); }
+		  
+		  int total = boardDao.boardCount(map); // 총 데이터 수 int curPage =
+		  Integer.parseInt(map.get("startNumOfRow").toString()); // 현재 페이지
+		  pagenation.pagenation(curPage, total);
+		 */
+		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
 		
-		  /*if(map.isEmpty()) { map.put("pageNo", 1); map.put("listSize", 5); } 
-		   * int count = boardDao.boardCount(map);
-		  String curPage = map.get("pageNo").toString();
-		
-		  model.addAttribute("board", boardList);*/	
-		
-		//ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
-		//model = boardService.board(map, curPage, model);
-		//model.addAttribute("board",getBoardList);
 		model.addAttribute("board",boardList);
-		model.addAttribute("page", pagenation);
+		model.addAttribute("page", page);
+		model.addAttribute("sch", map);
 		return "board/board";
 	}
 	

@@ -15,49 +15,18 @@
 	</resultMap>
 
 	<!-- 컬럼 데이터 갯수 -->
-	<select id="boardCount" parameterType="map" resultType="int">
-		SELECT count(board_idx) FROM mbt_board WHERE 1=1
+	<select id="boardCount" parameterType="map" resultType="integer">
+		SELECT count(board_idx) 
+		FROM mbt_board 
+		WHERE 1=1
 		<choose>
 			<when test="schType == 'name'">
-				AND user_name like '%'||#{schText}||'%'
+				AND board_user like '%'||#{schText}||'%'
 			</when>
 			<when test="schType == 'title'">
 				AND board_title like '%'||#{schText}||'%'
 			</when>
-			<when test="schType == 'content'">
-				AND (
-					board_title like '%'||#{schText}||'%'
-					OR
-					board_content like '%'||#{schText}||'%'
-					)
-			</when>
 		</choose>
-		
-	</select>
-
-	<!-- 게시판 조회 -->
-	<select id="getBoardList" parameterType="map" resultMap="boardMap">
-		SELECT 
-			board_idx, board_title, board_data, board_user
-		FROM 
-			(
-			select
-				board_idx, 
-				board_title,
-				board_data, 
-				board_user 
-			from mbt_board
-			where 1=1
-			<choose>
-				<when test="schType == 'name'">
-					AND board_user like '%'||#{schText}||'%'
-				</when>
-				<when test="schType == 'title'">
-					AND board_title like '%'||#{schText}||'%'
-				</when>
-			</choose>
-			)
-		ORDER BY board_idx DESC
 	</select>
 	
 	<!-- 게시판 상세 불러오기 -->
@@ -71,9 +40,9 @@
 	</select> -->
 	
 	<!-- 게시판 리스트 불러오기 / 검색기능 + 페이징 기능 -->
-	<select id="getBoardUserID" parameterType="map" resultMap="boardMap">
+	<select id="getBoardList" parameterType="map" resultMap="boardMap">
 		SELECT 
-			board_idx, board_title, board_data, board_user
+			rnum board_idx, board_title, board_data, board_user
 		FROM 
 			(
 			select
@@ -92,7 +61,7 @@
 				</when>
 			</choose>
 			)
-		WHERE rnum BETWEEN #{startNumOfRow} AND #{endNumOfRow}
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} 
 		<!-- WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize}  : 회사 DTO
 		WHERE rnum BETWEEN #{startNumOfRow} AND #{endNumOfRow}-->
 		
