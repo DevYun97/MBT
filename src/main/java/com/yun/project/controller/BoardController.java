@@ -35,28 +35,43 @@ public class BoardController {
 	@Autowired
 	IuserDAO userDao;
 	
+	@Autowired
+	pageNation pagenation;
+	
 	@RequestMapping("board")
 	public String board( 
 			@RequestParam Map<String, Object> map,
-			//String curPage,
 			Model model ) {
-		ArrayList<Board> getBoardList = boardDao.getBoardList(map);
+		
+		if( map.isEmpty() ) {	// 값 초기화 세팅 
+			map.put("startNumOfRow", 1);
+			map.put("endNumOfRow", 15);
+		}
+		
+		int total = boardDao.boardCount(map);
+		int curPage = Integer.parseInt(map.get("total").toString()); 
+		pagenation.pagenation(curPage, total);
+		//ArrayList<Board> getBoardList = boardDao.getBoardList(map);
+		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
+		
 //		model.addAttribute("getBoardList", getBoardList);	
 		
-		  /*if(map.isEmpty()) { map.put("pageNo", 1); map.put("listSize", 5); } int count
-		  = boardDao.boardCount(map); String curPage = map.get("pageNo").toString();
+		  /*if(map.isEmpty()) { map.put("pageNo", 1); map.put("listSize", 5); } 
+		   * int count = boardDao.boardCount(map);
+		  String curPage = map.get("pageNo").toString();
 		
 		  model.addAttribute("board", boardList);*/	
 		
 		//ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
 		//model = boardService.board(map, curPage, model);
-		model.addAttribute("board",getBoardList);
+		//model.addAttribute("board",getBoardList);
+		model.addAttribute("board",boardList);
+		model.addAttribute("page", pagenation);
 		return "board/board";
 	}
 	
 	@RequestMapping("boardDetail")
-	public String boardDetail(
-			
+	public String boardDetail(			
 			@RequestParam ("board_idx") int board_idx, 
 			Model model) {
 	
@@ -87,11 +102,10 @@ public class BoardController {
 	@ResponseBody
 	public String boardWriteAction(
 			@RequestParam Map<String, Object> map,
-			HttpSession session, Model model
-			) {
+			HttpSession session, Model model ) {
 		
 		String user_id = (String) session.getAttribute("user_id");
-		if( user_id.isEmpty()  ) {
+		if( user_id.isEmpty() ) {
 			return "<script>alert('로그인 정보를 다시 확인해주세요.'); location.href='../main';</script>";
 		}
 		map.put("user_id", user_id);  

@@ -14,6 +14,7 @@
 		<result column="endNumOfRow" property="endNumOfRow" />
 	</resultMap>
 
+	<!-- 컬럼 데이터 갯수 -->
 	<select id="boardCount" parameterType="map" resultType="int">
 		SELECT count(board_idx) FROM mbt_board WHERE 1=1
 		<choose>
@@ -91,8 +92,10 @@
 				</when>
 			</choose>
 			)
-		<!-- WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize}  --> <!-- 회사 DTO -->
 		WHERE rnum BETWEEN #{startNumOfRow} AND #{endNumOfRow}
+		<!-- WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize}  : 회사 DTO
+		WHERE rnum BETWEEN #{startNumOfRow} AND #{endNumOfRow}-->
+		
 	</select>
 	
 	<!-- 게시판 작성 -->

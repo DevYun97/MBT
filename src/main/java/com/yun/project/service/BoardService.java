@@ -22,17 +22,17 @@ public class BoardService {
 	@Autowired
 	pageNation pagenation;
 	
-	public Model board(Map<String, Object> map, String curPage, Model model) {
-		
-		int boardCount = boardDao.boardCount(map);
-		pagenation = pagenation.pagenation(curPage, boardCount);
-		
-		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
-		model.addAttribute("board", boardList);
-		//model.addAttribute("page", pagenation);
-		
-		return model;
-	}
+//	public Model board(Map<String, Object> map, int curPage, Model model) {
+//		
+//		int boardCount = boardDao.boardCount(map);
+//		pagenation = pagenation.pagenation(curPage, boardCount);
+//		
+//		ArrayList<Map<String, Object>> boardList = boardDao.getBoardUserID(map);
+//		model.addAttribute("board", boardList);
+//		//model.addAttribute("page", pagenation);
+//		
+//		return model;
+//	}
 	
 	public String boardWrite(Map<String, Object> map) {
 		int result = boardDao.insertBoard(map);
