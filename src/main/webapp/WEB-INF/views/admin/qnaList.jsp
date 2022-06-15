@@ -8,6 +8,9 @@
           <div>${ qna.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
             <span class="pr-1">${ qna.qna_user }</span> ${ qna.qna_date }<i class="bi bi-chevron-right"></i>
+          	<c:if test="${ qna.qna_reply_check eq '1'}">
+          	[ 답변완료 ]            
+          	</c:if>
           </div>
 		</a>
 	</c:forEach>

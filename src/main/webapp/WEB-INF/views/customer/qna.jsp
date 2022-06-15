@@ -46,15 +46,12 @@
           <div>${ dto.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
             <span class="pr-1">${ dto.qna_user }</span> ${ dto.qna_date }<i class="bi bi-chevron-right"></i>
+          	<c:if test="${ dto.qna_reply_check eq '1'}">
+          	[ 답변완료 ]            
+          	</c:if> 
           </div>
         </a>
         </c:forEach>
-        <a href="#" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>질문하기제목</div>
-          <div class="text-right text-muted fontSize12" >
-            <span class="pr-1">작성자</span> 2022.03.00<i class="bi bi-chevron-right"></i>
-          </div>
-        </a>
       </div>      
     <!-- Content div 종료 -->
     </div>

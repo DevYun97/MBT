@@ -24,20 +24,14 @@
 	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
-      <!-- 서브바 -->
-      <div class="w-100 d-flex justify-content-around align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
-        <a class="text-body" href="/customer/faq">FAQ</a>
-        <a class="text-body" href="/customer/qna">QnA</a>
-        <a class="text-body" href="/customer/oneToOne">1:1문의</a>
-      </div>
-
+      
       <!-- 검색기능 넣기 -->
       <div class="w-100 d-flex justify-content-end align-items-center mt-4 mb-2">
         <form id="qnaFrm" name="qnaFrm" >
 	        <select id="qnaType" name="qnaType">
 	        	<option value="seq">선택</option>
 	        	<option value="qnaNo">미답변</option>
-	        	<option value="qnaOk">답변</option>
+	        	<option value="qnaOk">답변완료</option>
 	        </select> 
         </form> 
       </div>
@@ -49,6 +43,9 @@
           <div>${ qna.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
             <span class="pr-1">${ qna.qna_user }</span> ${ qna.qna_date }<i class="bi bi-chevron-right"></i>
+          	<c:if test="${ qna.qna_reply_check eq '1'}">
+          	[ 답변완료 ]            
+          	</c:if> 
           </div>
         </a>
         </c:forEach>

@@ -40,8 +40,9 @@
         <a href="../customer/qnaDetail?qna_idx=${ dto.qna_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>${ dto.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
-          <c:if test="${ dto.qna_reply_check eq '1' }"></c:if>  
-            <input type="button" class="btn btn-primary btn-sm" value="답변완료">           
+          <c:if test="${ dto.qna_reply_check eq '1'}">
+          [ 답변완료 ]            
+          </c:if>  
           </div>
         </a>
         </c:forEach>                
