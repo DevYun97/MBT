@@ -20,7 +20,7 @@
     <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
 
       <!-- 뒤로가기 아이콘 -->
-      <div class="w-100 my-3" style="width: 30px; height: 30px;" >
+      <div class="w-100 mt-3 mb-1" style="width: 30px; height: 30px;" >
         <i class="bi bi-chevron-left pr-2" onclick="history.back(-1);"></i>
       </div>
      
