@@ -52,16 +52,7 @@ public class BoardController {
 		int curPage = Integer.parseInt(map.get("pageNo").toString()); 
 
 		pageDTO page = new pageDTO(count, curPage);
-
 		
-		/*	작성하던 버전
-		  if( map.isEmpty() ) { // 값 초기화 세팅 map.put("startNumOfRow", 1);
-		  map.put("endNumOfRow", 5); }
-		  
-		  int total = boardDao.boardCount(map); // 총 데이터 수 int curPage =
-		  Integer.parseInt(map.get("startNumOfRow").toString()); // 현재 페이지
-		  pagenation.pagenation(curPage, total);
-		 */
 		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
 		
 		model.addAttribute("board",boardList);
@@ -79,8 +70,7 @@ public class BoardController {
 		boardDao.updateBoardHit(board_idx);
 		Board getBoardDetail = boardDao.getBoardDetail(board_idx);		
 		model.addAttribute("board", getBoardDetail);
-		System.out.println(getBoardDetail);
-		
+				
 		//댓글 불러오기
 		List<Reply> getReplyList = replyDao.getReplyList(board_idx);		
 		model.addAttribute("getReplyList", getReplyList);

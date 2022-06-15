@@ -32,8 +32,7 @@ public class CustomerService {
 	public String noticeWrite(Notice notice) {
 		
 		int result = noticeDao.insertNotice(notice);
-		String returnString = "<script>alert('작성 실패'); location.href='/customer/notice'</script>";
-		System.out.println(notice);
+		String returnString = "<script>alert('작성 실패'); location.href='/customer/notice'</script>";		
 		if (result == 1) {
 			returnString = "<script>alert('작성 성공'); location.href='/customer/notice'</script>";
 		}
@@ -53,8 +52,7 @@ public class CustomerService {
 	public String qnaWrite(Qna qna) {
 	
 		int result = qnaDao.insertQna(qna);
-		String returnString = "<script>alert('작성 실패'); location.href='/customer/qna'</script>";
-		System.out.println(qna);
+		String returnString = "<script>alert('작성 실패'); location.href='/customer/qna'</script>";		
 		if (result == 1) {
 			returnString = "<script>alert('작성 성공'); location.href='/customer/qna'</script>";
 		}

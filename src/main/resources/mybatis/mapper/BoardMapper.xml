@@ -56,10 +56,7 @@
 				</when>
 			</choose>
 			)
-		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} 
-		<!-- WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize}  : 회사 DTO
-		WHERE rnum BETWEEN #{startNumOfRow} AND #{endNumOfRow}-->
-		
+		WHERE rnum between #{pageNo} * #{listSize} - #{listSize} +1 AND #{pageNo} * #{listSize} 		
 	</select>
 	
 	<!-- 게시판 작성 -->

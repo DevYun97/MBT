@@ -80,8 +80,7 @@ public class CustomerController {
 	@RequestMapping("noticeDetail")
 	public String noticeDetail(@RequestParam ("notice_idx") int notice_idx, Model model) {
 		Notice getNoticeDetail = noticeDao.getNoticeInfo(notice_idx);
-		model.addAttribute("dto", getNoticeDetail);
-		System.out.println(getNoticeDetail);
+		model.addAttribute("dto", getNoticeDetail);		
 		return "customer/noticeDetail";
 		
 	}
@@ -94,8 +93,7 @@ public class CustomerController {
 	@PostMapping("noticeWriteAction")
 	@ResponseBody
 	public String noticeWriteAction(@ModelAttribute Notice notice) {
-		String result = customerService.noticeWrite(notice);
-		System.out.println(result);
+		String result = customerService.noticeWrite(notice);		
 		return result;
 	}
 	
@@ -139,8 +137,7 @@ public class CustomerController {
 	public String qnaDetail(@RequestParam ("qna_idx") int qna_idx, Model model) {
 		
 		Qna getQnaDetail = qnaDao.getQnaDetail(qna_idx);
-		model.addAttribute("qna", getQnaDetail);
-		System.out.println(getQnaDetail);
+		model.addAttribute("qna", getQnaDetail);		
 		return "customer/qnaDetail";
 	}
 	
@@ -179,8 +176,7 @@ public class CustomerController {
 			HttpSession session ) {
 				
 		try {
-			String result = customerService.qnaWrite(qna);
-			System.out.println(result);
+			String result = customerService.qnaWrite(qna);		
 			return result;
 		} catch (Exception e) {
 			log.error("로그인하지 않은 사용자.");

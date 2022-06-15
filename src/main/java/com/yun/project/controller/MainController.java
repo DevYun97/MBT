@@ -36,19 +36,15 @@ public class MainController {
 	public String main(
 			@RequestParam Map<String, Object> map,
 			Model model) {
-//		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
-//		model.addAttribute("board",boardList);
+		
+		if(map.isEmpty()) {
+			map.put("pageNo", 1);
+			map.put("listSize", 3);
+		}
+		
+		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
+		model.addAttribute("board",boardList);
 		return "main";
 	}
-	
-	@RequestMapping("aboutSite")
-	public String aboutSite() {
-		return "aboutSite";
-	}
-	
-	@RequestMapping("loginAction")
-	public String loginAction() {
-		return "";
-	}
-	
+			
 }

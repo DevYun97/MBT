@@ -1,16 +1,11 @@
 package com.yun.project.service;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-
 import com.yun.project.dao.IboardDAO;
 import com.yun.project.dao.IreplyDAO;
-import com.yun.project.dto.Board;
-import com.yun.project.dto.Reply;
 
 @Service
 public class BoardService {

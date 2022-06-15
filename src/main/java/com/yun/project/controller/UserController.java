@@ -128,8 +128,7 @@ public class UserController {
 	//회원가입
 	@PostMapping("joinAction")
 	@ResponseBody
-	public String joinAction(@ModelAttribute User user) {
-		System.out.println(user);	
+	public String joinAction(@ModelAttribute User user) {		
 		String result = userService.join(user);
 		return result;
 	}
@@ -149,8 +148,7 @@ public class UserController {
 	public String pwChangeAction(
 			@RequestParam ("user_idx") int user_idx,
 			@RequestParam ("user_pw") String user_pw,
-			HttpServletRequest request) {		
-		//String result = userService.userPwUpdate(user_idx, user_pw, null);	
+			HttpServletRequest request) {				
 		int result = userDao.updatePwInfo(user_idx, user_pw);
 		if(result == 1) {
 			request.getSession().invalidate();
