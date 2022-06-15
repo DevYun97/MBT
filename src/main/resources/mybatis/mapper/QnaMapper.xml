@@ -12,10 +12,10 @@
 		FROM mbt_qna 
 		WHERE 1=1
 		<choose>
-			<when test=" qnaType == 'qnaCheck' ">
+			<when test=" qnaType == 'qnaNo' ">
 				and qna_reply_check like '0'
 			</when>
-			<when test=" qnaType == 'qnaCheck' ">
+			<when test=" qnaType == 'qnaOk' ">
 				and qna_reply_check like '1'
 			</when>
 		</choose>

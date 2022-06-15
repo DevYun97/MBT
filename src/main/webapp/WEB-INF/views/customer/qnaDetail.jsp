@@ -54,7 +54,7 @@
        </div>
 
         <!-- 버튼 div -->
-        <c:if test="${ (user_rank eq '관리자' || user_rank eq '매니저') AND qna_reply_check eq 0 }"> 
+        <c:if test="${ (user_rank eq '관리자' || user_rank eq '매니저') && qna.qna_reply_check eq '0' }"> 
         <form action="qnaReplyAction?qna_idx=${ qna.qna_idx }" method="post" class="w-100 d-flex justify-content-between px-2">
         	<input type="hidden" name="qna_reply_check" id="qna_reply_check" value="1" />
           	<input type="text" class="col-10 mt-3" id="qna_reply" name="qna_reply" placeholder="댓글을 달아주세요">
@@ -62,7 +62,7 @@
         </form>
         </c:if>
         
-        <c:if test="${ qna_reply_check eq 1 }">
+        <c:if test="${ qna.qna_reply_check eq '1' }">
         <!-- 댓글창 -->
         <div class="w-100 d-flex flex-column justify-content-between align-items-start mt-4 pb-3 border-bottom text-body">
           <div class="w-100 d-flex justify-content-between">

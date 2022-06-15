@@ -13,23 +13,6 @@
     <link rel="stylesheet" href="/css/custom.css">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <script>
-  	$(function(){
-  		$("#qnaType").change(function(){
-  			$.ajax({		
-  				url:"qnaAjax",  // action
-  				type:"get",  	 // method 
-  				data : $("#qnaFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
-  				success: function(date){								
-  					$("#qnaList").html(date);  // 호출받아서 실행되는 부분. 			
-  				},		
-  				error:function(){
-  					alert("error");
-  				}
-  			})
-  		})
-  	})
-  </script>
   
   </head>
   <body>
@@ -51,22 +34,25 @@
       <!-- 검색기능 넣기 -->
       <div class="w-100 d-flex justify-content-end align-items-center mt-4 mb-2">
         <form id="qnaFrm" name="qnaFrm" >
-	        <select id="qnaType">
+	        <select id="qnaType" name="qnaType">
 	        	<option value="seq">선택</option>
-	        	<option value="qnaCheck">답변체크여부</option>
+	        	<option value="qnaNo">미답변</option>
+	        	<option value="qnaOk">답변</option>
 	        </select> 
         </form> 
       </div>
       
-      <div id="qnaList" class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+      <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+        <div id="qnaList" class="w-100">
         <c:forEach var="qna" items="${ getQnaList }">
         <a href="../customer/qnaDetail?qna_idx=${ qna.qna_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>${ dto.qna_title }</div>
+          <div>${ qna.qna_title }</div>
           <div class="text-right text-muted fontSize12" >
             <span class="pr-1">${ qna.qna_user }</span> ${ qna.qna_date }<i class="bi bi-chevron-right"></i>
           </div>
         </a>
         </c:forEach>
+        </div>
       </div>      
     <!-- Content div 종료 -->
     </div>
@@ -76,5 +62,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
+    
+    <script>
+  	$( function() {
+  		$("#qnaType").change(function(){
+  			$.ajax({		
+  				url:"qnaAjax",  // action
+  				type:"get",  	 // method 
+  				data : $("#qnaFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
+  				success: function(date){								
+  					$("#qnaList").html(date);  // 호출받아서 실행되는 부분. 			
+  				},		
+  				error:function(){
+  					alert("error");
+  				}
+  			})
+  		})
+  	})
+  </script>
   </body>
 </html>
