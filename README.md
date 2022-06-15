@@ -3,7 +3,7 @@
 첫번째 토이 프로젝트 MBT 입니다.
 MBT 는 My BackEnd Table 의 기본적인 게시판 기능이 들어간 웹 사이트입니다.
 
-- 등록된 아이디 - <br>
+등록된 아이디 ] <br>
   id: admin01 / pw : 1111   : 관리자 아이디 <br>
   id: admin02 / pw : 2222   : 매니저 아이디 <br>
   id: user01 / pw : 3333    : 일반 회원 아이디 <br>
