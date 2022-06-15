@@ -39,13 +39,12 @@ public class AdminController {
 		 * "<script>location.href='adminQna';</script>"; } return
 		 * "<script>location.href='../main';</script>";
 		 */
-			System.out.println(map);
+			
 			ArrayList<Qna> getQnaList = qnaDao.getQnaList(map);
 			model.addAttribute("getQnaList", getQnaList);
 			return "admin/adminQna";
 	}
-	
-	
+		
 	  @RequestMapping("qnaAjax")	  
 	  //@ResponseBody 
 	  public String qnaAjax(	  
@@ -54,7 +53,6 @@ public class AdminController {
 		  
 		  	ArrayList<Qna> getQnaList = qnaDao.getQnaList(map);
 			model.addAttribute("getQnaList", getQnaList);
-			System.out.println(map);
 			return "admin/qnaList";
 			
 	  }
