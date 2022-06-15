@@ -1,6 +1,7 @@
 package com.yun.project.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +11,7 @@ import com.yun.project.dto.Qna;
 public interface IqnaDAO {
 	
 		//adminQnaList
-		public ArrayList<Qna> getQnaList();
+		public ArrayList<Qna> getQnaList( Map<String, Object> map);
 		
 		//qna List
 		public ArrayList<Qna> getQnaListCat(int qna_cat);
