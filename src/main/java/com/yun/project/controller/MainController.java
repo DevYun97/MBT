@@ -1,7 +1,15 @@
 package com.yun.project.controller;
 
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.yun.project.dao.IboardDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 //	log.error("에러",e);
 @Controller
 public class MainController {
+	
+	@Autowired
+	IboardDAO boardDao;
 
 	@RequestMapping("")
 	public String root() {
@@ -22,7 +33,11 @@ public class MainController {
 	}
 	
 	@RequestMapping("main")
-	public String main() {
+	public String main(
+			@RequestParam Map<String, Object> map,
+			Model model) {
+//		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
+//		model.addAttribute("board",boardList);
 		return "main";
 	}
 	

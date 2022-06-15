@@ -40,15 +40,55 @@
               	<small> | </small>
               	<a href="user/join" class="text-decoration-none text-body px-1">회원가입</a>
               </div>              
-              </c:if>
-                       
+              </c:if>                      
           </div>
-  
         </div>
-        <!-- box div -->
+      
+      
+     <%--  <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+        <!-- 게시판 일부 불러오기 -->
+        <c:forEach var="board" items="${ board }" begin="0" end="4" >
+        <a href="../board/boardDetail?board_idx=${ board.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
+          <div>${board.board_title}</div>
+          <div class="text-right">
+            <small class="pr-2">${ board.board_user }</small>
+            <small>${board.board_data}</small>
+          </div>
+        </a>
+        </c:forEach>
+      </div> --%>
+      
       </div>
 
     <!-- Content div 종료 -->
+    <footer style="width: 100%">
+        <!-- container -->
+        <div class="w-100 container-fluid d-flex flex-column justify-content-center align-items-center px-0 " style="height: 175px;">
+            <!-- footer div -->
+            <div class="w-100 d-flex flex-column align-items-center text-center text-black-50 fontSize11 border-top pt-3 pb-2" >
+                <!-- 사이트 소개 text -->
+                <div> 
+                    사이트 명 : MBT <br>
+                    사이트 제작자 : 윤다혜 <br>
+                                               
+                </div>
+                <!-- 링크 버튼 -->
+                <div>
+	                <p class="my-1">- 사이트 정보 -</p>
+	                <span class="border border-dark-50 rounded-pill my-1 mr-1 font-small pointer" style="width: 90px; height: 22px; line-height: 22px;" onclick="location.href='#'">
+	                	<i class="bi bi-github"></i> GitHub
+	                </span>
+	                <span class="border border-dark-50 rounded-pill my-1 ml-1 font-small pointer" style="width: 90px; height: 22px; line-height: 22px;" onclick="location.href='#'">
+	                	<i class="bi bi-qr-code"></i> T-Story
+	                </span>
+                </div>           
+                <!-- copyright -->
+                <div>
+                    Copyright © 2022 Backpackr All right reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
 
 

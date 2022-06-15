@@ -21,7 +21,7 @@
             <div class="dropdown-divider"></div>
             <div class="text-black-50 pl-3 mt-3 mb-2 fontSize12" >페이지</div>
             <a href="../main" class="dropdown-item">메인</a>
-            <a href="../aboutSite" class="dropdown-item">사이트소개</a>
+            <!-- <a href="../aboutSite" class="dropdown-item">사이트소개</a> -->
             <a href="../board/board" class="dropdown-item">게시판</a>
             <div class="dropdown-divider"></div>
             <!-- 고객센터 -->
