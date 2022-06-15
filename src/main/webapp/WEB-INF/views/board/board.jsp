@@ -68,15 +68,6 @@
           </div>
         </a>
         </c:forEach>
-       
-        <a href="../board/boardDetail" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>게시판 제목</div>
-          <div class="text-right">
-            <small class="pr-2">작성자 이름</small>
-            <small>2022.03.00</small>
-          </div>
-        </a>
-        
       </div>
       <!-- Content div 종료 -->
       <!-- 페이지네브바 -->
