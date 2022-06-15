@@ -31,9 +31,9 @@
             <a href="../customer/qna" class="dropdown-item">QnA</a>
           </div>
         </div>
-        <%-- <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }"> --%>
+        <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">
         <div class="mx-4 pointer">
-        	<a onclick="location.href='admin/adminQna'" >관리자 QnA</a>
+        	<a onclick="location.href='../admin/adminQna'" >관리자 QnA</a>
         </div> 
-        <%-- </c:if> --%>
+        </c:if>
       </div>
