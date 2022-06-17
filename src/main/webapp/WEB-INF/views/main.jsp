@@ -76,7 +76,7 @@
                 <!-- 링크 버튼 -->
                 <div>
 	                <p class="my-1">- 사이트 정보 -</p>
-	                <span class="border border-dark-50 rounded-pill my-1 mr-1 px-2 font-small pointer" style="width: 90px; height: 22px; line-height: 22px;" onclick="location.href='#'">
+	                <span class="border border-dark-50 rounded-pill my-1 mr-1 px-2 font-small pointer" style="width: 90px; height: 22px; line-height: 22px;" onclick="location.href='https://github.com/DevYun97'">
 	                	<i class="bi bi-github"></i> GitHub
 	                </span>
 	                <span class="border border-dark-50 rounded-pill my-1 ml-1 px-2 font-small pointer" style="width: 90px; height: 22px; line-height: 22px;" onclick="location.href='#'">
