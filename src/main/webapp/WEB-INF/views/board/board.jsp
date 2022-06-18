@@ -49,12 +49,12 @@
 		<input type = "hidden" name ="pageNo" id="pageNo" value ="1">
 		<input type = "hidden" name ="listSize" id ="listSize" value ="5"> 
 		 <select id="schType" name="schType" style="height: 30px;">
-		 	<option value="sel">선택</option>
-		 	<option value="name">작성자</option>
-		 	<option value="title">제목</option>
+		 	<option >선택</option>
+		 	<option value="name" <c:if test="${ sch.schType == 'name' }" > selected </c:if> >작성자</option>
+		 	<option value="title" <c:if test="${ sch.schType == 'title' }" > selected </c:if> >제목</option>
 		 </select>
-		 <input type="text" id="schText" name="schText" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
-		 <input type="submit" id="schBtn" value="검색" class="btn btn-primary fontSize14 mb-1" style="width: 60px; height: 30px;" >
+		 <input type="text" id="schText" name="schText" class="mx-2" value="${ sch.schText }" placeholder="검색내용을 입력해주세요." />
+		 <input type="submit" id="schBtn" value="검색" class="btn btn-primary fontSize14 my-1" style="width: 60px; height: 30px;" >
 	 </form>	
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
