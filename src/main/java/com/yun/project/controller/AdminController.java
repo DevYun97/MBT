@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yun.project.dao.IqnaDAO;
+import com.yun.project.dao.IuserDAO;
 import com.yun.project.dto.Qna;
+import com.yun.project.dto.User;
 
 @Controller
 @RequestMapping("admin")
@@ -21,6 +23,20 @@ public class AdminController {
 	
 	@Autowired
 	IqnaDAO qnaDao;
+	
+	@Autowired
+	IuserDAO userDao;
+	
+	@RequestMapping("admin")
+	public String admin(
+				@RequestParam Map <String, Object> map,
+				HttpSession session, Model model ){
+		
+				
+			ArrayList<User> memList = userDao.userList(map);
+			model.addAttribute("member", memList);
+			return "admin/admin";
+	}
 	
 	@RequestMapping("adminQna")
 	public String adminQna(
@@ -56,4 +72,15 @@ public class AdminController {
 			return "admin/qnaList";
 			
 	  }
+	  
+	  @RequestMapping("member")
+		public String member(
+					@RequestParam Map <String, Object> map,
+					HttpSession session, Model model ){
+			
+					
+				ArrayList<User> memList = userDao.userList(map);
+				model.addAttribute("member", memList);
+				return "admin/member";
+		}
 }

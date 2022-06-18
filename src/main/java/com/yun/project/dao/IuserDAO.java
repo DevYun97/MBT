@@ -1,5 +1,8 @@
 package com.yun.project.dao;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.yun.project.dto.User;
@@ -30,5 +33,7 @@ public interface IuserDAO {
 	public int updateUserInfo(User user);
 	//비밀번호 수정
 	public int updatePwInfo(int user_idx, String user_pw);
+	//유저리스트 - 관리자
+	public ArrayList<User> userList(Map<String, Object> map);
 
 }

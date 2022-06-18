@@ -38,13 +38,6 @@
 		SELECT user_id FROM MBT_USER WHERE user_idx = #{user_idx}
 	</select>
 	
-	<!-- 유저 랭크 불러오기 -->
-	<!-- <select id="getUserRank" resultType="String">
-		SELECT user_rank 
-		FROM MBT_USER 
-		WHERE user_id = #{user_id}
-	</select> -->
-	
 	<!-- IDFIND _user_name + user_email -->
 	<select id="getUserIdFind" resultType="String">
 		SELECT user_id FROM MBT_USER 
@@ -87,5 +80,31 @@
 		UPDATE MBT_USER SET user_pw = #{ param2 } 
 		WHERE user_idx = #{param1}
 	</update>
+	
+	
+	<!-- 유저 정보 전부 조회 -->
+	<select id="userList" resultType="com.yun.project.dto.User">
+		SELECT
+			user_idx,
+			user_id,
+			DECODE
+			(
+				user_rank,
+				'AA', '관리자',
+				'BB', '매니저',
+				'CC', '유저'
+			)
+			user_rank,
+			DECODE
+			(
+				useYN,
+				'Y', '회원',
+				'N', '탈퇴회원',
+				'비회원'
+			)
+			useYN
+		FROM MBT_USER 
+		ORDER BY user_idx
+	</select>
 	
 </mapper>   

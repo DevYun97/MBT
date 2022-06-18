@@ -1,6 +1,9 @@
 /* Bootstrap css override */
 
 /* 폰트 사이즈 설정 */
+.fontSize18 {
+  font-size: 18px;
+}
 .fontSize14 {
   font-size: 14px;
 }
