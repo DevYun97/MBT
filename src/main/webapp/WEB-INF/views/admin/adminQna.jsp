@@ -25,11 +25,18 @@
 
       <!-- 메인 -->
       
+	  <!-- 서브바 -->
+      <div class="w-100 d-flex justify-content-around align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+        <a class="text-body" href="/admin/admin">사이트관리</a>
+        <a class="text-body" href="/admin/adminQna">QnA관리</a>
+        <a class="text-body" href="/admin/member">회원관리</a>       
+      </div>
+      
       <!-- 검색기능 넣기 -->
       <div class="w-100 d-flex justify-content-end align-items-center mt-4 mb-2">
         <form id="qnaFrm" name="qnaFrm" >
 	        <select id="qnaType" name="qnaType">
-	        	<option value="seq">선택</option>
+	        	<option value="seq">전체문의</option>
 	        	<option value="qnaNo">미답변</option>
 	        	<option value="qnaOk">답변완료</option>
 	        </select> 
