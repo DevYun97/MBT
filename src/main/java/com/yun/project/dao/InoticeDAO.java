@@ -18,5 +18,7 @@ public interface InoticeDAO {
 	public int updateNotice(Notice notice);
 	
 	public int deleteNotice(int notice_idx);
+	
+	public ArrayList<Notice> mainNoticeShow();
 
 }

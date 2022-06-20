@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yun.project.dao.IboardDAO;
+import com.yun.project.dao.InoticeDAO;
+import com.yun.project.dto.Notice;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +29,9 @@ public class MainController {
 	@Autowired
 	IboardDAO boardDao;
 
+	@Autowired
+	InoticeDAO noticeDao;
+	
 	@RequestMapping("")
 	public String root() {
 		return "redirect:main";
@@ -37,13 +42,15 @@ public class MainController {
 			@RequestParam Map<String, Object> map,
 			Model model) {
 		
+		ArrayList<Notice> notice = noticeDao.mainNoticeShow();
+		model.addAttribute("notice", notice);
+		// 게시판
 		if(map.isEmpty()) {
 			map.put("pageNo", 1);
 			map.put("listSize", 3);
 		}
-		
 		ArrayList<Map<String, Object>> boardList = boardDao.getBoardList(map);
-		model.addAttribute("board",boardList);
+		model.addAttribute("board", boardList);
 		return "main";
 	}
 			

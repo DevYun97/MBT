@@ -45,6 +45,24 @@
         </div>     
       </div>
       
+      <!-- 공지사항 일부 노출 -->
+      <div id="carouselExampleSlidesOnly" class="carousel slide w-100 p-3 mb-2 bg-light text-dark" data-ride="carousel">
+	  	<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div class="w-100 pointer" onclick="location.href='customer/notice'">
+			    	[ <i class="bi bi-megaphone"></i> ] ${ notice[0].notice_title }
+			    </div>
+			</div>
+			<c:forEach var="note" items="${ notice }" >
+			<div class="carousel-item">
+			    <div class="w-100 pointer" onclick="location.href='customer/notice'">
+			        [ <i class="bi bi-megaphone"></i> ] ${ note.notice_title }
+			    </div>
+			</div>
+			</c:forEach>			  
+		</div>
+	  </div>	   
+		       
       <!-- 게시판 일부 불러오기 -->
 		<div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         <div class="w-100 text-right border-bottom pb-1">

@@ -10,6 +10,16 @@
 		SELECT * FROM mbt_notice ORDER BY notice_date DESC
 	</select>
 	
+	<!-- 중요 공지사항 조회 -->
+	<select id="mainNoticeShow" resultType="com.yun.project.dto.Notice">
+		SELECT 
+			notice_title 
+		FROM 
+			mbt_notice 
+		WHERE notice_show = 'on' 
+		ORDER BY notice_idx DESC
+	</select>
+	
 	<select id="getNoticeInfo" resultType="com.yun.project.dto.Notice">
 		SELECT * FROM mbt_notice WHERE notice_idx = ${notice_idx}
 	</select>
