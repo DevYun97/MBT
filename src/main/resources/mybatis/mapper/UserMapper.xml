@@ -41,14 +41,14 @@
 	<!-- IDFIND _user_name + user_email -->
 	<select id="getUserIdFind" resultType="String">
 		SELECT user_id FROM MBT_USER 
-		WHERE user_name = #{ param1 } AND user_email = #{ param2 } 
+		WHERE user_name = #{ param1 } AND user_email = #{ param2 } AND useYN = 'Y'
 	</select>
 	
 	<!-- PWFIND _user_name + user_id -->
 	<select id="getUserPwFind" resultType="String">
 		SELECT user_pw 
 		FROM MBT_USER 
-		WHERE user_name = #{ param1 } AND user_id = #{ param2 } 
+		WHERE user_name = #{ param1 } AND user_id = #{ param2 } AND useYN = 'Y' 
 	</select>
 
 	<!-- 유저 회원가입 -->
@@ -58,13 +58,37 @@
 	</insert>
 	
 	<!-- 유저 인덱스가 일치시 유저 정보 삭제 -->
-	<delete id="deleteUser">
-		DELETE FROM MBT_USER WHERE user_idx= ${ user_idx }
-	</delete>
+	<update id="updateUseYN">
+		UPDATE MBT_USER SET useYN = #{ param2 } WHERE user_idx= #{ param1 }
+	</update>
 	
 	<!-- 인덱스로 유저 정보 가져오기 -->
 	<select id="getMemberInfo" resultType="com.yun.project.dto.User">
-		SELECT * FROM MBT_USER 
+		SELECT
+			user_idx,		
+			user_id,
+			user_name,
+			user_email,
+			user_phone,
+			DECODE
+			(
+				user_rank,
+				'AA', '관리자',
+				'BB', '매니저',
+				'CC', '유저'
+			)
+			user_rank,
+			DECODE
+			(
+				useYN,
+				'Y', '회원',
+				'N', '탈퇴회원',
+				'비회원'
+			)
+			useYN,
+			user_join,
+			user_address
+		FROM MBT_USER 
 		WHERE user_idx = #{user_idx}
 	</select>
 	
@@ -82,7 +106,7 @@
 	</update>
 	
 	
-	<!-- 유저 정보 전부 조회 -->
+	<!-- 유저리스트 조회 -->
 	<select id="userList" resultType="com.yun.project.dto.User">
 		SELECT
 			user_idx,
@@ -103,8 +127,23 @@
 				'비회원'
 			)
 			useYN
-		FROM MBT_USER 
+		FROM MBT_USER
+		WHERE 1=1
+		<choose>
+			<when test=" useType == 'useY' ">
+				and useYN like '회원'
+			</when>
+			<when test=" useType == 'useN' ">
+				and useYN like 'N'
+			</when>
+		</choose>
 		ORDER BY user_idx
 	</select>
+	
+	<!-- 관리자용 회원 영구탈퇴 (복구x) -->
+	<delete id="quit">
+		DELETE FROM MBT_USER 
+		WHERE user_idx= #{ user_idx }
+	</delete>
 	
 </mapper>   

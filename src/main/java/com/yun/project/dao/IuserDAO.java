@@ -25,8 +25,8 @@ public interface IuserDAO {
 	public String getUserPwFind(String user_name, String user_id);
 	//회원가입
 	public int insertUser(User user);
-	//회원탈퇴
-	public int deleteUser(int user_idx);
+	//회원(임시)탈퇴 
+	public int updateUseYN(int user_idx, String useYN);
 	//회원정보 불러오기
 	public User getMemberInfo(int user_idx);
 	//회원정보 수정
@@ -35,5 +35,6 @@ public interface IuserDAO {
 	public int updatePwInfo(int user_idx, String user_pw);
 	//유저리스트 - 관리자
 	public ArrayList<User> userList(Map<String, Object> map);
-
+	//회원 영구탈퇴 (관리자용)
+	public int quit(int user_idx);
 }
