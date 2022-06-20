@@ -82,7 +82,7 @@
 			(
 				useYN,
 				'Y', '회원',
-				'N', '탈퇴회원',
+				'N', '탈퇴',
 				'비회원'
 			)
 			useYN,
@@ -116,14 +116,14 @@
 				user_rank,
 				'AA', '관리자',
 				'BB', '매니저',
-				'CC', '유저'
+				'CC', '일반회원'
 			)
 			user_rank,
 			DECODE
 			(
 				useYN,
 				'Y', '회원',
-				'N', '탈퇴회원',
+				'N', '탈퇴',
 				'비회원'
 			)
 			useYN
@@ -131,7 +131,7 @@
 		WHERE 1=1
 		<choose>
 			<when test=" useType == 'useY' ">
-				and useYN like '회원'
+				and useYN like 'Y'
 			</when>
 			<when test=" useType == 'useN' ">
 				and useYN like 'N'

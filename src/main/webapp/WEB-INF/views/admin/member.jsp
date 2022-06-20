@@ -33,7 +33,7 @@
       <!-- 검색기능 넣기 -->
       <div class="w-100 d-flex justify-content-end align-items-center mt-4 mb-2">
         <form id="memFrm" name="memFrm" >
-	        <select id="memType" name="memType">
+	        <select id="useType" name="useType">
 	        	<option value="all">전체조회</option>
 	        	<option value="useY">회원</option>
 	        	<option value="useN">탈퇴회원</option>
@@ -43,19 +43,19 @@
       
       <!-- 메인 -->
 	 <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-        <div id="qnaList" class="w-100">
-       <c:forEach var="mem" items="${ member }">
-        <a href="../admin/memDetail?user_idx=${ mem.user_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>${ mem.user_id }</div>
-          <div class="text-right" >
-            <span class="pr-2">${ mem.user_rank }</span>
-            <span class="pr-3"> [ ${ mem.useYN } ] </span>
-            <span class="pr-1 fontSize12 text-muted">
-            상세조회 <i class="bi bi-chevron-right"></i>
-            </span>      	
-          </div>
-        </a>
-        </c:forEach>
+        <div id="memList" class="w-100">
+	       <c:forEach var="mem" items="${ member }">
+	        <a href="../admin/memberInfo?user_idx=${ mem.user_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
+	          <div>${ mem.user_id }</div>
+	          <div class="text-right" >
+	            <span class="pr-3 ">${ mem.user_rank }</span>
+	            <span class="pr-2 text-muted fontSize12"> [ ${ mem.useYN } ] </span>
+	            <span class="pr-1 fontSize12 text-muted">
+	            상세조회 <i class="bi bi-chevron-right"></i>
+	            </span>      	
+	          </div>
+	        </a>
+	        </c:forEach>
         </div>
      </div>          
            
@@ -67,7 +67,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
-    
+   <script>
+  	$( function() {
+  		$("#useType").change(function(){
+  			$.ajax({		
+  				url:"memAjax",  // action
+  				type:"get",  	 // method 
+  				data : $("#memFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
+  				success: function(date){								
+  					$("#memList").html(date);  // 호출받아서 실행되는 부분. 			
+  				},		
+  				error:function(){
+  					alert("error");
+  				}
+  			})
+  		})
+  	})
+  </script> 
     
   </body>
 </html>

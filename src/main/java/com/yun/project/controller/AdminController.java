@@ -78,8 +78,7 @@ public class AdminController {
 	  //회원 리스트 불러오기
 	  @RequestMapping("member")
 		public String member(
-					@RequestParam Map <String, Object> map,
-					HttpSession session, Model model ){
+					@RequestParam Map <String, Object> map, Model model ){
 					
 				ArrayList<User> memList = userDao.userList(map);
 				model.addAttribute("member", memList);
@@ -90,10 +89,9 @@ public class AdminController {
 	  @RequestMapping("memAjax")	  
 	  public String memAjax(	  
 			  @RequestParam Map <String, Object> map,
-			  HttpSession session, Model model ){	  
-		  
-		  	ArrayList<Qna> getQnaList = qnaDao.getQnaList(map);
-			model.addAttribute("getQnaList", getQnaList);
+			  Model model ){	  
+		  	ArrayList<User> memList = userDao.userList(map);
+			model.addAttribute("member", memList);
 			return "admin/memList";
 			
 	  }

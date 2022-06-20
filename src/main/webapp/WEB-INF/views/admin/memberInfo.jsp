@@ -66,11 +66,11 @@
         		</tr>
         	</table>       	
         	<div class="w-100 d-flex justify-content-center mt-5 mb-3" >
-        		<c:if test="${ mem.useYN eq '탈퇴회원' }">
-        		<input type="button" class=" btn btn-primary col-3 mx-2 pl-2"  value="회원정보 복구" onclick="restoreUser()" />
-        		<input type="button" class=" btn btn-primary col-3 mx-2"  value="영구탈퇴" onclick="realQuit()" />
+        		<c:if test="${ mem.useYN eq '탈퇴' }">
+        		<input type="button" class=" btn btn-primary col-3 mx-2 pl-2" value="회원정보 복구" onclick="restoreUser()" />
+        		<input type="button" class=" btn btn-primary col-3 mx-2" value="영구탈퇴" onclick="realQuit()" />
         		</c:if>
-        		<input type="button" class=" btn btn-primary col-3 mx-2"  value="확인" onclick="history.back(-1);" />
+        		<input type="button" class=" btn btn-primary col-3 mx-2" value="확인" onclick="history.back(-1);" />
         	</div>
         	           
         </div>

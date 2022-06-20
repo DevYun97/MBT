@@ -18,10 +18,12 @@ public class UserService {
 		String result = "<script>alert('로그인 실패!'); history.back(-1);</script>";		
 		String userID = userDao.getUserID(user_id);
 		if(userID == null) {
+			System.out.println("아이디 없음");
 			return result;
 		}
 		String userPw = userDao.getUserPW(user_id);
 		if(user_pw.equals(userPw)) {
+			
 			int user_idx = userDao.getUserIDX(user_id);	
 			String user_rank = userDao.getUserRank(user_id);
 			session.setAttribute("user_rank", user_rank);
@@ -30,9 +32,11 @@ public class UserService {
 			result = "<script>alert('로그인 성공!'); location.href='../main';</script>";
 			return result;
 		}
+		System.out.println("비밀번호 없음");
 		return result;
 	}
 	
+	//아이디 찾기
 	public String idFind( String user_name, String user_email) {
 		
 		String user_id = userDao.getUserIdFind(user_name, user_email);
@@ -43,6 +47,7 @@ public class UserService {
 		}	
 	}
 	
+	//비밀번호 찾기 
 	public String pwFind( String user_name, String user_id) {
 		
 		String user_pw = userDao.getUserPwFind(user_name, user_id);
@@ -53,6 +58,7 @@ public class UserService {
 		}	
 	}
 	
+	//Id 중복확인 Ajax
 	public int idCheckAjax(String user_id) {
 		String user_ID = userDao.getUserID(user_id);
 		if(user_ID == null) {
@@ -62,6 +68,7 @@ public class UserService {
 		}
 	}
 	
+	//비밀번호 변경 확인 Ajax
 	public int pwChkAjax(String user_id, String user_pw, HttpSession session) {
 		
 		String userPw = userDao.getUserPW(user_id);
@@ -75,6 +82,7 @@ public class UserService {
 		
 	}
 	
+	//회원가입
 	public String join(User user) {
 		
 		int result = userDao.insertUser(user);
@@ -107,10 +115,26 @@ public class UserService {
 		}		
 	}
 	
-	public String quit(int user_idx) {
-		int result = userDao.deleteUser(user_idx);
-		if(result ==1) {
-			return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='../main';</script>";
+	public String quit(int user_idx, String useYN) {
+		int result = userDao.updateUseYN(user_idx, useYN);
+		if(result == 1) {
+			
+			if( useYN.equals("Y") ) { // 관리자의 회원정보 복구 성공일 경우
+				return "<script>alert('회원정보 복구에 성공하였습니다.'); location.href='../admin/member';</script>";
+			} else { // 일반 회원의 회원탈퇴 성공일 경우
+				return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='../main';</script>";
+			}			
+		}
+		else {
+			return "<script>alert('회원탈퇴에 실패하였습니다.'); history.back(-1);</script>";
+		}
+		
+	}
+	
+	public String realQuit(int user_idx) {
+		int result = userDao.quit(user_idx);
+		if(result == 1) {
+				return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='../admin/member';</script>";
 		}
 		else {
 			return "<script>alert('회원탈퇴에 실패하였습니다.'); history.back(-1);</script>";

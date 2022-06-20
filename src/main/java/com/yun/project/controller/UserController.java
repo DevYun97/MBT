@@ -170,10 +170,13 @@ public class UserController {
 		
 	@RequestMapping("quitAction")
 	@ResponseBody
-	public String quitAction(@RequestParam("user_idx") int user_idx, HttpSession session, HttpServletRequest request ) {
+	public String quitAction(
+			@RequestParam ("user_idx") int user_idx,
+			@RequestParam ("useYN") String useYN,
+				HttpSession session, HttpServletRequest request ) {
 		
 		Integer.parseInt(String.valueOf(session.getAttribute("user_idx")));
-		String result = userService.quit(user_idx);
+		String result = userService.quit(user_idx, useYN);
 		request.getSession().invalidate();
 		return result;
 	
