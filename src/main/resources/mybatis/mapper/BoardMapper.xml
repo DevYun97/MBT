@@ -16,7 +16,8 @@
 
 	<!-- 컬럼 데이터 갯수 -->
 	<select id="boardCount" parameterType="map" resultType="integer">
-		SELECT count(board_idx) 
+		SELECT 
+			count(board_idx) 
 		FROM mbt_board 
 		WHERE 1=1
 		<choose>
@@ -41,7 +42,7 @@
 		FROM 
 			(
 			select
-				row_number() over(order by board_idx desc ) rnum, 
+				row_number() over(order by board_idx asc ) rnum, 
 				board_title,
 				board_data, 
 				board_user 
@@ -61,7 +62,8 @@
 	
 	<!-- 게시판 작성 -->
 	<insert id="insertBoard">
-		INSERT INTO mbt_board (board_idx, board_user, board_title, board_content, board_data)
+		INSERT INTO mbt_board
+			( board_idx, board_user, board_title, board_content, board_data )
 		VALUES (
 			(select nvl(max(board_idx),0)+1 from mbt_board),
 			#{user_id},

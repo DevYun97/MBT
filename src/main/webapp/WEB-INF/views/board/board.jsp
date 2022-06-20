@@ -61,7 +61,7 @@
         <!-- 게시판 불러오기 -->
         <c:forEach var="board" items="${ board }">
         <a href="../board/boardDetail?board_idx=${ board.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>${board.board_title}</div>
+          <div> ${ board.board_title } </div>
           <div class="text-right">
             <small class="pr-2">${ board.board_user }</small>
             <small>${board.board_data}</small>
