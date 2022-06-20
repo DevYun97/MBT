@@ -34,7 +34,7 @@
             <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디">
             <input type="button" class="btn btn-primary px-1 fontSize12" value="중복체크" style="height: 30px; width: 55px;" onclick="idCheck();">
             <input type="hidden" name="isIDChecked" id="isIDChecked" value='no'>
-            <div id="al1" style="color: red; display: none;" >*중복되는 아이디 입니다.*</div>
+            <div id="al1" style="color: red; display: none;" >*사용할 수 없는 아이디 입니다.*</div>
 	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
           </div>          
           <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호">          
