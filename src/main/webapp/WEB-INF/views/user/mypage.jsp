@@ -50,7 +50,7 @@
       </div>
       <!-- 회원탈퇴 -->
       <div class="w-100 ml-0 mr-0 border p-2 mb-5">
-        <div class="text-dark pl-2 my-1" onclick="quit()">회원탈퇴</div>         
+        <div class="text-dark pl-2 my-1 pointer" onclick="userQuit()">회원탈퇴</div>         
       </div>
     <!-- Content div 종료 -->
     </div>
@@ -61,11 +61,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script>
-    function quit(){
+    function userQuit(){
     	var message = "회원탈퇴를 진행하시겠습니까?";
     	result = window.confirm(message);
     	if(result == true ){
-    		location.href = '../user/quitAction?user_idx=${user_idx}';
+    		location.href = '../user/quitAction?user_idx=${user_idx}&&useYN=N';
     	} else {
     	}
      }  
