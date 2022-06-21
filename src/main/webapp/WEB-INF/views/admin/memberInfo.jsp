@@ -83,25 +83,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
-    <script>
-    
-    function realQuit(){
-    	var message = "회원정보를 영구 삭제하시겠습니까? 삭제된 정보는 복구가 불가능합니다.";  	
-    	result = window.confirm(message);
-    	if(result == true ){
-    		location.href = '../admin/realQuit?user_idx=${mem.user_idx}';
-    	} else {
-    	}
-     }
-    function restoreUser(){
-    	 
-    	var message = "회원정보를 복구 하시겠습니까?";
-    	result = window.confirm(message);
-    	if(result == true ){
-    		location.href = '../admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y';
-    	} else {
-    	}
-     } 
-    </script>
   </body>
 </html>

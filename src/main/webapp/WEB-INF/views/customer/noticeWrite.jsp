@@ -60,13 +60,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
-    <script>
-    	function noticeWriteBtn(){
-    		$("#noticeFrm").attr("action", "noticeWriteAction").attr("method","post").submit(); 		
-    	}
-    	function noticeUpdateBtn(){
-    		$("#noticeFrm").attr("action", "noticeModifyAction").attr("method","post").submit(); 		
-    	}
-    </script>
   </body>
 </html>

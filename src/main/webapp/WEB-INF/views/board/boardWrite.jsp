@@ -76,14 +76,5 @@
     <!-- main js -->
     <script src="/js/main.js"></script>
   
-    
-    <script>
-    	function boardWriteBtn(){
-    		$("#boardFrm").attr("action", "boardWriteAction").attr("method","post").submit(); 		
-    	}
-    	function boardUpdateBtn(){
-    		$("#boardFrm").attr("action", "boardUpdateAction").attr("method","post").submit(); 		
-    	}
-    </script>
   </body>
 </html>

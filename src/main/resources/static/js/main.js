@@ -13,8 +13,8 @@ function popupHideAndShow(target) {
   }
 };
 
- //ajax을 이용한 id 중복체크 여부기능 
- function idCheck() {
+//ajax을 이용한 id 중복체크 여부기능 
+function idCheck() {
 	const user_id = $('#user_id').val();
 	if(!user_id){
 		alert("아이디 중복체크 후 회원가입이 가능합니다");
@@ -51,37 +51,36 @@ function popupHideAndShow(target) {
 	    		}	
 			}    		
 	);
- }
+}
 
- //회원가입약관 팝업창과 체크박스 연결
- function joinCheck(joinCheckBox){
+//회원가입약관 팝업창과 체크박스 연결
+function joinCheck(joinCheckBox){
    let joinCkBox = document.getElementById(joinCheckBox);
    joinCkBox.checked = true;
    popupHideAndShow(target);
- }
+}
 
- // null값 체크 ( 체크박스 포함 )
- function nullChecker(){
- const target = document.getElementsByClassName('nullcheck');
- for(i=0; i<target.length; i++){
-    if(target[i].value == ''){
-        alert(target[i].placeholder);
-        target[i].focus();
-        return false;
-    }else if(target[i].type == 'checkbox' && target[i].checked == false){
-      alert('체크사항을 확인 해 주세요');
-      return false;
-    }
-  }
-  return true;
- };
+// null값 체크 ( 체크박스 포함 )
+function nullChecker(){
+	const target = document.getElementsByClassName('nullcheck');
+ 	for(i=0; i<target.length; i++){
+    	if(target[i].value == ''){
+        	alert(target[i].placeholder);
+        	target[i].focus();
+        	return false;
+    	}else if(target[i].type == 'checkbox' && target[i].checked == false){
+      	alert('체크사항을 확인 해 주세요');
+      	return false;
+    	}
+  	}
+  	return true;
+};
 
- // kakao 주소 api
- function sample6_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
+// kakao 주소 api
+function sample6_execDaumPostcode() {
+	new daum.Postcode({
+    	oncomplete: function(data) {
+        	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             let addr = ''; // 주소 변수
@@ -125,23 +124,195 @@ function popupHideAndShow(target) {
     }).open();
 };
 
- // 회원가입페이지 모든 체크사항 체크
- function joinCheckAll(){
+// 회원가입페이지 모든 체크사항 체크
+function joinCheckAll(){
     	
-		const isIDChecked = $('#isIDChecked').val();			
-		const userNull = nullChecker();
+	const isIDChecked = $('#isIDChecked').val();			
+	const userNull = nullChecker();
 		
-		if( isIDChecked == 'no'){
-			alert("아이디 중복확인 후 회원가입이 가능합니다.");
-			return false;
-		}	
-		if( userNull == false) {
-			return false;
-		}		
-		const address1 = $('#sample6_address').val();
-		const address2 = $('#sample6_detailAddress').val();
-		$('#user_address').val( address1 + " " + address2 ); 
+	if( isIDChecked == 'no'){
+		alert("아이디 중복확인 후 회원가입이 가능합니다.");
+		return false;
+	}	
+	if( userNull == false) {
+		return false;
+	}		
+	const address1 = $('#sample6_address').val();
+	const address2 = $('#sample6_detailAddress').val();
+	$('#user_address').val( address1 + " " + address2 ); 
 		
-		document.forms[0].submit();
-		return true;
+	document.forms[0].submit();
+	return true;
  }
+ 
+// user 페이지 ==
+//userInfo  
+function userInfoUpdate(){
+    		
+	if( $('#userUpdate').val() =="no" ){ //정보 수정하기로 변경
+    			
+    	$('.disabledChk').removeAttr("disabled");
+        /* 주소 */
+        $('#address1').css('display','none');
+        $('#address2').css('display','block');
+        /* 버튼 */
+        $('#userInfoBtn1').css('display','none');
+        $('#userInfoBtn2').css('display','block');
+        /*  */
+    	$('#userUpdate').val("ok");
+
+    } else { // 수정하기 취소상태로 변경     		   			
+    	$('.disabledChk').attr("disabled");
+        /* 주소 */
+        $('#address1').css('display','block');
+        $('#address2').css('display','none');
+        /* 버튼 */
+        $('#userInfoBtn1').css('display','block');
+        $('#userInfoBtn2').css('display','none');
+        /*  */
+    	$('#userUpdate').val("no");
+    }
+}
+
+// 주소 합치기
+function addressAdd(){
+    const address1 = $('#sample6_address').val();
+	const address2 = $('#sample6_detailAddress').val();
+	$('#user_address').val( address1 + " " + address2 );
+	return true;
+}
+        
+// 비밀번호 수정 스크립트
+$("#pwChangeFrm").keyup(function(){ 
+
+	const pw1 = $('#pw1').val();
+    const pw2 = $('#pw2').val();
+      
+    if( !pw1 || !pw2){      //null 체크
+        $('#pwCkOk').css('display','none');   
+        $('#pwCkNo').css('display','none');
+	}
+    else if( pw1 != pw2 ) { //비밀번호 수정이 일치하지 않을 경우
+    	$('#pwCkNo').css('display','block');
+        $('#pwCkOk').css('display','none');   		
+    }
+    else if(pw1 == pw2){  //비밀번호 수정이 일치
+        $('#pwCkNo').css('display','none');
+        $('#pwCkOk').css('display','block');
+    }
+});
+
+// 비밀번호 일치 ajax
+$(function(){
+	$('#checkPw').focusout(function(){
+    	//비밀번호 확인
+        const user_pw = $('#checkPw').val();
+        if(!user_pw){
+        	alert("비밀번호를 입력해주세요.");
+        	return false;
+        }
+        $.ajax({
+            url: 'http://localhost:8085/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	///action
+            type: 'POST', //method     
+            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+            	let data_num = Number( data );
+            	if( data_num >= 1){
+      				alert('기존비밀번호를 재확인 해 주세요')
+      			  }else{
+                	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+      			  }
+      			},
+            error: function(){
+              console.log('통신 실패');
+            }	
+    	});
+	})
+})
+
+// 마이페이지 _ 회원탈퇴
+function userQuit(){
+    var message = "회원탈퇴를 진행하시겠습니까?";
+    result = window.confirm(message);
+    if(result == true ){
+    	location.href = '../user/quitAction?user_idx=${user_idx}&&useYN=N';
+    } else {
+    }
+}
+
+// customer 폴더 
+//공지사항 작성
+function noticeWriteBtn(){
+    $("#noticeFrm").attr("action", "noticeWriteAction").attr("method","post").submit(); 		
+}
+
+// 공지사항 수정
+function noticeUpdateBtn(){
+    $("#noticeFrm").attr("action", "noticeModifyAction").attr("method","post").submit(); 		
+}
+
+// board 폴더
+// 게시판 작성
+function boardWriteBtn(){
+    $("#boardFrm").attr("action", "boardWriteAction").attr("method","post").submit(); 		
+}
+
+// 게시판 수정
+function boardUpdateBtn(){
+    $("#boardFrm").attr("action", "boardUpdateAction").attr("method","post").submit(); 		
+}
+
+// admin 폴더
+// 관리자_ 회원의 영구 탈퇴 이벤트
+function realQuit(){
+    var message = "회원정보를 영구 삭제하시겠습니까? 삭제된 정보는 복구가 불가능합니다.";  	
+    result = window.confirm(message);
+    if(result == true ){
+    	location.href = '../admin/realQuit?user_idx=${mem.user_idx}';
+    } else {
+    }
+}
+
+// 관리자_ 회원 계정 복구
+function restoreUser(){
+    	 
+    var message = "회원정보를 복구 하시겠습니까?";
+    result = window.confirm(message);
+    if(result == true ){
+    	location.href = '../admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y';
+    } else {
+	}
+} 
+
+// 회원 리스트 select 검색
+$( function() {
+  	$("#useType").change(function(){
+  		$.ajax({		
+  			url:"memAjax",  // action
+  			type:"get",  	 // method 
+  			data : $("#memFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
+  			success: function(date){								
+  				$("#memList").html(date);  // 호출받아서 실행되는 부분. 			
+  			},		
+  			error:function(){
+  				alert("error");
+  			}
+  		})
+	})
+})
+
+// QnA 리스트 select 검색
+$( function() {
+  	$("#qnaType").change(function(){
+  		$.ajax({		
+  			url:"qnaAjax",  // action
+  			type:"get",  	 // method 
+  			data : $("#qnaFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
+  			success: function(date){								
+  				$("#qnaList").html(date);  // 호출받아서 실행되는 부분. 			
+  			},		
+  			error:function(){
+  				alert("error");
+  			}
+  		})
+	})
+})

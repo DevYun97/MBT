@@ -43,7 +43,6 @@
         </c:forEach>        
       </div>
       <!-- Content div 종료 -->
-      <!-- 쪽수메기기 -->
      
     </div>
 

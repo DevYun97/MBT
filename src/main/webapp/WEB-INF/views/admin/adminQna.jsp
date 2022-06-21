@@ -67,22 +67,5 @@
     <!-- main js -->
     <script src="/js/main.js"></script>
     
-    <script>
-  	$( function() {
-  		$("#qnaType").change(function(){
-  			$.ajax({		
-  				url:"qnaAjax",  // action
-  				type:"get",  	 // method 
-  				data : $("#qnaFrm").serialize( ),  // controller 로 보내고 싶은 값  json 이라는 방식과 serialize( ) 방식
-  				success: function(date){								
-  					$("#qnaList").html(date);  // 호출받아서 실행되는 부분. 			
-  				},		
-  				error:function(){
-  					alert("error");
-  				}
-  			})
-  		})
-  	})
-  </script>
-  </body>
+	</body>
 </html>
