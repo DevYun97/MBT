@@ -16,6 +16,8 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+MBT/.gradle
+MBT/.properties
 
 ### IntelliJ IDEA ###
 .idea
