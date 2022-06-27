@@ -6,9 +6,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yun.project.controller.UserController;
 import com.yun.project.dao.IuserDAO;
 import com.yun.project.dto.User;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class UserService {
 	@Autowired
@@ -17,8 +20,7 @@ public class UserService {
 	public String login( String user_id, String user_pw, HttpSession session ) {
 		String result = "<script>alert('로그인 실패!'); history.back(-1);</script>";		
 		String userID = userDao.getUserID(user_id);
-		if(userID == null) {
-			System.out.println("아이디 없음");
+		if(userID == null) {	//아이디가 존재하지 않을 경우
 			return result;
 		}
 		String userPw = userDao.getUserPW(user_id);
@@ -28,12 +30,11 @@ public class UserService {
 			String user_rank = userDao.getUserRank(user_id);
 			session.setAttribute("user_rank", user_rank);
 			session.setAttribute("user_id", user_id);
-			session.setAttribute("user_idx", user_idx);					
+			session.setAttribute("user_idx", user_idx);
 			result = "<script>alert('로그인 성공!'); location.href='../main';</script>";
 			return result;
-		}
-		System.out.println("비밀번호 없음");
-		return result;
+		}		
+		return result;	// 입력한 아이디와 비밀번호가 일치하지 않을 경우
 	}
 	
 	//아이디 찾기
