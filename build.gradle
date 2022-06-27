@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'jar'
+	id 'war'
 }
 
 group = 'com.yun'
@@ -19,6 +19,10 @@ repositories {
 	mavenCentral()
 }
 
+//error내용 : Cannot load driver class: oracle.jdbc.OracleDriver
+//ojdbc6.jar add build path하지 않은 에러!
+
+//Gradle파일을 수정하면, 반드시! 저장후 Refresh Gradle Project로 반영해야 됨.
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
