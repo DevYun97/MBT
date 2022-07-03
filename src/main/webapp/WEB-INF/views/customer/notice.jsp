@@ -17,14 +17,14 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
       <!-- 서브바 -->
-      <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+      <div class="w-100 d-flex justify-content-between align-items-center mx-0 border p-2" style="height: 56px; margin-top:80px;">
         <h6 class="m-0 font-weight-bold">공지사항</h6>
         <!-- 관리자용 -->
         <div>
@@ -38,7 +38,7 @@
         <c:forEach var="dto" items="${ getNoticeList }">
         <a href="../customer/noticeDetail?notice_idx=${ dto.notice_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div>${dto.notice_title}</div>
-          <div class="text-right text-muted fontSize12" >${dto.notice_date}<i class="bi bi-chevron-right"></i></div>
+          <div class="text-right text-muted fontSize12">${dto.notice_date}<i class="bi bi-chevron-right"></i></div>
         </a>
         </c:forEach>        
       </div>

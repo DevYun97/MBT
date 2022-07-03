@@ -17,11 +17,11 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px; max-height: 800px; overflow: auto;">
       
       <!-- 헤더 -->
       <div class="w-100 d-flex justify-content-between align-items-center font-weight-bold pl-3 my-2 w-100 pb-2 pt-3 text-black-50 pb-3 border-bottom" >
-        <div class="pointer" style="cursor: pointer;" onclick="location.href='../user/mypage';">
+        <div class="pointer" onclick="location.href='../user/mypage';">
           <i class="bi bi-chevron-left pr-2"></i>회원정보
         </div>
         <div>
@@ -33,7 +33,7 @@
       
       <!-- 유저 섬네일 / 아이디 -->
       <form action="userInfoAction?user_idx=${ user.user_idx }" method="post" style="width:320px;" onsubmit="return addressAdd();">
-        <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 mt-5 p-2 border rounded">
+        <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 mt-4 p-2 border rounded">
                
           <div class="mt-3 col-12 font-weight-bold form-group text-dark">아이디           
             <input type="text" class="form-control col-12 rounded font-weight-nomal nullcheck bg-white mt-1 " value="${ user.user_id }" disabled>
@@ -72,7 +72,7 @@
         </div>
               
         <!-- 수정하기 button -->
-          <div class="mt-5 mb-5 align-items-center text-center">
+          <div class="mt-4 mb-5 align-items-center text-center">
             <a href="mypage" class="btn btn-primary col-12 text-light form-control" style="display: block;" id="userInfoBtn1"> 확인 </a>
             <button type="submit" class="btn btn-primary col-12 text-light form-control" style="width: 300px; display: none;" id="userInfoBtn2"> 수정 </button>
           </div>
@@ -89,7 +89,7 @@
       <!-- MainDiv -->
       <div class="w-100 d-flex flex-column justify-content-center align-items-center">
         <h6 class="">비밀번호 변경하기</h6>
-        <form action="pwChangeAction?user_idx=${user.user_idx}" method="post" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2">
+        <form action="pwChangeAction?user_idx=${user.user_idx}" method="post" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
           <input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요">
           <input type="password" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요">
           <input type="password" class="my-1 w-75 form-control" name="user_pw" id="pw2" placeholder="새 비밀번호 재확인">
@@ -107,5 +107,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script> 
+    <script>
+	 	// 비밀번호 일치 ajax
+	    $(function(){
+	    	$('#checkPw').focusout(function(){
+	        	//비밀번호 확인
+	            const user_pw = $('#checkPw').val();
+	            if(!user_pw){
+	            	alert("비밀번호를 입력해주세요.");
+	            	return false;
+	            }
+	            $.ajax({
+	                url: 'http://localhost:8080/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	// action
+	                type: 'POST', //method     
+	                success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+	                	let data_num = Number( data );
+	                	if( data_num >= 1){
+	          				alert('기존비밀번호를 재확인 해 주세요')
+	          			  }else{
+	                    	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
+	          			  }
+	          			},
+	                error: function(){
+	                  console.log('통신 실패');
+	                }	
+	        	});
+	    	})
+	    })
+ 	</script>
   </body>
 </html>

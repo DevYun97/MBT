@@ -17,7 +17,7 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
@@ -26,7 +26,7 @@
           
       <form id="boardFrm" method="post" class="w-100" onsubmit="return nullChecker();">
         <!-- 서브바 -->
-        <div class="w-100 d-flex justify-content-start align-items-center mx-0 mt-3 border p-2">          
+        <div class="w-100 d-flex justify-content-start align-items-center mx-0 border p-2" style="margin-top:80px;">          
           <div class="d-flex flex-column mx-1">
             <div class="pl-2 my-2 pointer" onclick="history.back('-1');" >
 	          <i class="bi bi-chevron-left mr-1" ></i>이전화면

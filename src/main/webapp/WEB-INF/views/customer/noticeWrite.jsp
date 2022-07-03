@@ -17,26 +17,26 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
-      <!-- 메인 -->
-     
-      <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+      <!-- 메인 -->     
+      <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 mb-3 border p-3" style="margin-top:80px;">
         <form id="noticeFrm" class="w-100" onsubmit="return nullChecker();">
           <!-- 공지사항 제목 -->
           <div class="w-100 border-bottom pt-2 pb-3">
             <div class="d-flex justify-content-between align-items-center mb-2 fontSize14" >                       
               <div>
-                <input type="checkbox" name="notice_show" id="notice_show" <c:if test="${ notice.notice_show eq 'on' }">checked</c:if>  /><label for="notice_show" class="m-0 pl-2">중요공지</label>
+                <input type="checkbox" name="notice_show" id="notice_show" <c:if test="${ notice.notice_show eq 'on' }">checked</c:if> />
+                <label for="notice_show" class="m-0 pl-2">중요공지</label>
               </div>            
             </div>
             <input type="text" name="notice_title" id="notice_title" class="col-12 form nullcheck" value="${notice.notice_title }" placeholder="공지사항 제목을 입력해주세요.">
           </div>
           <div class="w-100 mt-3 px-0 pb-3 text-left border-bottom">
-            <textarea name="notice_contents" id="notice_contents" rows="10" class="w-100 px-2 py-2 nullcheck"  placeholder="공지사항 내용을 입력해주세요.">${notice.notice_contents }</textarea>
+            <textarea name="notice_contents" id="notice_contents" rows="10" class="w-100 px-2 py-2 nullcheck" placeholder="공지사항 내용을 입력해주세요.">${notice.notice_contents }</textarea>
           </div>
           <!-- 버튼 div -->
           <div class="w-100 d-flex justify-content-center">

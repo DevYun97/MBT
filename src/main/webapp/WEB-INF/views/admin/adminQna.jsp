@@ -18,7 +18,7 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
@@ -26,7 +26,7 @@
       <!-- 메인 -->
       
 	  <!-- 서브바 -->
-      <div class="w-100 d-flex justify-content-around align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+      <div class="w-100 d-flex justify-content-around align-items-center mx-0 border p-2" style="height: 56px; margin-top:80px;">
         <a class="text-body" href="/admin/admin">사이트관리</a>
         <a class="text-body" href="/admin/adminQna">QnA관리</a>
         <a class="text-body" href="/admin/member">회원관리</a>       

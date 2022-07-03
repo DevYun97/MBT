@@ -15,13 +15,13 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; max-height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
       <!-- mainContent -->
-      <div class="container-fluid container-sm shadow border rounded my-5 mx-2" style="width:320px;">
+      <div class="container-fluid container-sm shadow border rounded mb-5 mx-2" style="width:320px; margin-top:95px;">
         <div class="d-flex flex-column">
           <div class="w-100 d-flex justify-content-center align-items-center text-center font-weight-bold py-2" style="height: 100px;">          
               ${user_id} 님           
@@ -29,7 +29,7 @@
           <!-- 회원정보 보기 링크 -->
           <div class="border-top w-100 container-fluid" style="height:40px;">
             <a href="../user/userInfo?user_idx=${ user_idx }" class="text-dark noDeco" >
-              <div class="col-11 text-left pl-2 mx-0 d-flex align-items-center pt-2" style="float: left;" >회원정보보기</div>
+              <div class="col-11 text-left pl-2 mx-0 d-flex align-items-center pt-2" style="float: left;">회원정보보기</div>
               <div class="mt-1"> > </div>
             </a>
           </div>
@@ -61,5 +61,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>    
+    <script>
+ // 마이페이지 _ 회원탈퇴
+    function userQuit(){
+        var message = "회원탈퇴를 진행하시겠습니까?";
+        result = window.confirm(message);
+        if(result == true ){
+        	location.href = '../user/quitAction?user_idx=${user_idx}&&useYN=N';
+        } else {
+        }
+    }
+    </script>
   </body>
 </html>

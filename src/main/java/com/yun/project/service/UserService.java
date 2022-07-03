@@ -118,8 +118,7 @@ public class UserService {
 	
 	public String quit(int user_idx, String useYN) {
 		int result = userDao.updateUseYN(user_idx, useYN);
-		if(result == 1) {
-			
+		if(result == 1) {			
 			if( useYN.equals("Y") ) { // 관리자의 회원정보 복구 성공일 경우
 				return "<script>alert('회원정보 복구에 성공하였습니다.'); location.href='../admin/member';</script>";
 			} else { // 일반 회원의 회원탈퇴 성공일 경우

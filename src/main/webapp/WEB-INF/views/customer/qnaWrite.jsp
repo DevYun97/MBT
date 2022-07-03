@@ -17,16 +17,15 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
-      <!-- 메인 -->
      <!-- 메인 -->
       <form action="qnaWriteAction" method="post" class="w-100" onsubmit="return nullChecker();">
         <!-- 서브바 -->
-        <div class="w-100 d-flex justify-content-end align-items-center mx-0 mt-3 border p-2">          
+        <div class="w-100 d-flex justify-content-end align-items-center mx-0 border p-2" style="margin-top:80px;">          
           <div class="d-flex flex-column mx-1">
             <small>게시판 선택</small>
             <select name="qna_cat" id="" class="mt-1">

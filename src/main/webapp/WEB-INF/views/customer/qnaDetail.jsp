@@ -17,25 +17,25 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
 
-      <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+      <div class="w-100 d-flex justify-content-between align-items-center mx-0 border p-2" style="height: 56px; margin-top:80px;">
         <div class="pl-2 my-2 pointer" onclick="history.back('-1');" >
           <i class="bi bi-chevron-left mr-1" ></i>이전화면
         </div>    
         <div>
         <c:if test="${ user_id eq qna.qna_user }">
-          <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary fontSize14" style="height: 30px; ">삭제</a>
+          <a href="qnaDeleteAction?qna_idx=${ qna.qna_idx }" class="btn btn-primary fontSize14" style="height: 30px;">삭제</a>
         </c:if>
         </div>
       </div> 
 
-      <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+      <div class="w-100 mb-5 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         
         <!-- 문의사항 제목 -->
         <div class="w-100 border-bottom pt-2 pb-3">
@@ -49,7 +49,7 @@
         </div>
 
         <!-- 문의사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
-        <div class="w-100 mt-3 px-2 pb-5 text-left border-bottom">
+        <div class="w-100 mt-3 px-2 pb-5 text-left border-bottom" style="height:150px;">
           ${qna.qna_contents}
        </div>
 

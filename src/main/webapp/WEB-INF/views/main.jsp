@@ -17,13 +17,13 @@
 <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px; max-height: 800px; overflow: auto;">
 
     <!-- 헤더 -->
 	<c:import url="header.jsp"></c:import>
 	
 	<!-- mainContent -->
-      <div class="container-fluid container-sm border rounded my-5 mx-2" style="width:320px;">
+      <div class="container-fluid container-sm border rounded mx-2" style="width:320px; margin-top:115px; margin-bottom:40px;">
         <div class="d-flex flex-column">
           <div class="w-100 d-flex flex-column justify-content-center align-items-center text-center font-weight-bold py-2" style="min-height: 115px;">          
               <c:if test="${ not empty user_id }">
@@ -63,8 +63,8 @@
 		</div>
 	  </div>	   
 		       
-      <!-- 게시판 일부 불러오기 -->
-		<div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+     <!-- 게시판 일부 불러오기 -->
+	 <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         <div class="w-100 text-right border-bottom pb-1">
        		<a class="noDeco pointer text-dark fontSize11" onclick="location.href='board/board';">게시판 더보기 > </a>
         </div>    
@@ -77,10 +77,9 @@
           </div>
         </a>
         </c:forEach>
-      </div>
-      
-    <!-- Content div 종료 -->
-    <footer style="width: 100%">
+     </div>
+        
+     <footer style="width: 100%">
         <!-- container -->
         <div class="w-100 container-fluid d-flex flex-column justify-content-center align-items-center px-0 " style="height: 175px;">
             <!-- footer div -->
@@ -108,7 +107,8 @@
             </div>
         </div>
     </footer>
-    </div>
+   <!-- Content div 종료 -->
+   </div>
 
 
     <!-- bootstrap js -->

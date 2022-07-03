@@ -24,15 +24,15 @@
   </script>
   <body>
 
-    <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+  <!-- 컨텐츠 div -->
+  <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
 
       <!-- 메인 -->
       <!-- 서브바 -->
-      <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+      <div class="w-100 d-flex justify-content-between align-items-center mx-0 border p-2" style="height: 56px; margin-top:80px;">
         <h6 class="m-0 font-weight-bold">게시판 리스트</h6>
         <div>
         <c:if test="${ not empty user_id }">
@@ -66,59 +66,40 @@
         </a>
         </c:forEach>
       </div>
-      <!-- Content div 종료 -->
-      <!-- 페이지네브바 -->
       
-		    <%-- <div class="container row my-3 mx-auto">
-				<nav class="mx-auto">
-				        <ul class="pagination justify-content-center ">
-							<!-- 현재 페이지가 페이지표시기의 페이지 표시 수 보다 작으면 뒤로가기버튼 disable -->
-				          <li class="page-item <c:if test="${ page.curPage <= 5 }">disabled</c:if>">
-				            <a class="page-link" href="board?curPage=${ page.beginPageBlock - 1}">&lang;</a>
-				          </li>
-						  <c:forEach var="page" begin="${ pages.beginPageBlock }" end="${ pages.endPageBlock }" step="1">
-				          <li class="page-item <c:if test="${ pages.curPage == page }">active</c:if>">
-				            <a class="page-link" href="board?curPage=${ page }">${ page }</a>
-				          </li>
-				          </c:forEach>
-				          <!-- 마지막페이지까지 표시되면 앞으로 가기 표시 안됨 -->
-				          <li class="page-item <c:if test="${ page.countOfPage eq pages.beginPageBlock }">disabled</c:if>">
-				            <a class="page-link" href="board?curPage=${ pages.endPageBlock+1}">&rang;</a>
-				          </li>
-				        </ul>
-				</nav>
-			</div> --%>
-			 <div class="container row my-3 mx-auto">
-				<nav class="mx-auto">
-					<c:if test="${page.curBlock > 0}">
-	                    <a onclick="goPage('1')">[처음]</a>
-	                </c:if>
-	                <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
-	                <c:if test="${page.curBlock > 1}">
-	                    <a onclick="goPage('${page.prevPage}')">[이전]</a>
-	                </c:if>
-	                <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
-	                <c:forEach var="num" begin="${page.blockBegin}" end="${page.blockEnd}">
-	                    <!-- **현재페이지이면 하이퍼링크 제거 -->
-	                    <c:choose>
-	                        <c:when test="${num == page.curPage}">
-	                            <span style="color: red">${num}</span>
-	                        </c:when>
-	                        <c:otherwise>
-	                            <a onclick="goPage('${num}')">${num}</a>
-	                        </c:otherwise>
-	                    </c:choose>
-	                </c:forEach>	                
-	                <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
-	                <c:if test="${page.curBlock <= page.totBlock}">
-	                    <a onclick="goPage('${page.nextPage}')">[다음]</a>
-	                </c:if>	                
-	                <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
-	                <c:if test="${page.curPage <= page.totPage}">
-	                    <a onclick="goPage('${page.totPage}')">[끝]</a>
-	                </c:if>    
-	        	</nav>
-			</div>
+      <!-- 페이징 블록 -->
+		<div class="container row my-3 mx-auto" style="position:fixed; top: 720px; z-index:1500;">
+			<nav class="mx-auto">
+				<c:if test="${page.curBlock > 0}">
+	            	<a onclick="goPage('1')">[처음]</a>
+	            </c:if>
+	            <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+	            <c:if test="${page.curBlock > 1}">
+	                <a onclick="goPage('${page.prevPage}')">[이전]</a>
+	            </c:if>
+	            <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+	            <c:forEach var="num" begin="${page.blockBegin}" end="${page.blockEnd}">
+	            <!-- **현재페이지이면 하이퍼링크 제거 -->
+	            	<c:choose>
+	                	<c:when test="${num == page.curPage}">
+	                    	<span style="color: red">${num}</span>
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<a onclick="goPage('${num}')">${num}</a>
+	                    </c:otherwise>
+	            	</c:choose>
+	            </c:forEach>	                
+	            <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+	            <c:if test="${page.curBlock <= page.totBlock}">
+	            	<a onclick="goPage('${page.nextPage}')">[다음]</a>
+	            </c:if>	                
+	            <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+	            <c:if test="${page.curPage <= page.totPage}">
+	            	<a onclick="goPage('${page.totPage}')">[끝]</a>
+	            </c:if>    
+	    	</nav>
+  		</div>
+    <!-- Content div 종료 -->
     </div>
  
     <!-- bootstrap js -->

@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- 헤더 -->
-      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom">
+	<header style="width: 100%;">
+	<!-- 헤더 -->
+      <div class="font-weight-bold pl-3 d-flex my-2 w-100 pb-2 py-3 border-bottom bg-white" style="max-width: 490px; height: 60px; position:fixed; top: 0; z-index:1500;">
         <div class="dropdown">
           <span class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">사이트맵</span>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -33,7 +34,8 @@
         </div>
         <c:if test="${ user_rank eq '관리자' || user_rank eq '매니저' }">
         <div class="mx-4 pointer">
-        	<a onclick="location.href='../admin/adminQna'" >관리자 페이지</a>
+        	<a onclick="location.href='../admin/admin'" >관리자 페이지</a>
         </div> 
         </c:if>
       </div>
+     </header>

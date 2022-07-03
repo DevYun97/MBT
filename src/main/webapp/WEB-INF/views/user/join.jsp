@@ -17,7 +17,7 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px; max-height: 800px; overflow: auto;">
 
       <!-- 뒤로가기 아이콘 -->
       <div class="w-100 mt-3 mb-1" style="width: 30px; height: 30px;" >
@@ -37,8 +37,7 @@
             <div id="al1" style="color: red; display: none;" >*사용할 수 없는 아이디 입니다.*</div>
 	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
           </div>          
-          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호">          
-          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_nick_name" id="user_nick_name" placeholder="닉네임">
+          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호">                    
         </div>
 
         <!-- 고객정보 모음 -->

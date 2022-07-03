@@ -17,7 +17,7 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto" style="max-width: 520px; height: 800px; overflow: auto;">
 
       <!-- 헤더 -->
 	  <c:import url="../header.jsp"></c:import>
@@ -25,13 +25,13 @@
       <!-- 메인 -->
      
       <!-- 관리자용 -->
-      <div class="w-100 d-flex justify-content-between align-items-center mx-0 mt-3 border p-2" style="height: 56px;">
+      <div class="w-100 d-flex justify-content-between align-items-center mx-0 border p-2" style="height: 56px; margin-top:80px;">
         <div>
         <!-- notice_show 가 on일 때 checked로 설정하기 -->
         <c:if test="${ dto.notice_show eq 'on' }">
         	<input type="checkbox" name="notice_show" id="noticeCheck" checked disabled><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
         </c:if>
-        <c:if test="${ dto.notice_show eq 'null' }">
+        <c:if test="${ dto.notice_show eq null }">
         	<input type="checkbox" name="notice_show" id="noticeCheck" disabled><label for="noticeCheck" class="m-0 pl-2">중요공지</label>
         </c:if>
           
@@ -61,7 +61,7 @@
           ${ dto.notice_contents }
         </div>
         <!-- 버튼 div -->
-        <a href="../customer/notice" class="btn btn-primary col-5 mt-3">확인</a>
+        <input type="button" class="btn btn-primary mt-3" value="확인" onclick="location.href='../customer/notice';" style="width:100px; height:40px;" />
       </div>
       
     <!-- Content div 종료 -->

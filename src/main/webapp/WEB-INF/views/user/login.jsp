@@ -17,19 +17,19 @@
   <body>
 
     <!-- 컨텐츠 div -->
-    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-center border mx-auto pb-5" style="max-width: 520px;">
+    <div class="container-sm container-fluid d-flex flex-column align-items-center justify-content-start border mx-auto pb-5" style="max-width: 520px; height: 800px;">
 
 		<!-- 뒤로가기 아이콘 -->
       	<div class="w-100 my-3" style="width: 30px; height: 30px;" >
         	<i class="bi bi-chevron-left pr-2" onclick="location.href='../main'"></i>
       	</div>
 
-	    <h3 class="text-center font-italic mt-4">LOGIN</h3>
+	    <h3 class="text-center font-italic" style="margin-top:100px;">LOGIN</h3>
         <p class="mb-4 fontSize12" >로그인 시 다양한 기능을 이용하실 수 있습니다.</p>
         <div class="d-flex justify-content-center">
-          <form action="loginAction" method="post" style="width: 250px;">
-            <input type="text" class="d-block col-12 form my-2" id="user_id" name="user_id" placeholder="아이디">
-            <input type="password" class="d-block col-12 form my-2" id="user_pw" name="user_pw" placeholder="비밀번호">
+          <form action="loginAction" method="post" style="width: 250px;" onsubmit="return nullChecker();">
+            <input type="text" class="d-block col-12 form my-2 nullcheck" id="user_id" name="user_id" placeholder="아이디">
+            <input type="password" class="d-block col-12 form my-2 nullcheck" id="user_pw" name="user_pw" placeholder="비밀번호">
             <div class="d-flex justify-content-center">
               <button class="btn btn-primary col-12 my-2">로그인</button>
             </div>
