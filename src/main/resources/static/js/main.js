@@ -202,32 +202,6 @@ $("#pwChangeFrm").keyup(function(){
     }
 });
 
-// 비밀번호 일치 ajax
-$(function(){
-	$('#checkPw').focusout(function(){
-    	//비밀번호 확인
-        const user_pw = $('#checkPw').val();
-        if(!user_pw){
-        	alert("비밀번호를 입력해주세요.");
-        	return false;
-        }
-        $.ajax({
-            url: 'http://localhost:8085/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	///action
-            type: 'POST', //method     
-            success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
-            	let data_num = Number( data );
-            	if( data_num >= 1){
-      				alert('기존비밀번호를 재확인 해 주세요')
-      			  }else{
-                	$('#pwSubmitBtn').removeAttr('disabled'); //submit 버튼 잠금해제
-      			  }
-      			},
-            error: function(){
-              console.log('통신 실패');
-            }	
-    	});
-	})
-})
 
 // 마이페이지 _ 회원탈퇴
 function userQuit(){

@@ -118,7 +118,7 @@
 	            	return false;
 	            }
 	            $.ajax({
-	                url: 'http://localhost:8080/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	// action
+	                url: 'http://localhost:8085/user/pwChkAjax?user_id=${user.user_id}&&user_pw='+ user_pw,	// action
 	                type: 'POST', //method     
 	                success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
 	                	let data_num = Number( data );
