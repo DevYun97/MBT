@@ -26,7 +26,7 @@ public interface IuserDAO {
 	//회원가입
 	public int insertUser(User user);
 	//회원(임시)탈퇴 
-	public int updateUseYN(int user_idx, String useYN);
+	public int updateUseYN(int user_idx, String useYN, String user_quit_reason);
 	//회원정보 불러오기
 	public User getMemberInfo(int user_idx);
 	//회원정보 수정

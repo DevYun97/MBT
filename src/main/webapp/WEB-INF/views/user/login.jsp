@@ -40,9 +40,9 @@
         
         <!-- 회원가입 묶음 div -->
         <div class="mt-3 mb-5 text-right">
-          <span onclick="popupHideAndShow(target ='idFind');">아이디찾기</span>
+          <span class="pointer" onclick="popupHideAndShow(target ='idFind');">아이디찾기</span>
           <span class="px-2" > | </span>
-          <span onclick="popupHideAndShow(target ='pwFind');">비밀번호찾기</span>
+          <span class="pointer" onclick="popupHideAndShow(target ='pwFind');">비밀번호찾기</span>
           <span class="px-2" > | </span>
           <a href="../user/join" class="text-decoration-none text-body">회원가입</a>
         </div>

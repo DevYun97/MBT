@@ -108,7 +108,6 @@ public class CustomerController {
 	@ResponseBody
 	public String noticeModifyAction(@ModelAttribute Notice notice) {
 		String result = customerService.noticeUpdate(notice);
-		System.out.println(result);
 		return result;
 	}
 	

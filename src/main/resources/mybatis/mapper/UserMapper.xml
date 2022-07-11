@@ -59,7 +59,7 @@
 	
 	<!-- 유저 인덱스가 일치시 유저 정보 삭제 -->
 	<update id="updateUseYN">
-		UPDATE MBT_USER SET useYN = #{ param2 } WHERE user_idx= #{ param1 }
+		UPDATE MBT_USER SET useYN = #{ param2 }, user_quit_reason = #{param3} WHERE user_idx= #{ param1 }
 	</update>
 	
 	<!-- 인덱스로 유저 정보 가져오기 -->
@@ -87,7 +87,8 @@
 			)
 			useYN,
 			user_join,
-			user_address
+			user_address,
+			user_quit_reason
 		FROM MBT_USER 
 		WHERE user_idx = #{user_idx}
 	</select>

@@ -173,10 +173,11 @@ public class UserController {
 	public String quitAction(
 			@RequestParam ("user_idx") int user_idx,
 			@RequestParam ("useYN") String useYN,
+			@RequestParam ("user_quit_reason") String user_quit_reason,
 				HttpSession session, HttpServletRequest request ) {
 		
 		Integer.parseInt(String.valueOf(session.getAttribute("user_idx")));
-		String result = userService.quit(user_idx, useYN);
+		String result = userService.quit(user_idx, useYN, user_quit_reason);
 		request.getSession().invalidate();
 		return result;
 	

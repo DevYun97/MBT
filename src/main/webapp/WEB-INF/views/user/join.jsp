@@ -31,20 +31,20 @@
         <div class="mt-3 pb-3" style="width:250px;">
           <!-- id 중복체크 div -->
           <div class="d-flex justify-content-between align-items-center flex-wrap col-12 my-2 px-0">
-            <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디">
+            <input type="text" class="col-9 form-control nullcheck" name="user_id" id="user_id" placeholder="아이디를 입력해주세요">
             <input type="button" class="btn btn-primary px-1 fontSize12" value="중복체크" style="height: 30px; width: 55px;" onclick="idCheck();">
             <input type="hidden" name="isIDChecked" id="isIDChecked" value='no'>
             <div id="al1" style="color: red; display: none;" >*사용할 수 없는 아이디 입니다.*</div>
 	        <div id="al2" style="color: green; display: none;" >*가입 가능한 아이디입니다*</div>
           </div>          
-          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호">                    
+          <input type="password" class="d-block col-12 my-2 form-control nullcheck" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세">                    
         </div>
 
         <!-- 고객정보 모음 -->
         <div class="mt-3 pb-3" style="width:250px;">
-          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_name" id="user_name" placeholder="이름">
-          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_phone" id="user_phone" placeholder="전화번호">
-          <input type="email" class="d-block col-12 my-2 form-control nullcheck" name="user_email" id="user_email" placeholder="이메일">
+          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_name" id="user_name" placeholder="이름을 입력해주세요">
+          <input type="text" class="d-block col-12 my-2 form-control nullcheck" name="user_phone" id="user_phone" placeholder="전화번호를 입력해주세요">
+          <input type="email" class="d-block col-12 my-2 form-control nullcheck" name="user_email" id="user_email" placeholder="이메일을 입력해주세요">
           
           <!-- 주소 추가 -->	  
 		  <input type="text" class="d-inline col-9 form-control bg-white" name="sample6_postcode" id="sample6_postcode" placeholder="우편번호" readonly>

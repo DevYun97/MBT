@@ -22,10 +22,11 @@ public class User {
 	private String useYN;
 	private Date user_join;
 	private String user_address;
+	private String user_quit_reason;
 	
 	@Builder
 	public User(int user_idx, String user_id, String user_pw, String user_name, String user_email,
-			 String user_phone, String user_rank, String useYN, Date user_join, String user_address ) {
+			 String user_phone, String user_rank, String useYN, Date user_join, String user_address, String user_quit_reason ) {
 		super();
 		this.user_idx = user_idx;
 		this.user_id = user_id;
@@ -37,5 +38,6 @@ public class User {
 		this.user_rank = useYN;
 		this.user_join = user_join;
 		this.user_address = user_address;
+		this.user_quit_reason = user_quit_reason;
 	}	
 }

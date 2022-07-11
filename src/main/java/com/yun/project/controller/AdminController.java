@@ -98,8 +98,8 @@ public class AdminController {
 	public String quitAction(
 				@RequestParam ("user_idx") int user_idx,
 				@RequestParam ("useYN") String useYN,
-				HttpSession session, HttpServletRequest request ) {
-		String result = userService.quit(user_idx, useYN);
+				@RequestParam ("user_quit_reason") String user_quit_reason ) {
+		String result = userService.quit(user_idx, useYN, user_quit_reason);
 		return result;		
 	}
 	  
