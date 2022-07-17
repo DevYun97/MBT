@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글작성</title>
     <!-- Bootstrap CSS -->
@@ -24,47 +24,52 @@
 
       <!-- 메인 -->
           
-      <form id="boardFrm" method="post" class="w-100" onsubmit="return nullChecker();">
+      <div class="w-100">
         <!-- 서브바 -->
         <div class="w-100 d-flex justify-content-start align-items-center mx-0 border p-2" style="margin-top:80px;">          
           <div class="d-flex flex-column mx-1">
             <div class="pl-2 my-2 pointer" onclick="history.back('-1');" >
 	          <i class="bi bi-chevron-left mr-1" ></i>이전화면
 	        </div> 
-          </div>
+          </div>          
         </div>
-
-        <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-            <!--제목 -->
-            <div class="w-100 border-bottom pt-2 pb-3">
-              <input type="text" name="board_title" id="board_title" class="col-12 form nullcheck" value="${ board.board_title }" placeholder="제목을 작성해주세요.">
-            </div>
-            <!-- -->
-            <div class="w-100 mt-3 px-0 pb-3 text-left border-bottom">
-              <textarea name="board_content" id="board_content" rows="10" class="w-100 px-2 py-2 nullcheck" placeholder="내용을 작성해주세요.">${ board.board_content }</textarea>
-            </div>
-            
-            <!-- 이미지 기능 추가 시 사용하기
-	        <form action="" method="get">
-	          <div class="border rounded p-2 mt-2 d-flex justify-content-center border-dark" style="width: 42px; cursor: pointer;" onclick="">
-	            <i class="bi bi-camera"></i>
-	          </div>
-	        </form> -->
         
+        <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
+	        <form id="boardFrm" method="post" class="w-100" onsubmit="return nullChecker();" enctype="multipart/form-data" accept-charset="UTF-8">
+		        <!--제목 -->
+		        <div class="w-100 border-bottom pt-2 pb-3">
+		        	<input type="text" name="board_title" id="board_title" class="col-12 form nullcheck" value="${ board.board_title }" placeholder="제목을 작성해주세요.">
+		        </div>
+		        <!-- -->
+		        <div class="w-100 mt-3 px-0 pb-3 text-left border-bottom">
+		        	<textarea name="board_content" id="board_content" rows="10" class="w-100 px-2 py-2 nullcheck" placeholder="내용을 작성해주세요.">${ board.board_content }</textarea>		     
+		        	
+		        	<div class="d-flex">
+		        	<c:if test="${ not empty bImg.board_img }">
+		        	<div class="mr-2">
+		        		<img src="${ bImg.board_img }" class="img-fluid" style="width: 50px; height: 30px;">
+		        	</div>
+		        	</c:if>
+		        	<input type="file" id="boardFiles" name="filename" value="${ bImg.board_img }" accept=".gif, .png, .jpg, .jpeg, bmp" onchange="fileCheck()" >		        
+		        	</div>
+		        	
+		        	
+		        	</div>
+		        <input type="hidden" name="board_idx" value="${ board.board_idx }"/>
+	        </form>
+	                            
             <!-- 버튼 div -->
             <div class="w-100 d-flex justify-content-center">
-              <%-- <input type="hidden" name="user_id" value="${ user_id }"/> --%>
               <c:if test="${ board.board_idx == null }">
               <input type="button" class="btn btn-primary col-5 mt-3 mr-1" value="확인" onclick="boardWriteBtn()">
               </c:if>
               <c:if test="${ board.board_idx != null }">
-              <input type="hidden" name="board_idx" value="${ board.board_idx }"/>
               <input type="button" class="btn btn-primary col-5 mt-3 mr-1" value="수정" onclick="boardUpdateBtn()">
               </c:if>
               <div class="btn btn-primary col-5 mt-3" onclick="history.back('-1');">취소</div>
             </div>
         </div>
-      </form>
+      </div>
             
     <!-- Content div 종료 -->
     </div>
@@ -75,6 +80,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
+    
+    <script>
+    function fileCheck(){
+		var ext = $("#boardFiles").val().split(".").pop().toLowerCase();
+		
+		if($.inArray(ext,["gif","jpg","jpeg","png","bmp"]) == -1) {
+		    alert("이미지만 등록 가능합니다.");
+		    $("#boardFiles").val("");
+		    return;
+		}
+	}
+
+    </script>
   
   </body>
 </html>

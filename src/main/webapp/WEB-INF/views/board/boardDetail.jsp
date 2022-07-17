@@ -52,9 +52,13 @@
         </div>
 
         <!-- 공지사항 내용 일반회원은 텍스트만 / 관리자는 수정가능하게 입력폼으로 보이게 변경하기-->
-        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom" style="height:200px;">
-          ${ board.board_content }
-       </div>
+        <div class="w-100 mt-3 px-2 pb-3 text-left border-bottom" style="min-height:200px;">
+	        <div class="w-100 text-center">
+	        	<img src="${ bImg.board_img }" class="img-fluid mt-2 mb-3" style="object-fit: fill; max-height:400px;">
+	        </div>
+        
+        ${ board.board_content }
+        </div>
 
         <!-- 버튼 div -->
         <form action="replyWriteAction?board_idx=${ board.board_idx }&&user_idx=${ user_idx }" method="post" class="w-100 d-flex justify-content-between px-2">

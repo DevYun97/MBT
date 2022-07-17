@@ -30,5 +30,6 @@ public interface IboardDAO {
 
 	//게시글 갯수 불러오기
 	public int boardCount(Map<String, Object> map);
+	public int OnePlusBoardCount();
 
 }

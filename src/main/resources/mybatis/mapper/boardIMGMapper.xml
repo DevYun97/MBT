@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.yun.project.dao.IboardIMGDAO">
+	
+	<!-- 이미지가져오기 -->
+	<select id="getBoardImgFile" resultType="com.yun.project.dto.BoardIMG">
+		SELECT * FROM mbt_board_img WHERE board_idx = #{board_idx}
+	</select>
+	
+	<!-- 이미지 파일 확인 -->
+	<select id="checkBoardIMG" resultType="String">
+		SELECT board_img FROM mbt_board_img WHERE board_idx = #{board_idx}
+	</select>
+	
+	<!-- 이미지 업로드 -->
+	<insert id="boardFile" parameterType="com.yun.project.dto.BoardIMG">
+		INSERT INTO mbt_board_img (board_idx, board_img)			
+		VALUES ( #{board_idx}, #{board_img} )
+	</insert>
+	
+	<!-- 이미지 수정 -->
+	<update id="updateBoardImg" parameterType="com.yun.project.dto.BoardIMG">
+		UPDATE mbt_board_img SET board_img = #{board_img} WHERE board_idx = #{board_idx} 
+	</update>
+	
+	<!-- 이미지 파일 삭제 -->
+	<delete id="deleteBoardImg">
+		DELETE FROM mbt_board_img WHERE board_idx = #{board_idx}
+	</delete>
+	
+</mapper>

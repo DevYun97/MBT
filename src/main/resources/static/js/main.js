@@ -227,7 +227,9 @@ function noticeUpdateBtn(){
 // board 폴더
 // 게시판 작성
 function boardWriteBtn(){
-    $("#boardFrm").attr("action", "boardWriteAction").attr("method","post").submit(); 		
+    $("#boardFrm").attr("action", "boardWriteAction").attr("method","post").submit();
+    //$("#boardFile").attr("action", "boardFileAction").attr("method","post").submit(); 		
+ 		
 }
 
 // 게시판 수정
