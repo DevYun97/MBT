@@ -26,4 +26,9 @@
 	cursor: pointer;
 }
 
-
+/* 디자인 */
+.btn-primary{
+    background-color: rgb(128, 83, 43) !important;
+    border-color: rgb(167, 130, 111) !important
+    
+}

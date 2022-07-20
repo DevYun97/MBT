@@ -32,7 +32,9 @@
 
       <!-- 글작성 버튼-->
       <div class="w-100 d-flex justify-content-end mt-3">
-        <a href="qnaWrite" class="btn btn-primary btn-sm">글작성</a>
+      	<c:if test="${ not empty user_id }">
+        	<a href="../customer/qnaWrite" class="btn btn-primary btn-sm">글작성</a>
+        </c:if>
       </div>
 
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
