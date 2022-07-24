@@ -69,13 +69,14 @@
 	<insert id="insertBoard">
 		INSERT INTO mbt_board
 			( board_idx, board_user, board_title, board_content, board_data )
-		VALUES (
+		VALUES
+		 (
 			(select nvl(max(board_idx),0)+1 from mbt_board),
 			#{user_id},
 			#{board_title}, 
 			#{board_content}, 
 			sysdate
-		)
+		 )
 	</insert>
 	
 	<!-- 게시판 수정 -->

@@ -95,8 +95,13 @@
 	
 	<!-- 유저 정보 업데이트 -->
 	<update id="updateUserInfo">
-		UPDATE MBT_USER 
-		SET user_name = #{user_name}, user_email = #{user_email}, user_phone = #{user_phone}, user_address = #{user_address} 
+		UPDATE
+			MBT_USER 
+		SET 
+			user_name = #{user_name},
+			user_email = #{user_email}, 
+			user_phone = #{user_phone}, 
+			user_address = #{user_address} 
 		WHERE user_idx = #{user_idx}
 	</update>
 	

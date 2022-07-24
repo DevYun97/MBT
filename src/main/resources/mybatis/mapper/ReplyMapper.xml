@@ -7,7 +7,8 @@
 
 	<!-- 댓글 개수 조회 -->
 	<select id="getReplyIdx" resultType="int">
-		SELECT COUNT(reply_idx) 
+		SELECT 
+			COUNT(reply_idx) 
 		FROM mbt_reply 
 		WHERE board_idx = #{board_idx} 
 	</select>
@@ -21,21 +22,21 @@
 	
 	<!-- 댓글 작성 -->
 	<insert id="insertReply">
-		 INSERT INTO mbt_reply (
+		 INSERT INTO mbt_reply
+		  (
 		 	reply_idx, 
 		 	board_idx,
 			reply_user, 
 			reply_content, 
 			reply_data
-			)
-		VALUES (
+		  )
+		VALUES 
+		(
 			mbt_reply_seq.nextval, 
 			#{board_idx}, 
 			#{user_id}, 
 			#{reply_content}, 
 			sysdate
-			)
+		)
 	</insert>
-	<!-- 댓글 삭제 (? 넣을지 보류?) -->
-	
 </mapper>
