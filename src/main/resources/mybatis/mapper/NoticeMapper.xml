@@ -7,7 +7,7 @@
 
 	<!-- 공지사항 조회 -->
 	<select id="getNoticeList" resultType="com.yun.project.dto.Notice">
-		SELECT * FROM mbt_notice ORDER BY notice_date DESC
+		SELECT * FROM mbt_notice ORDER BY notice_show, notice_date DESC
 	</select>
 	
 	<!-- 중요 공지사항 조회 -->

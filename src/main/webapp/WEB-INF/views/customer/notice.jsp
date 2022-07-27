@@ -34,12 +34,17 @@
         </div>
       </div>
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
-        <!-- 공지사항 불러오기 -->
+        <!-- 공지사항 불러오기 -->        
         <c:forEach var="dto" items="${ getNoticeList }">
-        <a href="../customer/noticeDetail?notice_idx=${ dto.notice_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
-          <div>${dto.notice_title}</div>
+        <div class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body pointer" onclick="location.href='../customer/noticeDetail?notice_idx=${ dto.notice_idx }'">
+          <div>
+          	<c:if test="${ dto.notice_show eq 'on' }">
+          	<span class="fontAndBgColor" style="width:5px;">.</span>
+          	</c:if>
+          	${dto.notice_title}
+          </div>
           <div class="text-right text-muted fontSize12">${dto.notice_date}<i class="bi bi-chevron-right"></i></div>
-        </a>
+        </div>
         </c:forEach>        
       </div>
       <!-- Content div 종료 -->

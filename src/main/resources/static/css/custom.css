@@ -17,6 +17,11 @@
   font-size: 10px;
 }
 
+.fontAndBgColor {
+	background-color: rgb(167, 130, 111);
+	color : rgb(167, 130, 111);
+}
+
 /* 데코레이션 제어 */
 .noDeco {
   text-decoration: none;
