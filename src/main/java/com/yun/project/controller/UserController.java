@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yun.project.dao.IuserDAO;
 import com.yun.project.dto.User;
+import com.yun.project.dto.User.UserBuilder;
 import com.yun.project.service.UserService;
+import com.yun.project.service.passHashService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,8 +28,10 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	IuserDAO userDao;
-
+	IuserDAO userDao;	
+	@Autowired
+	passHashService passHash;
+	
 	@RequestMapping("login")
 	public String login(HttpSession session, HttpServletRequest request, HttpServletResponse response) {		
 		int user_idx;
@@ -128,7 +132,8 @@ public class UserController {
 	//회원가입
 	@PostMapping("joinAction")
 	@ResponseBody
-	public String joinAction(@ModelAttribute User user) {		
+	public String joinAction(@ModelAttribute User user) {
+		
 		String result = userService.join(user);
 		return result;
 	}
@@ -148,14 +153,17 @@ public class UserController {
 	public String pwChangeAction(
 			@RequestParam ("user_idx") int user_idx,
 			@RequestParam ("user_pw") String user_pw,
-			HttpServletRequest request) {				
-		int result = userDao.updatePwInfo(user_idx, user_pw);
+			HttpSession session,
+			HttpServletRequest request) {
+		
+		int result = userService.userPwUpdate(user_idx, user_pw, session);
 		if(result == 1) {
 			request.getSession().invalidate();
-			return "<script>alert('회원정보가 변경되었습니다.');location.href='login';</script>";
+			return "<script>alert('회원정보가 변경되었습니다.');location.href='../user/login';</script>";
 		} else {
 			return "<script>alert('error: 확인후 다시 시도해주세요.');history.back(-1);</script>";
-		}		
+		}
+		
 	}
 	
 	//로그아웃 기능

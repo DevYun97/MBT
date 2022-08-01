@@ -54,7 +54,16 @@
 	<!-- 유저 회원가입 -->
 	<insert id="insertUser" parameterType="com.yun.project.dto.User">
 		INSERT INTO MBT_USER (user_idx, user_id, user_pw, user_name, user_email, user_phone, user_address)
-		VALUES (mbt_user_seq.nextval, #{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_phone}, #{user_address} )
+		VALUES
+			(
+			 (select nvl(max(user_idx),0)+1 from mbt_user),
+		 	 #{user_id},
+		 	 #{user_pw}, 
+		 	 #{user_name}, 
+		 	 #{user_email}, 
+		 	 #{user_phone}, 
+		 	 #{user_address} 
+		 	)
 	</insert>
 	
 	<!-- 유저 인덱스가 일치시 유저 정보 삭제 -->
