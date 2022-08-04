@@ -34,7 +34,12 @@ public class MainController {
 	
 	@RequestMapping("")
 	public String root() {
-		return "redirect:main";
+		return "redirect:index";
+	}
+	
+	@RequestMapping("index")
+	public String index() {
+		return "index";
 	}
 	
 	@RequestMapping("main")
