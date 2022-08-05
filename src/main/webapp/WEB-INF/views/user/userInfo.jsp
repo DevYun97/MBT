@@ -89,7 +89,7 @@
       <!-- MainDiv -->
       <div class="w-100 d-flex flex-column justify-content-center align-items-center">
         <h6 class="">비밀번호 변경하기</h6>
-        <form action="pwChangeAction?user_idx=${user.user_idx}" method="post" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
+        <form action="pwChangeAction?user_id=${user.user_id}" method="post" id="pwChangeFrm" class="d-flex flex-column align-items-center col-12 mt-2" onsubmit="return pwChangeOk();">
           <input type="password" class="mt-2 mb-1 w-75 form-control" id="checkPw" placeholder="기존 비밀번호를 입력하세요">
           <input type="password" class="mt-2 mb-1 w-75 form-control" id="pw1" placeholder="새 비밀번호를 입력하세요">
           <input type="password" class="my-1 w-75 form-control" name="user_pw" id="pw2" placeholder="새 비밀번호 재확인">

@@ -32,7 +32,7 @@ public interface IuserDAO {
 	//회원정보 수정
 	public int updateUserInfo(User user);
 	//비밀번호 수정
-	public int updatePwInfo(int user_idx, String user_pw);
+	public int updatePwInfo(String user_id, String user_pw);
 	//유저리스트 - 관리자
 	public ArrayList<User> userList(Map<String, Object> map);
 	//회원 영구탈퇴 (관리자용)

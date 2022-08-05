@@ -1,6 +1,5 @@
 package com.yun.project.service;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,12 +52,17 @@ public class UserService {
 	
 	//비밀번호 찾기 
 	public String pwFind( String user_name, String user_id) {
+				
+		String user = userDao.getUserPwFind(user_name, user_id);
 		
-		String user_pw = userDao.getUserPwFind(user_name, user_id);
-		if( user_pw == null ) {
+		if( user == null ) {
 			return "<script>alert('비밀번호를 찾을 수 없습니다.'); location.href='login';</script>";			
 		} else {
-			return "<script>alert('고객님의 비밀번호는" + user_pw + " 입니다.'); location.href='login';</script>";
+			
+			String pw ="1111";
+			String user_pw = passHash.passwordHash(user_id, pw);
+			int result = userDao.updatePwInfo(user_id, user_pw);
+			return "<script>alert('고객님의 임시비밀번호는" + pw + " 입니다. 보안을 위해 비밀번호를 변경해주세요.'); location.href='login';</script>";
 		}	
 	}
 	
@@ -121,11 +125,11 @@ public class UserService {
 	}
 	
 	//비밀번호 수정
-	public int userPwUpdate(int user_idx, String user_pw, HttpSession session) {
+	public int userPwUpdate(String user_id, String user_pw, HttpSession session) {
 		
 		String id = (String) session.getAttribute("user_id");
 		user_pw = passHash.passwordHash(id ,user_pw);
-		int result = userDao.updatePwInfo(user_idx, user_pw);
+		int result = userDao.updatePwInfo(user_id, user_pw);
 		if(result == 1) {
 			return 1;
 		} else {

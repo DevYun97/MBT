@@ -109,9 +109,10 @@ public class UserController {
 	public String pwFindAction(
 			@RequestParam("user_name") String user_name,
 			@RequestParam("user_id") String user_id) {
-		String result = userService.pwFind(user_name, user_id);			
+		String result = userService.pwFind(user_name, user_id);
 		return result;		
 	}
+
 	
 	@RequestMapping("idCheckAjax")
 	@ResponseBody
@@ -151,12 +152,12 @@ public class UserController {
 	@RequestMapping("pwChangeAction")
 	@ResponseBody
 	public String pwChangeAction(
-			@RequestParam ("user_idx") int user_idx,
+			@RequestParam ("user_id") String user_id,
 			@RequestParam ("user_pw") String user_pw,
 			HttpSession session,
 			HttpServletRequest request) {
 		
-		int result = userService.userPwUpdate(user_idx, user_pw, session);
+		int result = userService.userPwUpdate(user_id, user_pw, session);
 		if(result == 1) {
 			request.getSession().invalidate();
 			return "<script>alert('회원정보가 변경되었습니다.');location.href='../user/login';</script>";

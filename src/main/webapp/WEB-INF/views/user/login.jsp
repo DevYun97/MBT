@@ -74,9 +74,9 @@
         <i class="bi bi-x-lg" width="30px" height="30px" onclick="popupHideAndShow(target = 'pwFind');"></i>
       </div>
       <!-- MainDiv -->
-      <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+      <div class="w-100 d-flex flex-column justify-content-center align-items-center" id="pwFindAjax">
         <h6 class="">비밀번호찾기</h6>
-        <form action="pwFindAction" method="post" class="d-flex flex-column align-items-center col-12 mt-2">
+        <form action="pwFindAction" method="post" class="d-flex flex-column align-items-center col-12 mt-2" >
           <input type="text" class="mt-2 mb-1 w-75 form" name="user_name" id="user_name" placeholder="이름">
           <input type="text" class="my-1 w-75 form" name="user_id" id="user_id" placeholder="아이디">
           <input type="submit" class="btn btn-primary col-6 mt-3 mb-5" value="확인">
@@ -89,6 +89,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <!-- main js -->
 <script src="/js/main.js"></script>
-
 </body>
 </html>
