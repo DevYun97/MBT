@@ -39,6 +39,11 @@
 	        	<option value="seq">전체문의</option>
 	        	<option value="qnaNo">미답변</option>
 	        	<option value="qnaOk">답변완료</option>
+	        </select>
+	         <select id="test" name="test">
+	        	<option value="test1">1111</option>
+	        	<option value="test2">2222</option>
+	        	<option value="test3">3333</option>
 	        </select> 
         </form> 
       </div>

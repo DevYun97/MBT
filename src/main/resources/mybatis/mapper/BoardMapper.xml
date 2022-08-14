@@ -12,6 +12,7 @@
 		<result column="board_user" property="board_user" />
 		<result column="startNumOfRow" property="startNumOfRow" />
 		<result column="endNumOfRow" property="endNumOfRow" />
+		<result column="board_test" property="board_test" />
 	</resultMap>
 
 	<!-- 컬럼 데이터 갯수 -->
@@ -27,7 +28,7 @@
 			<when test="schType == 'title'">
 				AND board_title like '%'||#{schText}||'%'
 			</when>
-		</choose>
+		</choose>	
 	</select>
 	
 	<select id="OnePlusBoardCount" resultType="int">

@@ -44,7 +44,7 @@
 	 <form action="board" method="get" class="w-100 d-flex justify-content-end align-items-center mx-0 mt-2 p-2">
 		<!-- 검색기능 사용시 페이징 초기값 -->
 		<input type = "hidden" name ="pageNo" id="pageNo" value ="1">
-		<input type = "hidden" name ="listSize" id ="listSize" value ="5"> 
+		<input type = "hidden" name ="listSize" id ="listSize" value ="5"> 		 
 		 <select id="schType" name="schType" style="height: 30px;">
 		 	<option >선택</option>
 		 	<option value="name" <c:if test="${ sch.schType == 'name' }" > selected </c:if> >작성자</option>

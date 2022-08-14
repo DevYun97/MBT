@@ -50,9 +50,7 @@ public class BoardController {
 	FileUploadService fileUploadService ;
 	
 	@RequestMapping("board")
-	public String board( 
-			@RequestParam Map<String, Object> map,
-			Model model ) {
+	public String board( @RequestParam Map<String, Object> map, Model model ) {
 		
 		if(map.isEmpty()) {
 			map.put("pageNo", 1);
