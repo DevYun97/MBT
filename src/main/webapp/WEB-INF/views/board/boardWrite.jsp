@@ -42,7 +42,7 @@
 		        </div>
 		        <!-- -->
 		        <div class="w-100 mt-3 px-0 pb-3 text-left border-bottom">
-		        	<textarea name="board_content" id="board_content" rows="10" class="w-100 px-2 py-2 nullcheck" placeholder="내용을 작성해주세요.">${ board.board_content }</textarea>		     
+		        	<textarea name="board_content" id="board_content" rows="10" class="w-100 px-2 py-2 " placeholder="내용을 작성해주세요.">${ board.board_content }</textarea>		     
 		        	
 		        	<div class="d-flex">
 		        	<c:if test="${ not empty bImg.board_img }">
@@ -80,6 +80,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
     <script src="/js/main.js"></script>
+    
+    <!-- testTool 하단 스크립트 추가 후 replace에 이름 넣어주면 text에디터? 사용 가능 -->
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+  	<script>CKEDITOR.replace('board_content');</script>
     
     <script>
     function fileCheck(){
