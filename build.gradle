@@ -19,6 +19,10 @@ repositories {
 	mavenCentral()
 }
 
+// war 배포용 문법 ( 에러방지 )
+bootWar.enabled = false
+war.enabled = true
+
 //error내용 : Cannot load driver class: oracle.jdbc.OracleDriver
 //ojdbc6.jar add build path하지 않은 에러!
 
