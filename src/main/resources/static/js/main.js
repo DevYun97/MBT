@@ -24,7 +24,7 @@ function idCheck() {
 	// 아이디 유효성 검사(1보다 같거나 크면 중복 / 0 이면 중복안됨)
 	$.ajax(
 			{
-				url: 'http://localhost:8089/MBT/user/idCheckAjax?user_id='+ user_id,	
+				url: 'http://118.32.103.16:8089/MBT/user/idCheckAjax?user_id='+ user_id,	
 	    		type: 'get',
 	    		success: function(data) {
 	    			console.log('통신 성공, data:' + data);
@@ -193,7 +193,7 @@ function addressAdd(){
 			return false;
 		}
 		$.ajax({
-			url: 'http://localhost:8089/MBT/user/pwChkAjax?user_id='+user_id+'&&user_pw='+user_pw,	// action
+			url: 'http://118.32.103.16:8089/MBT/user/pwChkAjax?user_id='+user_id+'&&user_pw='+user_pw,	// action
 			type: 'POST', //method     
 			success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
 				let data_num = Number( data );
