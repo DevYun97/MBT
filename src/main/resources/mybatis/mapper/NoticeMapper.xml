@@ -38,7 +38,13 @@
 	
 	<!-- 공지사항 수정 -->
 	<update id="updateNotice">
-		UPDATE mbt_notice SET notice_title = #{notice_title}, notice_contents = #{notice_contents}, notice_show = #{notice_show} WHERE notice_idx = #{notice_idx}
+		UPDATE 
+			mbt_notice 
+		SET 
+			notice_title = #{notice_title}, 
+			notice_contents = #{notice_contents}, 
+			notice_show = #{notice_show} 
+		WHERE notice_idx = #{notice_idx}
 	</update>
 	
 	<!-- 공지사항 삭제 -->

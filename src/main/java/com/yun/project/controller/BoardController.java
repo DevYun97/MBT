@@ -54,7 +54,7 @@ public class BoardController {
 		
 		if(map.isEmpty()) {
 			map.put("pageNo", 1);
-			map.put("listSize", 5);
+			map.put("listSize", 8);
 		}
 		
 		int count = boardDao.boardCount(map);
@@ -158,20 +158,22 @@ public class BoardController {
 			BoardIMG boardImg = BoardIMG.builder().board_idx(board_idx).board_img(board_img).build();
 			
 			int boardImgs = boardIMGDao.updateBoardImg(boardImg);
-			System.out.println("이미지 변경");
+			
+			if( boardImgs == 0) return "<script>alert('수정 실패'); location.href='/MBT/board/boardWrite';</script>";				
+			
 		}
 				
 		int result = boardDao.updateBoard(board);
 		if(result == 1) {
-			return "<script>alert('수정 성공'); location.href='/board/board';</script>";
+			return "<script>alert('수정 성공'); location.href='/MBT/board/board';</script>";
 		}
 		else {
-			return "<script>alert('수정 실패'); location.href='/board/boardWrite';</script>";
+			return "<script>alert('수정 실패'); location.href='/MBT/board/boardWrite';</script>";
 		}			
 	}
 	
 	//
-	public static final String FILE_PATH = "/Users/yundahye/Documents/GitHub/MBT/src/main/resources/static";
+	public static final String FILE_PATH = "../MBT/src/main/resources/static";
 	
 	@RequestMapping("boardDeleteAction")
 	@ResponseBody
@@ -183,14 +185,15 @@ public class BoardController {
 			log.info("삭제할 이미지 파일이 존재하지 않음");
 		} else {
 			
+			String boardImgName = boardImg.replace("/MBT","");
 			String path = FILE_PATH;
-			File deleteFile = new File(path+boardImg);
+			File deleteFile = new File(path+ boardImgName );
 			
 	        deleteFile.delete(); // 서버 내 파일 삭제
 	        System.out.println("서버 내 파일 삭제 성공");
 			// DB 파일 삭제
 			int deleteBoardImg = boardIMGDao.deleteBoardImg(board_idx);
-			if(deleteBoardImg ==1) {  
+			if(deleteBoardImg == 1) {  
 				System.out.println("DB 삭제 성공");
 			} else {
 				System.out.println("DB 삭제 실패");
@@ -201,10 +204,10 @@ public class BoardController {
 		int result = boardDao.deleteBoard(board_idx);
 		
 		if(result == 1) {
-			return "<script>alert('삭제 성공'); location.href='/board/board';</script>";
+			return "<script>alert('삭제 성공'); location.href='/MBT/board/board';</script>";
 		}
 		else {
-			return "<script>alert('삭제 실패'); location.href='/board/board';</script>";
+			return "<script>alert('삭제 실패'); location.href='/MBT/board/board';</script>";
 		}			
 	}
 	

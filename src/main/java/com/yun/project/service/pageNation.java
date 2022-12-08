@@ -17,7 +17,7 @@ import lombok.ToString;
 public class pageNation {
 	
 	//페이지당 데이터(row) 갯수
-    public static final int numberOfArticle = 5; // numberOfArticle : 한 페이지에서 보여줄 row 갯수
+    public static final int numberOfArticle = 8; // numberOfArticle : 한 페이지에서 보여줄 row 갯수
     public static final int blockNumber = 5;	  // 노출될 블럭의 갯수 
 	
 	private int curPage; 		// 현재 페이지

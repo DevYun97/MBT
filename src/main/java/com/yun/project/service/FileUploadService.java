@@ -51,7 +51,7 @@ public class FileUploadService {
 			
 		}
 		
-		return "/upload/" + saveFileName;
+		return "/MBT/upload/" + saveFileName;
 	}
 
 
@@ -60,7 +60,7 @@ public class FileUploadService {
 		
 		//C:/Users/i7D/Documents/springboot/ex13_FileUploadWithParam/src/main/resources/static/upload/20210114121803123.jpg
 		byte[] data = multipartFile.getBytes();
-		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+		FileOutputStream fos = new FileOutputStream( SAVE_PATH + "/" + saveFileName);
 		fos.write(data);
 		fos.close();
 		

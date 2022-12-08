@@ -22,9 +22,9 @@ public class CustomerService {
 	public String faqWrite(Faq faq) {
 		
 		int result = faqDao.insertFaq(faq);
-		String returnString = "<script>alert('작성 실패'); location.href='/customer/faq'</script>";
+		String returnString = "<script>alert('작성 실패'); location.href='/MBT/customer/faq'</script>";
 		if (result == 1) {
-			returnString = "<script>alert('작성 성공'); location.href='/customer/faq'</script>";
+			returnString = "<script>alert('작성 성공'); location.href='/MBT/customer/faq'</script>";
 		}
 		return returnString;
 	}
@@ -32,9 +32,9 @@ public class CustomerService {
 	public String noticeWrite(Notice notice) {
 		
 		int result = noticeDao.insertNotice(notice);
-		String returnString = "<script>alert('작성 실패'); location.href='/customer/notice'</script>";		
+		String returnString = "<script>alert('작성 실패'); location.href='/MBT/customer/notice'</script>";		
 		if (result == 1) {
-			returnString = "<script>alert('작성 성공'); location.href='/customer/notice'</script>";
+			returnString = "<script>alert('작성 성공'); location.href='/MBT/customer/notice'</script>";
 		}
 		return returnString;
 	}
@@ -43,7 +43,8 @@ public class CustomerService {
 		
 		int result = noticeDao.updateNotice(notice);
 		if(result==1) {
-			return "<script>alert('공지사항 수정');location.href='../customer/notice';</script>";
+			int noticeIdx = notice.getNotice_idx();
+			return "<script>alert('공지사항 수정');location.href='/MBT/customer/noticeDetail?notice_idx="+noticeIdx+"';</script>";
 		} else {
 			return "<script>alert('error: 확인후 다시 시도해주세요.');history.back(-1);</script>";
 		}
@@ -52,9 +53,10 @@ public class CustomerService {
 	public String qnaWrite(Qna qna) {
 	
 		int result = qnaDao.insertQna(qna);
-		String returnString = "<script>alert('작성 실패'); location.href='/customer/qna'</script>";		
+		String returnString = "<script>alert('작성 실패'); location.href='/MBT/customer/qna'</script>";		
 		if (result == 1) {
-			returnString = "<script>alert('작성 성공'); location.href='/customer/qna'</script>";
+			int qnaIdx = qna.getQna_idx();
+			returnString = "<script>alert('작성 성공'); location.href='/MBT/customer/qnaDetail?qnaDetail="+qnaIdx+"'</script>";
 		}
 		return returnString;
 	}
@@ -62,7 +64,8 @@ public class CustomerService {
 	public String qnaReply(Qna qna) {
 		int result = qnaDao.qnaReplyWrite(qna);
 		if(result==1) {
-			return "<script>alert('작성 성공');location.href='/customer/qna';</script>";
+			int qnaIdx = qna.getQna_idx();
+			return "<script>alert('작성 성공');location.href='/MBT/customer/qnaDetail?qnaDetail="+qnaIdx+"';</script>";
 		}else {
 			return "<script>alert('error: 작성 실패');history.back(-1);</script>";
 		}	

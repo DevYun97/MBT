@@ -24,7 +24,7 @@ function idCheck() {
 	// 아이디 유효성 검사(1보다 같거나 크면 중복 / 0 이면 중복안됨)
 	$.ajax(
 			{
-				url: 'http://localhost:8085/user/idCheckAjax?user_id='+ user_id,	
+				url: 'http://localhost:8089/MBT/user/idCheckAjax?user_id='+ user_id,	
 	    		type: 'get',
 	    		success: function(data) {
 	    			console.log('통신 성공, data:' + data);
@@ -181,6 +181,37 @@ function addressAdd(){
 	$('#user_address').val( address1 + " " + address2 );
 	return true;
 }
+      
+// 비밀번호 일치 ajax
+ $(function(){
+	$('#checkPw').focusout(function(){
+		//비밀번호 확인
+		const user_id = $('#user_id').val();
+		const user_pw = $('#checkPw').val();
+		if(!user_pw){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		$.ajax({
+			url: 'http://localhost:8089/MBT/user/pwChkAjax?user_id='+user_id+'&&user_pw='+user_pw,	// action
+			type: 'POST', //method     
+			success: function(data) {   //success : function( 변수명 ) -- return "data"; 호출받아서 실행되는 부분.  function: 액션이 선행되어어야 함.
+				let data_num = Number( data );
+				if( data_num >= 1){
+					alert('기존비밀번호를 재확인 해 주세요')
+				} else {
+					$('#pw1').removeAttr('disabled');
+	            	$('#pw2').removeAttr('disabled');
+				}
+			},
+			error: function(){
+			console.log('통신 실패');
+			}	
+		});
+	})
+})      
+      
+      
         
 // 비밀번호 수정 스크립트
 $("#pwChangeFrm").keyup(function(){ 
@@ -191,14 +222,17 @@ $("#pwChangeFrm").keyup(function(){
     if( !pw1 || !pw2){      //null 체크
         $('#pwCkOk').css('display','none');   
         $('#pwCkNo').css('display','none');
+        $('#pwSubmitBtn').attr('disabled', true);
 	}
     else if( pw1 != pw2 ) { //비밀번호 수정이 일치하지 않을 경우
     	$('#pwCkNo').css('display','block');
-        $('#pwCkOk').css('display','none');   		
+        $('#pwCkOk').css('display','none');   
+        $('#pwSubmitBtn').attr('disabled', true);			
     }
     else if(pw1 == pw2){  //비밀번호 수정이 일치
         $('#pwCkNo').css('display','none');
         $('#pwCkOk').css('display','block');
+        $('#pwSubmitBtn').removeAttr('disabled', false); //submit 버튼 잠금해제
     }
 });
 
@@ -254,7 +288,7 @@ function restoreUser(){
     var message = "회원정보를 복구 하시겠습니까?";
     result = window.confirm(message);
     if(result == true ){
-    	location.href = '../admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y';
+    	location.href = '/MBT/admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y';
     } else {
 	}
 } 

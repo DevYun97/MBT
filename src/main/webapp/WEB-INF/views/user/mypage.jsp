@@ -10,7 +10,7 @@
     <title>마이페이지</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/MBT/css/custom.css">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   </head>
@@ -42,9 +42,9 @@
       <!-- 고객센터 -->
       <div class="w-100 ml-0 mr-0 border p-2">
         <div class="text-black-50 my-2 fontSize12" >고객센터</div>
-        <a href="../customer/notice" class="d-block text-dark pl-2 my-1"> 공지사항 </a>      
-        <a href="../customer/faq" class="d-block text-dark pl-2 my-1">FAQ</a>
-        <a href="../customer/qna" class="d-block text-dark pl-2 my-1">QnA</a>
+        <a href="/MBT/customer/notice" class="d-block text-dark pl-2 my-1"> 공지사항 </a>      
+        <a href="/MBT/customer/faq" class="d-block text-dark pl-2 my-1">FAQ</a>
+        <a href="/MBT/customer/qna" class="d-block text-dark pl-2 my-1">QnA</a>
       </div>
       <!-- 로그아웃 -->
       <div class="w-100 ml-0 mr-0 border p-2">
@@ -84,6 +84,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
-    <script src="/js/main.js"></script>    
+    <script src="/MBT/js/main.js"></script>    
   </body>
 </html>

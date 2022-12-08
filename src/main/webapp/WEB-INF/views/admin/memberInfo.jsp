@@ -10,7 +10,7 @@
     <title>회원정보 상세페이지</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/MBT/css/custom.css">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   </head>
@@ -21,7 +21,7 @@
       
       <!-- 헤더 -->
       <div class="w-100 d-flex justify-content-between align-items-center font-weight-bold pl-3 my-2 w-100 pb-2 pt-3 text-black-50 pb-3 border-bottom" >
-        <div class="pointer" style="cursor: pointer;" onclick="location.href='../admin/member';">
+        <div class="pointer" style="cursor: pointer;" onclick="location.href='/MBT/admin/member';">
           <i class="bi bi-chevron-left pr-2"></i>관리자페이지
         </div>
       </div>
@@ -78,7 +78,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
-    <script src="/js/main.js"></script>
+    <script src="/MBT/js/main.js"></script>
     <script>
  	// 관리자_ 회원 계정 복구 - main.js 에 넣을 시 동작하지 않음.
     function restoreUser(){
@@ -86,16 +86,17 @@
         var message = "회원정보를 복구 하시겠습니까?";
         result = window.confirm(message);
         if(result == true ){
-        	location.href = '../admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y&&user_quit_reason=';
+        	location.href = '/MBT/admin/memUseUpdate?user_idx=${mem.user_idx}&&useYN=Y&&user_quit_reason=';
         } else {
     	}
     }
- // 관리자_ 회원의 영구 탈퇴 이벤트
+ 	
+ 	//관리자_ 회원의 영구 탈퇴 이벤트
     function realQuit(){
         var message = "회원정보를 영구 삭제하시겠습니까? 삭제된 정보는 복구가 불가능합니다.";  	
         result = window.confirm(message);
         if(result == true ){
-        	location.href = '../admin/realQuit?user_idx=${mem.user_idx}';
+        	location.href = '/MBT/admin/realQuit?user_idx=${mem.user_idx}';
         } else {
         }
     }

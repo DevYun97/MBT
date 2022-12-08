@@ -142,7 +142,7 @@ public class UserService {
 		int result = userDao.updateUseYN(user_idx, useYN, user_quit_reason);
 		if(result == 1) {			
 			if( useYN.equals("Y") ) { // 관리자의 회원정보 복구 성공일 경우
-				return "<script>alert('회원정보 복구에 성공하였습니다.'); location.href='../admin/member';</script>";
+				return "<script>alert('회원정보 복구에 성공하였습니다.'); location.href='/MBT/admin/member';</script>";
 			} else { // 일반 회원의 회원탈퇴 성공일 경우
 				return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='../main';</script>";
 			}			
@@ -157,7 +157,7 @@ public class UserService {
 	public String realQuit(int user_idx) {
 		int result = userDao.quit(user_idx);
 		if(result == 1) {
-				return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='../admin/member';</script>";
+				return "<script>alert('회원탈퇴에 성공하였습니다.'); location.href='/MBT/admin/member';</script>";
 		}
 		else {
 			return "<script>alert('회원탈퇴에 실패하였습니다.'); history.back(-1);</script>";

@@ -10,7 +10,7 @@
     <title>게시판리스트</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/MBT/css/custom.css">
     <!-- 부트아이콘 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   </head>
@@ -36,7 +36,7 @@
         <h6 class="m-0 font-weight-bold">게시판 리스트</h6>
         <div>
         <c:if test="${ not empty user_id }">
-        	<a href="/board/boardWrite" class="btn btn-primary fontSize14" style="height: 30px; ">글작성</a>
+        	<a href="/MBT/board/boardWrite" class="btn btn-primary fontSize14" style="height: 30px; ">글작성</a>
         </c:if>                   
         </div>
       </div>
@@ -44,9 +44,9 @@
 	 <form action="board" method="get" class="w-100 d-flex justify-content-end align-items-center mx-0 mt-2 p-2">
 		<!-- 검색기능 사용시 페이징 초기값 -->
 		<input type = "hidden" name ="pageNo" id="pageNo" value ="1">
-		<input type = "hidden" name ="listSize" id ="listSize" value ="5"> 		 
+		<input type = "hidden" name ="listSize" id ="listSize" value ="8"> 		 
 		 <select id="schType" name="schType" style="height: 30px;">
-		 	<option >선택</option>
+		 	<option selected disabled>선택</option>
 		 	<option value="name" <c:if test="${ sch.schType == 'name' }" > selected </c:if> >작성자</option>
 		 	<option value="title" <c:if test="${ sch.schType == 'title' }" > selected </c:if> >제목</option>
 		 </select>
@@ -57,7 +57,7 @@
       <div class="w-100 d-flex flex-column justify-content-between align-items-center mx-0 my-3 border p-3">
         <!-- 게시판 불러오기 -->
         <c:forEach var="board" items="${ board }">
-        <a href="../board/boardDetail?board_idx=${ board.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
+        <a href="/MBT/board/boardDetail?board_idx=${ board.board_idx }" class="w-100 d-flex justify-content-between align-items-center mt-3 pb-3 border-bottom text-body">
           <div> ${ board.board_title } </div>
           <div class="text-right">
             <small class="pr-2">${ board.board_user }</small>
@@ -106,6 +106,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- main js -->
-    <script src="/js/main.js"></script>
+    <script src="/MBT/js/main.js"></script>
   </body>
 </html>

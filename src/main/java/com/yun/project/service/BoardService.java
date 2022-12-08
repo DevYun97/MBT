@@ -20,7 +20,7 @@ public class BoardService {
 	public String boardWrite(Map<String, Object> map) {
 		int result = boardDao.insertBoard(map);
 		if(result==1) {
-			return "<script>alert('작성 성공');location.href='/board/board';</script>";
+			return "<script>alert('작성 성공');location.href='/MBT/board/board';</script>";
 		}else {
 			return "<script>alert('error: 작성 실패');history.back(-1);</script>";
 		}	
@@ -29,7 +29,7 @@ public class BoardService {
 	public String replyWrite(Map<String, Object> map) {
 		int result = replyDao.insertReply(map);
 		if(result==1) {
-			return "<script>alert('작성 성공');location.href='/board/board';</script>";
+			return "<script>alert('작성 성공');location.href='/MBT/board/board';</script>";
 		}else {
 			return "<script>alert('error: 작성 실패');history.back(-1);</script>";
 		}	

@@ -17,36 +17,8 @@
 			</when>
 			<when test=" qnaType == 'qnaOk' ">
 				and qna_reply_check like '1'
-			</when>
-			
-			<!-- 같이 묶으면 적용이 짬뽕된다. 미답변만 모두 불러오기 때문에 하단 부분이 씹힘. -->
-			<!-- <when test=" test == 'test1' ">
-				and qna_user like 'user01'
-			</when>
-			<when test=" test == 'test2' ">
-				and qna_user like 'user02'
-			</when>
-			<when test=" test == 'test3' ">
-				and qna_user like 'test01'
-			</when> -->
-		</choose>
-		<!-- 양쪽 조건을 모두 적용시키지만 아직 원하는 수준의 실시간 반영이 힘들다 -->
-			<!-- <if test="test !=null">
-			<choose>
-				<when test=" test == 'test1' ">
-					and qna_user like 'user01'
-				</when>
-				<when test=" test == 'test2' ">
-					and qna_user like 'user02'
-				</when>
-				<when test=" test == 'test3' ">
-					and qna_user like 'test01'
-				</when>
-			</choose>
-			</if> -->
-			
-			
-		
+			</when>			
+		</choose>		
 	</select>
 	
 	<!-- 해당 카테고리의 모든 데이터를 가져옴 -->
